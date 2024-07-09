@@ -29,15 +29,49 @@ export class NavMenu extends Component {
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
             <ul className="navbar-nav flex-grow">
+              
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
               </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/createBookingPage">Create Booking</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/userListingsPage">View My Listings</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/searchListingsPage">Search</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/appointmentsPage">Appointments</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/messagesPage">Messages</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/userProfilePage">My Profile</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/accountPage">Account</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/loginPage">Login</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/registerPage">Register</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/logout">Logout</NavLink>
+              </NavItem>
+
+
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
               </NavItem>
+              
             </ul>
           </Collapse>
         </Navbar>
