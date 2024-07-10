@@ -29,36 +29,35 @@ export class NavMenu extends Component {
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
             <ul className="navbar-nav flex-grow">
-              
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/createBookingPage">Create Booking</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/create-booking">Create Booking</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/userListingsPage">View My Listings</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/listings">View My Listings</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/searchListingsPage">Search</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/search-listings">Search</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/appointmentsPage">Appointments</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/appointments">Appointments</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/messagesPage">Messages</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/messages">Messages</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/userProfilePage">My Profile</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/profile">My Profile</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/accountPage">Account</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/account">Account</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/loginPage">Login</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/registerPage">Register</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/register">Register</NavLink>
               </NavItem>
               <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/logout">Logout</NavLink>
