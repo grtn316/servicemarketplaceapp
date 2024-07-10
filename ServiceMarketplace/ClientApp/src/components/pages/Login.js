@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import {Link} from "react-router-dom"
 
 export class Login extends Component {
     static displayName = Login.name;
@@ -6,16 +7,29 @@ export class Login extends Component {
     render() {
         return (
             <>
-                <div className="loginContainer">
-                    <label for="username">Username</label>
-                    <input/>
-                    <br></br>
+                <div className="container-sm col-4" >
+                    {/*Username*/}
+                    <div className="form-group">
+                        <label for="username" className="form-label">Username</label>
+                        <input className="form-control" placeholder="Username" />
+                    </div>
 
-                    <label for="password">Password</label>
-                    <input />
-                    <br></br>
+                    {/*Password*/}
+                    <div className="form-group">
+                        <label for="password" className="form-label">Password</label>
+                        <input className="form-control" placeholder="Password" />
+                    </div>
 
-                    <button type="submit" onclick="">Login</button>
+                    {/*Button*/}
+                    <div>
+                        <button className="btn btn-primary" type="submit" onclick="">Login</button>
+                    </div>
+
+
+                    {/*"Create Account" link*/}
+                    <div>
+                        <Link to="/register">Create Account</Link>
+                    </div>
                 </div>
             </>
         );
