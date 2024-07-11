@@ -33,11 +33,44 @@ export class NavMenu extends Component {
                 <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
               </NavItem>
               <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/create-booking">Create Booking</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/listings">View My Listings</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/search-listings">Search</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/appointments">Appointments</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/messages">Messages</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/profile">My Profile</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/account">Account</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/register">Register</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/logout">Logout</NavLink>
+              </NavItem>
+
+
+              <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
               </NavItem>
+              
             </ul>
           </Collapse>
         </Navbar>
