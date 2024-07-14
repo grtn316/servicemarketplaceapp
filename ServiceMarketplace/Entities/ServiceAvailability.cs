@@ -1,11 +1,15 @@
-﻿namespace ServiceMarketplace.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ServiceMarketplace.Entities
 {
     public class ServiceAvailability
     {
-        private int Id {  get; set; }
-        private int ServiceId { get; set; }
-        private DateTime StartTime { get; set; }
-        private DateTime EndTime { get; set; }
+        [Key]
+        public int Id {  get; set; }
+        [Required]
+        public int ServiceId { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
 
         public ServiceAvailability(int id, int serviceId, DateTime startTime, DateTime endTime)
         {
@@ -14,5 +18,8 @@
             StartTime = startTime;
             EndTime = endTime;
         }
+
+        public ServiceAvailability() { }
+
     }
 }

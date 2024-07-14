@@ -11,9 +11,31 @@ namespace ServiceMarketplace.Data
 
         public DbSet<WeatherForecast> WeatherForecasts { get; set; }
 
+        //public DbSet<AccountType> AccountTypes { get; set; }
+        //public DbSet<Address> Addresses { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        //public DbSet<BookingStatus> BookingStatuses { get; set; }
+        public DbSet<Business> Businesses { get; set; }
+        public DbSet<BusinessUser> BusinessUsers { get; set; }
+        public DbSet<CustomerUser> CustomerUsers { get; set; }
+        //public DbSet<User> Users { get; set; }
+        public DbSet<Inquiry> Inquiries { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<ServiceAvailability> ServiceAvailability { get; set; }
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Business>()
+                .OwnsOne(b => b.Address);
+
+            modelBuilder.Entity<Business>()
+                .OwnsOne(b => b.PhoneNumber);
+
 
             modelBuilder.Entity<WeatherForecast>().HasData(
                 new WeatherForecast

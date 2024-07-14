@@ -1,9 +1,11 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace ServiceMarketplace.Entities
 {
     public class BusinessUser : User
     {
-        public BusinessUser(int id, Type accountType, string username, string password, string email, string firstName, string lastName, string phoneNumber) : base(id, accountType, username, password, email, firstName, lastName, phoneNumber)
+        public BusinessUser(int id, AccountType accountType, string username, string password, string email, string firstName, string lastName, string phoneNumber) : base(id, accountType, username, password, email, firstName, lastName, phoneNumber)
         {
             this.Id = id;
             this.AccountType = accountType;
@@ -16,7 +18,15 @@ namespace ServiceMarketplace.Entities
             this.Bookings = new List<Booking>();
         }
 
-        private bool IsAdmin { get; set; }
-        private List<Booking> Bookings { get; set; } // Probably better as a map
+        [Required]
+        public bool IsAdmin { get; set; }
+        public List<Booking> Bookings { get; set; } // Probably better as a map
+
+        public BusinessUser()
+        {
+            Bookings = new List<Booking>();
+        }
     }
+
+
 }

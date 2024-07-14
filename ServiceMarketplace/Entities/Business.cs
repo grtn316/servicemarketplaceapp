@@ -1,20 +1,32 @@
-﻿namespace ServiceMarketplace.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ServiceMarketplace.Entities
 {
     public class Business
     {
-        private string BusinessId { get; set; }
-        private string Name { get; set; }
-        private string Description { get; set; }
-        private Address Address { get; set; }
-        private PhoneNumber PhoneNumber { get; set; }
+        [Key]
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Address Address { get; set; }
+        public PhoneNumber PhoneNumber { get; set; }
 
         public Business(string businessId, string name, string description, Address address, PhoneNumber phoneNumber)
         {
-            BusinessId = businessId;
+            Id = businessId;
             Name = name;
             Description = description;
             Address = address;
             PhoneNumber = phoneNumber;
         }
+        public Business()
+        {
+            Id = string.Empty;
+            Name = string.Empty;
+            Description = string.Empty;
+            Address = new Address();
+            PhoneNumber = new PhoneNumber();
+        }
+
     }
 }

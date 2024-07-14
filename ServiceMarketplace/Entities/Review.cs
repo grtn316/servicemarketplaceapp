@@ -1,14 +1,20 @@
-﻿namespace ServiceMarketplace.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ServiceMarketplace.Entities
 {
     public class Review
     {
-        private int Id {  get; set; }
-        private int ParentId { get; set; }
-        private int CustomerID { get; set; }
-        private int BusinessID { get; set; }
-        private DateTime TimeStamp { get; set; }
-        private float Rating { get; set; }
-        private string Comment { get; set; }
+        [Key]
+        public int Id {  get; set; }
+        [Required]
+        public int ParentId { get; set; }
+        [Required]
+        public int CustomerID { get; set; }
+        [Required]
+        public int BusinessID { get; set; }
+        public DateTime TimeStamp { get; set; } = DateTime.Now;
+        public float Rating { get; set; }
+        public string Comment { get; set; }
 
         public Review(int id, int parentId, int customerID, int businessID, DateTime timeStamp, float rating, string comment)
         {
@@ -19,6 +25,11 @@
             this.TimeStamp = timeStamp;
             this.Rating = rating;
             this.Comment = comment;
+        }
+
+        public Review()
+        {
+            Comment = string.Empty;
         }
     }
 }

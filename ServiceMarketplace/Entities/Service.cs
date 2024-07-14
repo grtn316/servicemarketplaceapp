@@ -1,15 +1,20 @@
-﻿namespace ServiceMarketplace.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ServiceMarketplace.Entities
 {
     public class Service
     {
-        private int Id {  get; set; }
-        private int BusinessId {  get; set; }
-        private string ServiceName {  get; set; }
-        private string Description {  get; set; }
-        private float Price { get; set; }
-        private int Duration { get; set; } // Needs to change to a time format.
-        private float Rating { get; set; }
-        private List<Review> Reviews { get; set; }
+        [Key]
+        public int Id {  get; set; }
+        [Required]
+        public int BusinessId {  get; set; }
+        [Required]
+        public string ServiceName {  get; set; }
+        public string Description {  get; set; }
+        public float Price { get; set; }
+        public int Duration { get; set; } // Needs to change to a time format.
+        public float Rating { get; set; }
+        public List<Review> Reviews { get; set; }
 
         public Service(int id, int businessId, string serviceName, string description, float price, int duration)
         {
@@ -22,13 +27,22 @@
             this.Rating = 0;
             this.Reviews = new List<Review>();
         }
-        public void addReview(Review review)
-        {
-            this.Reviews.Add(review);
-        }
-        private void UpdateRating()
-        {
 
+        public Service()
+        {
+            ServiceName = string.Empty;
+            Description = string.Empty;
+            Reviews = new List<Review>();
         }
+
+        //These will be done in the Repository class
+        //public void addReview(Review review)
+        //{
+        //    this.Reviews.Add(review);
+        //}
+        //private void UpdateRating()
+        //{
+
+        //}
     }
 }

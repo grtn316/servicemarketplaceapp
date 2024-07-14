@@ -2,12 +2,13 @@
 {
     public class PhoneNumber
     {
-        public int[] Number { get; set; } // Size 10 array for each digit
+        public string Number { get; set; } // Size 10 array for each digit
 
         public PhoneNumber() {
-            Number = new int[10]{5, 5, 5, 5 ,5, 5, 5, 5, 5, 5};
+            //Number = new int[10]{5, 5, 5, 5 ,5, 5, 5, 5, 5, 5};
+            Number = new string('5', 10);
         }
-        public PhoneNumber(int[] Number)
+        public PhoneNumber(string Number)
         {
             this.Number = Number;
         }

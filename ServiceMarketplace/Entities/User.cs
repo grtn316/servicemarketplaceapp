@@ -1,17 +1,27 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ServiceMarketplace.Entities
 {
     public class User
     {
-        protected int Id { get; set; }
-        protected Type AccountType { get; set; }
-        protected string Username { get; set; }
-        protected string Password { get; set; }
-        protected string Email { get; set; }
-        protected string FirstName { get; set; }
-        protected string LastName { get; set; }
-        protected string PhoneNumber { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public AccountType AccountType { get; set; }
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        public string Password { get; set; }
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
+        public string PhoneNumber { get; set; }
 
-        public User(int id, Type accountType, string username, string password, string email, string firstName, string lastName, string phoneNumber)
+        public User(int id, AccountType accountType, string username, string password, string email, string firstName, string lastName, string phoneNumber)
         {
             this.Id = id;
             this.AccountType = accountType;
@@ -21,6 +31,16 @@ namespace ServiceMarketplace.Entities
             this.FirstName = firstName;
             this.LastName = lastName;
             this.PhoneNumber = phoneNumber;
+        }
+
+        public User() {
+            AccountType = AccountType.Standard;
+            Username = string.Empty;
+            Password = string.Empty;
+            Email = string.Empty;
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            PhoneNumber = string.Empty;
         }
     }
 }
