@@ -15,16 +15,18 @@ namespace ServiceMarketplace.Entities
             this.FirstName = firstName;
             this.LastName = lastName;
             this.PhoneNumber = phoneNumber;
-            this.Bookings = new List<Booking>();
+            //this.Bookings = new List<Booking>();
         }
 
         [Required]
-        public bool IsAdmin { get; set; }
-        public List<Booking> Bookings { get; set; } // Probably better as a map
+        public bool IsAdmin { get; set; } = false;
+        [Required]
+        public int BusinessId;
+        //public List<Booking> Bookings { get; set; } // Probably better as a map
 
         public BusinessUser()
         {
-            Bookings = new List<Booking>();
+            //Bookings = new List<Booking>();
         }
     }
 
