@@ -9,15 +9,15 @@ namespace ServiceMarketplace.Entities
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         [Required]
-        public string ServiceId { get; set; }
+        public int ServiceId { get; set; }
         [Required]
-        public string CustomerID { get; set; }
+        public int CustomerID { get; set; }
         [Required]
-        public string BusinessID { get; set; }
+        public int BusinessID { get; set; }
         public float Cost { get; set; }
         public BookingStatus Status { get; set; }
 
-        public Booking(DateTime startTime, DateTime endTime, string serviceId, string customerID, string businessID, float cost, BookingStatus status)
+        public Booking(DateTime startTime, DateTime endTime, int serviceId, int customerID, int businessID, float cost, BookingStatus status)
         {
 
             this.StartTime = startTime;
@@ -30,9 +30,6 @@ namespace ServiceMarketplace.Entities
         }
 
         public Booking() {
-            ServiceId = string.Empty;
-            CustomerID = string.Empty;
-            BusinessID = string.Empty;
         }
     }
 }
