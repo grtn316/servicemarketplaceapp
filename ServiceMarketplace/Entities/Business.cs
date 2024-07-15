@@ -24,6 +24,7 @@ namespace ServiceMarketplace.Entities
             Name = string.Empty;
             Description = string.Empty;
             PhoneNumber= string.Empty;
+            Address = new Address();
         }
 
     }
