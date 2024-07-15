@@ -1,0 +1,67 @@
+﻿.listings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+    .listings-container h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+.listing-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+    .listing-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .listing-item h2, .listing-item h3 {
+        margin: 0;
+        font-size: 24px;
+        color: #333;
+        border-bottom: 2px solid #f4f4f4;
+        padding-bottom: 10px;
+    }
+
+    .listing-item p {
+        margin: 10px 0;
+        color: #555;
+        font-size: 16px;
+    }
+
+    .listing-item span {
+        font-weight: bold;
+        color: #000;
+    }
+
+.business-info, .reviews-list, .availability-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .business-info li, .reviews-list li, .availability-list li {
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+        .business-info li p, .reviews-list li p, .availability-list li p {
+            margin: 0;
+            color: #666;
+        }
+
+            .business-info li p span, .reviews-list li p span, .availability-list li p span {
+                font-weight: bold;
+                color: #333;
+            }
