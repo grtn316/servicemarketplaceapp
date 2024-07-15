@@ -11,9 +11,9 @@ namespace ServiceMarketplace.Entities
         [Required]
         public string ServiceName {  get; set; }
         public string Description {  get; set; }
-        public float Price { get; set; }
+        public double Price { get; set; }
         public int Duration { get; set; } // Needs to change to a time format.
-        public float Rating { get; set; }
+        public double Rating { get; set; }
         public List<Review> Reviews { get; set; }
 
         public Service(int id, int businessId, string serviceName, string description, float price, int duration)

@@ -5,13 +5,13 @@ namespace ServiceMarketplace.Entities
     public class Business
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Address Address { get; set; }
-        public PhoneNumber PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public Business(string businessId, string name, string description, Address address, PhoneNumber phoneNumber)
+        public Business(int businessId, string name, string description, Address address, string phoneNumber)
         {
             Id = businessId;
             Name = name;
@@ -21,11 +21,9 @@ namespace ServiceMarketplace.Entities
         }
         public Business()
         {
-            Id = string.Empty;
             Name = string.Empty;
             Description = string.Empty;
-            Address = new Address();
-            PhoneNumber = new PhoneNumber();
+            PhoneNumber= string.Empty;
         }
 
     }

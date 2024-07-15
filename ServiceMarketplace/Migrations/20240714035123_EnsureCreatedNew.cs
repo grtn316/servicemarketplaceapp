@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ServiceMarketplace.Migrations
 {
     /// <inheritdoc />
@@ -12,17 +14,36 @@ namespace ServiceMarketplace.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CustomerID = table.Column<int>(type: "INTEGER", nullable: false),
+                    BusinessID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Cost = table.Column<float>(type: "REAL", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Businesses",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Address_Street = table.Column<string>(type: "TEXT", nullable: true),
-                    Address_City = table.Column<string>(type: "TEXT", nullable: true),
-                    Address_State = table.Column<string>(type: "TEXT", nullable: true),
-                    Address_Zipcode = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber_Number = table.Column<string>(type: "TEXT", nullable: false)
+                    Address_Street = table.Column<string>(type: "TEXT", nullable: false),
+                    Address_City = table.Column<string>(type: "TEXT", nullable: false),
+                    Address_State = table.Column<string>(type: "TEXT", nullable: false),
+                    Address_Zipcode = table.Column<string>(type: "TEXT", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -109,38 +130,13 @@ namespace ServiceMarketplace.Migrations
                     BusinessId = table.Column<int>(type: "INTEGER", nullable: false),
                     ServiceName = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<float>(type: "REAL", nullable: false),
+                    Price = table.Column<double>(type: "REAL", nullable: false),
                     Duration = table.Column<int>(type: "INTEGER", nullable: false),
-                    Rating = table.Column<float>(type: "REAL", nullable: false)
+                    Rating = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Bookings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ServiceId = table.Column<string>(type: "TEXT", nullable: false),
-                    CustomerID = table.Column<string>(type: "TEXT", nullable: false),
-                    BusinessID = table.Column<string>(type: "TEXT", nullable: false),
-                    Cost = table.Column<float>(type: "REAL", nullable: false),
-                    Status = table.Column<int>(type: "INTEGER", nullable: false),
-                    BusinessUserId = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bookings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Bookings_BusinessUsers_BusinessUserId",
-                        column: x => x.BusinessUserId,
-                        principalTable: "BusinessUsers",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -149,7 +145,7 @@ namespace ServiceMarketplace.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ParentId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ParentReviewId = table.Column<int>(type: "INTEGER", nullable: false),
                     CustomerID = table.Column<int>(type: "INTEGER", nullable: false),
                     BusinessID = table.Column<int>(type: "INTEGER", nullable: false),
                     TimeStamp = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -167,10 +163,70 @@ namespace ServiceMarketplace.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Bookings_BusinessUserId",
+            migrationBuilder.InsertData(
                 table: "Bookings",
-                column: "BusinessUserId");
+                columns: new[] { "Id", "BusinessID", "Cost", "CustomerID", "EndTime", "ServiceId", "StartTime", "Status" },
+                values: new object[,]
+                {
+                    { 1, 1, 100f, 1, new DateTime(2024, 7, 14, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2165), 1, new DateTime(2024, 7, 14, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2116), 0 },
+                    { 2, 2, 150f, 2, new DateTime(2024, 7, 15, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2172), 2, new DateTime(2024, 7, 15, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2170), 1 },
+                    { 3, 3, 200f, 3, new DateTime(2024, 7, 16, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2177), 3, new DateTime(2024, 7, 16, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2175), 2 },
+                    { 4, 4, 250f, 4, new DateTime(2024, 7, 17, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2181), 4, new DateTime(2024, 7, 17, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2179), 0 },
+                    { 5, 5, 300f, 5, new DateTime(2024, 7, 18, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2184), 5, new DateTime(2024, 7, 18, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2183), 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "BusinessUsers",
+                columns: new[] { "Id", "AccountType", "Email", "FirstName", "IsAdmin", "LastName", "Password", "PhoneNumber", "Username" },
+                values: new object[,]
+                {
+                    { 1, 1, "businessuser1a@gmail.com", "BusinessUser", true, "1A", "password", "5555555551", "businessuser1a" },
+                    { 2, 1, "businessuser1b@gmail.com", "BusinessUser", false, "1B", "password", "5555555552", "businessuser1b" },
+                    { 3, 1, "businessuser2a@gmail.com", "BusinessUser", true, "2A", "password", "5555555551", "businessuser2a" },
+                    { 4, 1, "businessuser2b@gmail.com", "BusinessUser", false, "2B", "password", "5555555552", "businessuser2b" },
+                    { 5, 1, "businessuser3a@gmail.com", "BusinessUser", true, "3A", "password", "5555555551", "businessuser3a" },
+                    { 6, 1, "businessuser3b@gmail.com", "BusinessUser", false, "3B", "password", "5555555552", "businessuser3b" },
+                    { 7, 1, "businessuser4a@gmail.com", "BusinessUser", true, "4A", "password", "5555555551", "businessuser4a" },
+                    { 8, 1, "businessuser4b@gmail.com", "BusinessUser", false, "4B", "password", "5555555552", "businessuser4b" },
+                    { 9, 1, "businessuser5a@gmail.com", "BusinessUser", true, "5A", "password", "5555555551", "businessuser5a" },
+                    { 10, 1, "businessuser5b@gmail.com", "BusinessUser", false, "5B", "password", "5555555552", "businessuser5b" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Businesses",
+                columns: new[] { "Id", "Address_City", "Address_State", "Address_Street", "Address_Zipcode", "Description", "Name", "PhoneNumber" },
+                values: new object[,]
+                {
+                    { 1, "City 1", "State 1", "Street 1", "Zip1", "Description for Business 1", "Business 1", "5555555551" },
+                    { 2, "City 2", "State 2", "Street 2", "Zip2", "Description for Business 2", "Business 2", "5555555552" },
+                    { 3, "City 3", "State 3", "Street 3", "Zip3", "Description for Business 3", "Business 3", "5555555553" },
+                    { 4, "City 4", "State 4", "Street 4", "Zip4", "Description for Business 4", "Business 4", "5555555554" },
+                    { 5, "City 5", "State 5", "Street 5", "Zip5", "Description for Business 5", "Business 5", "5555555555" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CustomerUsers",
+                columns: new[] { "Id", "AccountType", "Email", "FirstName", "LastName", "Password", "PhoneNumber", "Username" },
+                values: new object[,]
+                {
+                    { 1, 0, "customer1@yahoo.com", "Customer", "One", "password1", "5555555555", "customer1" },
+                    { 2, 0, "customer2@yahoo.com", "Customer", "Two", "password2", "5555555555", "customer2" },
+                    { 3, 0, "customer3@yahoo.com", "Customer", "Three", "password3", "5555555555", "customer3" },
+                    { 4, 0, "customer4@yahoo.com", "Customer", "Four", "password4", "5555555555", "customer4" },
+                    { 5, 0, "customer5@yahoo.com", "Customer", "Five", "password5", "5555555555", "customer5" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Services",
+                columns: new[] { "Id", "BusinessId", "Description", "Duration", "Price", "Rating", "ServiceName" },
+                values: new object[,]
+                {
+                    { 1, 1, "Description for Service 1", 30, 50.0, 1.0, "Service 1" },
+                    { 2, 2, "Description for Service 2", 60, 60.0, 2.0, "Service 2" },
+                    { 3, 3, "Description for Service 3", 30, 70.0, 3.0, "Service 3" },
+                    { 4, 4, "Description for Service 4", 60, 80.0, 4.0, "Service 4" },
+                    { 5, 5, "Description for Service 5", 90, 90.0, 5.0, "Service 5" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ServiceId",
@@ -188,6 +244,9 @@ namespace ServiceMarketplace.Migrations
                 name: "Businesses");
 
             migrationBuilder.DropTable(
+                name: "BusinessUsers");
+
+            migrationBuilder.DropTable(
                 name: "CustomerUsers");
 
             migrationBuilder.DropTable(
@@ -198,9 +257,6 @@ namespace ServiceMarketplace.Migrations
 
             migrationBuilder.DropTable(
                 name: "ServiceAvailability");
-
-            migrationBuilder.DropTable(
-                name: "BusinessUsers");
 
             migrationBuilder.DropTable(
                 name: "Services");
