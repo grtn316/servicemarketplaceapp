@@ -21,6 +21,7 @@ namespace ServiceMarketplace.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     EndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Duration = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
                     CustomerID = table.Column<int>(type: "INTEGER", nullable: false),
                     BusinessID = table.Column<int>(type: "INTEGER", nullable: false),
@@ -114,7 +115,8 @@ namespace ServiceMarketplace.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
                     StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Duration = table.Column<TimeSpan>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -131,7 +133,7 @@ namespace ServiceMarketplace.Migrations
                     ServiceName = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<double>(type: "REAL", nullable: false),
-                    Duration = table.Column<int>(type: "INTEGER", nullable: false),
+                    Duration = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     Rating = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
@@ -165,14 +167,14 @@ namespace ServiceMarketplace.Migrations
 
             migrationBuilder.InsertData(
                 table: "Bookings",
-                columns: new[] { "Id", "BusinessID", "Cost", "CustomerID", "EndTime", "ServiceId", "StartTime", "Status" },
+                columns: new[] { "Id", "BusinessID", "Cost", "CustomerID", "Duration", "EndTime", "ServiceId", "StartTime", "Status" },
                 values: new object[,]
                 {
-                    { 1, 1, 100f, 1, new DateTime(2024, 7, 14, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2165), 1, new DateTime(2024, 7, 14, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2116), 0 },
-                    { 2, 2, 150f, 2, new DateTime(2024, 7, 15, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2172), 2, new DateTime(2024, 7, 15, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2170), 1 },
-                    { 3, 3, 200f, 3, new DateTime(2024, 7, 16, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2177), 3, new DateTime(2024, 7, 16, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2175), 2 },
-                    { 4, 4, 250f, 4, new DateTime(2024, 7, 17, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2181), 4, new DateTime(2024, 7, 17, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2179), 0 },
-                    { 5, 5, 300f, 5, new DateTime(2024, 7, 18, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2184), 5, new DateTime(2024, 7, 18, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2183), 1 }
+                    { 1, 1, 100f, 1, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 16, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(6994), 1, new DateTime(2024, 7, 15, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(6941), 0 },
+                    { 2, 2, 150f, 2, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 17, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7001), 2, new DateTime(2024, 7, 16, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(6999), 1 },
+                    { 3, 3, 200f, 3, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 18, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7006), 3, new DateTime(2024, 7, 17, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7004), 2 },
+                    { 4, 4, 250f, 4, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 19, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7012), 4, new DateTime(2024, 7, 18, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7010), 0 },
+                    { 5, 5, 300f, 5, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 20, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7018), 5, new DateTime(2024, 7, 19, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7016), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -221,11 +223,11 @@ namespace ServiceMarketplace.Migrations
                 columns: new[] { "Id", "BusinessId", "Description", "Duration", "Price", "Rating", "ServiceName" },
                 values: new object[,]
                 {
-                    { 1, 1, "Description for Service 1", 30, 50.0, 1.0, "Service 1" },
-                    { 2, 2, "Description for Service 2", 60, 60.0, 2.0, "Service 2" },
-                    { 3, 3, "Description for Service 3", 30, 70.0, 3.0, "Service 3" },
-                    { 4, 4, "Description for Service 4", 60, 80.0, 4.0, "Service 4" },
-                    { 5, 5, "Description for Service 5", 90, 90.0, 5.0, "Service 5" }
+                    { 1, 1, "Description for Service 1", new TimeSpan(0, 0, 30, 0, 0), 50.0, 1.0, "Service 1" },
+                    { 2, 2, "Description for Service 2", new TimeSpan(0, 1, 0, 0, 0), 60.0, 2.0, "Service 2" },
+                    { 3, 3, "Description for Service 3", new TimeSpan(0, 0, 30, 0, 0), 70.0, 3.0, "Service 3" },
+                    { 4, 4, "Description for Service 4", new TimeSpan(0, 1, 0, 0, 0), 80.0, 4.0, "Service 4" },
+                    { 5, 5, "Description for Service 5", new TimeSpan(0, 1, 30, 0, 0), 90.0, 5.0, "Service 5" }
                 });
 
             migrationBuilder.CreateIndex(

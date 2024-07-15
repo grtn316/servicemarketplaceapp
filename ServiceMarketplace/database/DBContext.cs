@@ -79,11 +79,11 @@ namespace ServiceMarketplace.Data
 
             //Dummy data for Business Services
             modelBuilder.Entity<Service>().HasData(
-                new Service { Id = 1, ServiceName = $"Service 1", BusinessId = 1, Description = "Description for Service 1", Price = 50.00, Duration = 30, Rating = 1 },
-                new Service { Id = 2, ServiceName = $"Service 2", BusinessId = 2, Description = "Description for Service 2", Price = 60.00, Duration = 60, Rating = 2 },
-                new Service { Id = 3, ServiceName = $"Service 3", BusinessId = 3, Description = "Description for Service 3", Price = 70.00, Duration = 30, Rating = 3 },
-                new Service { Id = 4, ServiceName = $"Service 4", BusinessId = 4, Description = "Description for Service 4", Price = 80.00, Duration = 60, Rating = 4 },
-                new Service { Id = 5, ServiceName = $"Service 5", BusinessId = 5, Description = "Description for Service 5", Price = 90.00, Duration = 90, Rating = 5 }
+                new Service { Id = 1, ServiceName = $"Service 1", BusinessId = 1, Description = "Description for Service 1", Price = 50.00, Duration = new TimeSpan(00,30,00), Rating = 1 },
+                new Service { Id = 2, ServiceName = $"Service 2", BusinessId = 2, Description = "Description for Service 2", Price = 60.00, Duration = new TimeSpan(00, 60, 00), Rating = 2 },
+                new Service { Id = 3, ServiceName = $"Service 3", BusinessId = 3, Description = "Description for Service 3", Price = 70.00, Duration = new TimeSpan(00, 30, 00), Rating = 3 },
+                new Service { Id = 4, ServiceName = $"Service 4", BusinessId = 4, Description = "Description for Service 4", Price = 80.00, Duration = new TimeSpan(00, 60, 00), Rating = 4 },
+                new Service { Id = 5, ServiceName = $"Service 5", BusinessId = 5, Description = "Description for Service 5", Price = 90.00, Duration = new TimeSpan(00, 90, 00), Rating = 5 }
             );
 
             //Dummy data for Bookings
