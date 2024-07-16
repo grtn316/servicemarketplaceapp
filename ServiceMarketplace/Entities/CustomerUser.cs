@@ -12,8 +12,6 @@ namespace ServiceMarketplace.Entities
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
-            this.FirstName = firstName;
-            this.LastName = lastName;
             this.PhoneNumber = phoneNumber;
             this.Bookings = new List<Booking>();
         }
