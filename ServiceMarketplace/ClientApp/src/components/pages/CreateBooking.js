@@ -8,9 +8,11 @@ export class CreateBooking extends Component {
         super(props)
 
         this.state = {
-            serviceName: "",
-            description: "",
-            cost: "", // number or string?, need number validation?
+            Id: "",
+            BusinessId: "",
+            ServiceName: "",
+            Description: "",
+            Price: "", // number or string?, need number validation?
             duration: "" // number or string?, need number validation?
 
         }
@@ -18,33 +20,47 @@ export class CreateBooking extends Component {
 
     changeServiceName = (event) => {
         this.setState({
-            serviceName: event.target.value
+            ServiceName: event.target.value
         })
     }
 
     changeDescription = (event) => {
         this.setState({
-            description: event.target.value
+            Description: event.target.value
         })
     }
 
-    changeCost = (event) => {
+    changePrice = (event) => {
         this.setState({
-            cost: event.target.value
+            Price: event.target.value
         })
     }
 
     changeDuration = (event) => {
         this.setState({
-            duration: event.target.value
+            Duration: event.target.value
         })
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(this.state.serviceName, this.state.description, this.state.cost, this.state.duration);
 
+        // TEMPORARY: Need a way to assign unique ids.
+        this.setState({
+            Id: 0,
+            BusinessId: 0
+        });
 
+        console.log(this.state.Id, this.state.BusinessId, this.state.ServiceName, this.state.Description, this.state.Price, this.state.Duration);
+
+        // POST request to the service controller.
+        // Persist new service listing to the controller/database.
+        const response = await fetch('/api/service',
+            {
+                method: 'POST',
+                body: JSON.stringify(this.state)
+            }
+        ).then(r => r.json());
 
     }
 
@@ -78,13 +94,13 @@ export class CreateBooking extends Component {
                             />
                         </div>
 
-                        {/*Cost*/}
+                        {/*Price*/}
                         <div className="form-group col-3">
-                            <label htmlFor="cost" className="form-label">Cost</label>
+                            <label htmlFor="price" className="form-label">Price</label>
                             <input className="form-control"
                                 placeholder="19.99"
-                                value={this.state.cost}
-                                onChange={this.changeCost}
+                                value={this.state.Price}
+                                onChange={this.changePrice}
                             /> {/* unit of currency (dollars?/$)*/}
                         </div>
 
@@ -93,7 +109,7 @@ export class CreateBooking extends Component {
                             <label htmlFor="duration" className="form-label">Duration</label>
                             <input className="form-control"
                                 placeholder="2"
-                                value={this.state.duration}
+                                value={this.state.Duration}
                                 onChange={this.changeDuration}
                             /> {/* unit of time? (hours?) */}
                         </div>

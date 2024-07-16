@@ -18,13 +18,13 @@ namespace ServiceMarketplace.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet] // GET /api/service
         public async Task<IEnumerable<Service>> Get()
         {
             return await _repository.GetAllServicesAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] // GET /api/service/id
         public async Task<IActionResult> GetById(int id)
         {
             var Service = await _repository.GetServicesByIdAsync(id);
@@ -35,14 +35,19 @@ namespace ServiceMarketplace.Controllers
             return Ok(Service);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Add(Service service)
+        [HttpPost] // POST /api/service
+        //public async Task<IActionResult> Add(Service service)
+        public void Add([FromForm] Service service)
         {
-            await _repository.AddServicesAsync(service);
-            return CreatedAtAction(nameof(GetById), new { id = service.Id }, service);
+            //await _repository.AddServicesAsync(service);
+            //return CreatedAtAction(nameof(GetById), new { id = service.Id }, service);
+            // CreatedAtAction returns status code
+
+            // DEBUGGING: breakpoint HERE what the populated Service object looks like
+            var test = 0;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}")] // PUT /api/service/id
         public async Task<IActionResult> Update(int id, Service service)
         {
             if (id != service.Id)
@@ -54,7 +59,7 @@ namespace ServiceMarketplace.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")] // DELETE /api/service/id
         public async Task<IActionResult> Delete(int id)
         {
             await _repository.DeleteServicesAsync(id);
