@@ -9,9 +9,9 @@ namespace ServiceMarketplace.Repository
     public interface IServiceMarketplaceRepository
     {
         Task<IEnumerable<WeatherForecast>> GetAllAsync();
-        Task<WeatherForecast> GetByIdAsync(int id);
-        Task AddAsync(WeatherForecast entity);
-        Task UpdateAsync(WeatherForecast entity);
+        Task<WeatherForecast?> GetByIdAsync(int id);
+        Task AddAsync(WeatherForecast forecast);
+        Task UpdateAsync(WeatherForecast forecast);
         Task DeleteAsync(int id);
     }
 
