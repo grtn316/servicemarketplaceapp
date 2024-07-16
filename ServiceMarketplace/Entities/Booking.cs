@@ -8,6 +8,7 @@ namespace ServiceMarketplace.Entities
         public int Id { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public TimeSpan Duration { get; set; }
         [Required]
         public int ServiceId { get; set; }
         [Required]
@@ -22,6 +23,7 @@ namespace ServiceMarketplace.Entities
 
             this.StartTime = startTime;
             this.EndTime = endTime;
+            this.Duration = this.EndTime - this.StartTime;
             this.ServiceId = serviceId;
             this.CustomerID = customerID;
             this.BusinessID = businessID;

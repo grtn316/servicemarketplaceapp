@@ -5,10 +5,9 @@ namespace ServiceMarketplace.Entities
     //Use this class as a utility to format phone numbers before submitting to the database instead
     public class PhoneNumber
     {
-        public string Number { get; set; } // Size 10 array for each digit
+        public string Number { get; set; }
 
         public PhoneNumber() {
-            //Number = new int[10]{5, 5, 5, 5 ,5, 5, 5, 5, 5, 5};
             Number = new string('5', 10);
         }
         public PhoneNumber(string Number)

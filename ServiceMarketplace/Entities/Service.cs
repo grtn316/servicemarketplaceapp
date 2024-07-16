@@ -12,11 +12,11 @@ namespace ServiceMarketplace.Entities
         public string ServiceName {  get; set; }
         public string Description {  get; set; }
         public double Price { get; set; }
-        public int Duration { get; set; } // Needs to change to a time format.
+        public TimeSpan Duration { get; set; }
         public double Rating { get; set; }
         public List<Review> Reviews { get; set; }
 
-        public Service(int id, int businessId, string serviceName, string description, float price, int duration)
+        public Service(int id, int businessId, string serviceName, string description, float price, TimeSpan duration)
         {
             this.Id = id;
             this.BusinessId = businessId;
@@ -34,15 +34,5 @@ namespace ServiceMarketplace.Entities
             Description = string.Empty;
             Reviews = new List<Review>();
         }
-
-        //These will be done in the Repository class
-        //public void addReview(Review review)
-        //{
-        //    this.Reviews.Add(review);
-        //}
-        //private void UpdateRating()
-        //{
-
-        //}
     }
 }

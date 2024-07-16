@@ -32,6 +32,9 @@ namespace ServiceMarketplace.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("TEXT");
 
@@ -55,9 +58,10 @@ namespace ServiceMarketplace.Migrations
                             BusinessID = 1,
                             Cost = 100f,
                             CustomerID = 1,
-                            EndTime = new DateTime(2024, 7, 14, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2165),
+                            Duration = new TimeSpan(0, 0, 0, 0, 0),
+                            EndTime = new DateTime(2024, 7, 16, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(6994),
                             ServiceId = 1,
-                            StartTime = new DateTime(2024, 7, 14, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2116),
+                            StartTime = new DateTime(2024, 7, 15, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(6941),
                             Status = 0
                         },
                         new
@@ -66,9 +70,10 @@ namespace ServiceMarketplace.Migrations
                             BusinessID = 2,
                             Cost = 150f,
                             CustomerID = 2,
-                            EndTime = new DateTime(2024, 7, 15, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2172),
+                            Duration = new TimeSpan(0, 0, 0, 0, 0),
+                            EndTime = new DateTime(2024, 7, 17, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7001),
                             ServiceId = 2,
-                            StartTime = new DateTime(2024, 7, 15, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2170),
+                            StartTime = new DateTime(2024, 7, 16, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(6999),
                             Status = 1
                         },
                         new
@@ -77,9 +82,10 @@ namespace ServiceMarketplace.Migrations
                             BusinessID = 3,
                             Cost = 200f,
                             CustomerID = 3,
-                            EndTime = new DateTime(2024, 7, 16, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2177),
+                            Duration = new TimeSpan(0, 0, 0, 0, 0),
+                            EndTime = new DateTime(2024, 7, 18, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7006),
                             ServiceId = 3,
-                            StartTime = new DateTime(2024, 7, 16, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2175),
+                            StartTime = new DateTime(2024, 7, 17, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7004),
                             Status = 2
                         },
                         new
@@ -88,9 +94,10 @@ namespace ServiceMarketplace.Migrations
                             BusinessID = 4,
                             Cost = 250f,
                             CustomerID = 4,
-                            EndTime = new DateTime(2024, 7, 17, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2181),
+                            Duration = new TimeSpan(0, 0, 0, 0, 0),
+                            EndTime = new DateTime(2024, 7, 19, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7012),
                             ServiceId = 4,
-                            StartTime = new DateTime(2024, 7, 17, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2179),
+                            StartTime = new DateTime(2024, 7, 18, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7010),
                             Status = 0
                         },
                         new
@@ -99,9 +106,10 @@ namespace ServiceMarketplace.Migrations
                             BusinessID = 5,
                             Cost = 300f,
                             CustomerID = 5,
-                            EndTime = new DateTime(2024, 7, 18, 23, 51, 23, 683, DateTimeKind.Local).AddTicks(2184),
+                            Duration = new TimeSpan(0, 0, 0, 0, 0),
+                            EndTime = new DateTime(2024, 7, 20, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7018),
                             ServiceId = 5,
-                            StartTime = new DateTime(2024, 7, 18, 22, 51, 23, 683, DateTimeKind.Local).AddTicks(2183),
+                            StartTime = new DateTime(2024, 7, 19, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7016),
                             Status = 1
                         });
                 });
@@ -499,8 +507,8 @@ namespace ServiceMarketplace.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Duration")
-                        .HasColumnType("INTEGER");
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
@@ -522,7 +530,7 @@ namespace ServiceMarketplace.Migrations
                             Id = 1,
                             BusinessId = 1,
                             Description = "Description for Service 1",
-                            Duration = 30,
+                            Duration = new TimeSpan(0, 0, 30, 0, 0),
                             Price = 50.0,
                             Rating = 1.0,
                             ServiceName = "Service 1"
@@ -532,7 +540,7 @@ namespace ServiceMarketplace.Migrations
                             Id = 2,
                             BusinessId = 2,
                             Description = "Description for Service 2",
-                            Duration = 60,
+                            Duration = new TimeSpan(0, 1, 0, 0, 0),
                             Price = 60.0,
                             Rating = 2.0,
                             ServiceName = "Service 2"
@@ -542,7 +550,7 @@ namespace ServiceMarketplace.Migrations
                             Id = 3,
                             BusinessId = 3,
                             Description = "Description for Service 3",
-                            Duration = 30,
+                            Duration = new TimeSpan(0, 0, 30, 0, 0),
                             Price = 70.0,
                             Rating = 3.0,
                             ServiceName = "Service 3"
@@ -552,7 +560,7 @@ namespace ServiceMarketplace.Migrations
                             Id = 4,
                             BusinessId = 4,
                             Description = "Description for Service 4",
-                            Duration = 60,
+                            Duration = new TimeSpan(0, 1, 0, 0, 0),
                             Price = 80.0,
                             Rating = 4.0,
                             ServiceName = "Service 4"
@@ -562,7 +570,7 @@ namespace ServiceMarketplace.Migrations
                             Id = 5,
                             BusinessId = 5,
                             Description = "Description for Service 5",
-                            Duration = 90,
+                            Duration = new TimeSpan(0, 1, 30, 0, 0),
                             Price = 90.0,
                             Rating = 5.0,
                             ServiceName = "Service 5"
@@ -574,6 +582,9 @@ namespace ServiceMarketplace.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("TEXT");
