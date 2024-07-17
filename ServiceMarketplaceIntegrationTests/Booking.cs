@@ -16,12 +16,12 @@ namespace ServiceMarketplace.Tests
 {
 
 
-public class WeatherForecastIntegrationTests : IClassFixture<CustomWebApplicationFactory<Program>>, IAsyncLifetime
+public class BookingIntegrationTests : IClassFixture<CustomWebApplicationFactory<Program>>, IAsyncLifetime
     {
     private readonly HttpClient _client;
     private readonly CustomWebApplicationFactory<Program> _factory;
 
-    public WeatherForecastIntegrationTests(CustomWebApplicationFactory<Program> factory)
+    public BookingIntegrationTests(CustomWebApplicationFactory<Program> factory)
     {
         _factory = factory;
         _client = factory.CreateClient();
@@ -51,60 +51,60 @@ public class WeatherForecastIntegrationTests : IClassFixture<CustomWebApplicatio
     private void SeedDatabase(ApplicationDbContext dbContext)
     {
         // Add test data to the database.
-        dbContext.WeatherForecasts.AddRange(new List<WeatherForecast>
+        dbContext.Bookings.AddRange(new List<Booking>
     {
-        new WeatherForecast { Id = 1, Date = DateOnly.FromDateTime(DateTime.Now), TemperatureC = 25, Summary = "Mild" },
-        new WeatherForecast { Id = 2, Date = DateOnly.FromDateTime(DateTime.Now), TemperatureC = 30, Summary = "Hot" }
+        new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
+        new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = 2, BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled }
     });
         dbContext.SaveChanges();
     }
 
         [Fact]
-    public async Task Get_ReturnsAllWeatherForecasts()
+    public async Task Get_ReturnsAllBookings()
     {
             
-        var response = await _client.GetAsync("/api/WeatherForecast");
+        var response = await _client.GetAsync("/api/Booking");
 
         response.EnsureSuccessStatusCode(); // Status Code 200-299
         var stringResponse = await response.Content.ReadAsStringAsync();
-        var forecasts = JsonConvert.DeserializeObject<List<WeatherForecast>>(stringResponse);
-        Assert.Equal(2, forecasts.Count);
+        var booking = JsonConvert.DeserializeObject<List<Booking>>(stringResponse);
+        Assert.Equal(2, booking.Count);
     }
 
     [Fact]
-    public async Task GetById_ReturnsWeatherForecast_WhenForecastExists()
+    public async Task GetById_ReturnsBooking_WhenBookingExists()
     {
 
-        var response = await _client.GetAsync("/api/WeatherForecast/1");
+        var response = await _client.GetAsync("/api/Booking/1");
 
         response.EnsureSuccessStatusCode(); // Status Code 200-299
         var stringResponse = await response.Content.ReadAsStringAsync();
-        var forecast = JsonConvert.DeserializeObject<WeatherForecast>(stringResponse);
-        Assert.Equal(25, forecast.TemperatureC);
+        var booking = JsonConvert.DeserializeObject<Booking>(stringResponse);
+        Assert.Equal(100, booking.Cost);
     }
 
     [Fact]
-    public async Task GetById_ReturnsNotFound_WhenForecastDoesNotExist()
+    public async Task GetById_ReturnsNotFound_WhenBookingDoesNotExist()
     {
 
-        var response = await _client.GetAsync("/api/WeatherForecast/999");
+        var response = await _client.GetAsync("/api/Booking/999");
 
         Assert.Equal(System.Net.HttpStatusCode.NotFound, response.StatusCode);
     }
 
     [Fact]
-    public async Task Add_AddsWeatherForecast()
+    public async Task Add_AddsBooking()
     {
-      
-        var newForecast = new WeatherForecast { Id = 3, Date = DateOnly.FromDateTime(DateTime.Now), TemperatureC = 22, Summary = "Cool" };
-        var content = new StringContent(JsonConvert.SerializeObject(newForecast), Encoding.UTF8, "application/json");
 
-        var response = await _client.PostAsync("/api/WeatherForecast", content);
+        var newBooking = new Booking { Id = 3, StartTime = DateTime.Now.AddDays(3), EndTime = DateTime.Now.AddDays(3).AddHours(1), ServiceId = 3, CustomerID = 3, BusinessID = 3, Cost = 200, Status = BookingStatus.Complete };
+        var content = new StringContent(JsonConvert.SerializeObject(newBooking), Encoding.UTF8, "application/json");
+
+        var response = await _client.PostAsync("/api/Booking", content);
 
         response.EnsureSuccessStatusCode(); // Status Code 201
         var stringResponse = await response.Content.ReadAsStringAsync();
-        var addedForecast = JsonConvert.DeserializeObject<WeatherForecast>(stringResponse);
-        Assert.Equal(22, addedForecast.TemperatureC);
+        var addedBooking = JsonConvert.DeserializeObject<Booking>(stringResponse);
+        Assert.Equal(200, addedBooking.Cost);
     }
 }
 
