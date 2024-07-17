@@ -9,40 +9,40 @@ using Xunit;
 
 namespace ServiceMarketplace.Tests
 {
-    public class WeatherForecastControllerTests
+    public class BookingControllerTests
     {
         private readonly Mock<IServiceMarketplaceRepository> _mockRepo;
-        private readonly WeatherForecastController _controller;
+        private readonly BookingController _controller;
 
-        public WeatherForecastControllerTests()
+        public BookingControllerTests()
         {
             _mockRepo = new Mock<IServiceMarketplaceRepository>();
-            _controller = new WeatherForecastController(_mockRepo.Object);
+            _controller = new BookingController(_mockRepo.Object);
         }
 
         [Fact]
-        public async Task Get_ReturnsAllWeatherForecasts()
+        public async Task Get_ReturnsAllBookings()
         {
             
-            var forecasts = new List<WeatherForecast>
+            var bookings = new List<Booking>
             {
-                new WeatherForecast { Id = 1, TemperatureC = 25 },
-                new WeatherForecast { Id = 2, TemperatureC = 30 }
+                new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
+                new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = 2, BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled }
             };
-            _mockRepo.Setup(repo => repo.GetAllAsync()).ReturnsAsync(forecasts);
+            _mockRepo.Setup(repo => repo.GetAllBookingsAsync()).ReturnsAsync(bookings);
 
             
             var result = await _controller.Get();
 
             
-            Assert.Equal(forecasts, result);
+            Assert.Equal(bookings, result);
         }
 
         [Fact]
-        public async Task GetById_ReturnsNotFound_WhenForecastDoesNotExist()
+        public async Task GetById_ReturnsNotFound_WhenBookingDoesNotExist()
         {
             
-            _mockRepo.Setup(repo => repo.GetByIdAsync(It.IsAny<int>())).ReturnsAsync((WeatherForecast?)null);
+            _mockRepo.Setup(repo => repo.GetBookingsByIdAsync(It.IsAny<int>())).ReturnsAsync((Booking?)null);
 
             
             var result = await _controller.GetById(1);
@@ -52,25 +52,25 @@ namespace ServiceMarketplace.Tests
         }
 
         [Fact]
-        public async Task GetById_ReturnsForecast_WhenForecastExists()
+        public async Task GetById_ReturnsBooking_WhenBookingExists()
         {
             
-            var forecast = new WeatherForecast { Id = 1, TemperatureC = 25 };
-            _mockRepo.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(forecast);
+            var bookings = new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed };
+            _mockRepo.Setup(repo => repo.GetBookingsByIdAsync(1)).ReturnsAsync(bookings);
 
             
             var result = await _controller.GetById(1);
 
             
             var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(forecast, okResult.Value);
+            Assert.Equal(bookings, okResult.Value);
         }
 
         [Fact]
         public async Task Add_ReturnsCreatedAtAction()
         {
             
-            var forecast = new WeatherForecast { Id = 1, TemperatureC = 25 };
+            var forecast = new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed };
 
             
             var result = await _controller.Add(forecast);
@@ -86,7 +86,7 @@ namespace ServiceMarketplace.Tests
         public async Task Update_ReturnsBadRequest_WhenIdMismatch()
         {
             
-            var forecast = new WeatherForecast { Id = 1, TemperatureC = 25 };
+            var forecast = new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed };
 
             
             var result = await _controller.Update(2, forecast);
@@ -99,7 +99,7 @@ namespace ServiceMarketplace.Tests
         public async Task Update_ReturnsNoContent_WhenSuccessful()
         {
             
-            var forecast = new WeatherForecast { Id = 1, TemperatureC = 25 };
+            var forecast = new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed };
 
             
             var result = await _controller.Update(1, forecast);
