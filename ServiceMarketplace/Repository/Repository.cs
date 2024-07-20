@@ -14,6 +14,13 @@ namespace ServiceMarketplace.Repository
         Task UpdateAsync(WeatherForecast forecast);
         Task DeleteAsync(int id);
 
+        //Booking
+        Task<IEnumerable<Booking>> GetAllBookingsAsync();
+        Task<Booking> GetBookingsByIdAsync(int id);
+        Task AddBookingsAsync(Booking entity);
+        Task UpdateBookingsAsync(Booking entity);
+        Task DeleteBookingsAsync(int id);
+
         //Business
         Task<IEnumerable<Business>> GetAllBusinessesAsync();
         Task<Business> GetBusinessesByIdAsync(int id);
@@ -74,6 +81,39 @@ namespace ServiceMarketplace.Repository
         public ServiceMarketplaceRepository(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        //Booking
+        public async Task<IEnumerable<Booking>> GetAllBookingsAsync()
+        {
+            return await _context.Bookings.ToListAsync();
+        }
+
+        public async Task<Booking> GetBookingsByIdAsync(int id)
+        {
+            return await _context.Bookings.FindAsync(id);
+        }
+
+        public async Task AddBookingsAsync(Booking entity)
+        {
+            await _context.Bookings.AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateBookingsAsync(Booking entity)
+        {
+            _context.Bookings.Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteBookingsAsync(int id)
+        {
+            var entity = await _context.Bookings.FindAsync(id);
+            if (entity != null)
+            {
+                _context.Bookings.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
 
         //Business
