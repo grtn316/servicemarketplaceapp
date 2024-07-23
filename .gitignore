@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ServiceMarketplace/FileContentIndex
+/.vs/ServiceMarketplace/v17/TestStore/0
+/.vs/ServiceMarketplace/v17/.suo

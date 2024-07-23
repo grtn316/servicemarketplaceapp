@@ -10,56 +10,61 @@ import { Listings } from "./components/pages/Listings";
 import { Profile } from "./components/pages/Profile";
 import { CreateBooking } from "./components/pages/CreateBooking";
 import { Login } from "./components/pages/Login";
+import Logout from "./components/pages/Logout";
 
 const AppRoutes = [
-  {
-    index: true,
-    element: <Home />
+    {
+        index: true,
+        element: <Home />
     },
-  {
-    path: '/create-booking',
-    element: <CreateBooking />
-  },
-  {
-    path: '/listings',
-    element: <Listings />
-  },
-  {
-    path: '/search-listings',
-    element: <SearchListings />
-  },
-  {
-    path: '/appointments',
-    element: <Appointments />
-  },
-  {
-    path: '/messages',
-    element: <Messages />
-  },
-  {
-    path: '/profile',
-    element: <Profile />
-  },
-  {
-    path: '/account',
-    element: <Account />
-  },
-  {
-    path: '/login',
-    element: <Login />
-  },
-  {
-    path: '/register',
-    element: <Register />
-  },
-  {
-    path: '/counter',
-    element: <Counter />
-  },
-  {
-    path: '/fetch-data',
-    element: <FetchData />
-  }
+    {
+        path: '/create-booking',
+        element: <CreateBooking />
+    },
+    {
+        path: '/listings',
+        element: <Listings />
+    },
+    {
+        path: '/search-listings',
+        element: <SearchListings />
+    },
+    {
+        path: '/appointments',
+        element: <Appointments />
+    },
+    {
+        path: '/messages',
+        element: <Messages />
+    },
+    {
+        path: '/profile',
+        element: <Profile />
+    },
+    {
+        path: '/account',
+        element: <Account />
+    },
+    {
+        path: '/login',
+        element: <Login />
+    },
+    {
+        path: '/lo',
+        element: <Logout />
+    },
+    {
+        path: '/register',
+        element: <Register />
+    },
+    {
+        path: '/counter',
+        element: <Counter />
+    },
+    {
+        path: '/fetch-data',
+        element: <FetchData />
+    }
 ];
 
 export default AppRoutes;

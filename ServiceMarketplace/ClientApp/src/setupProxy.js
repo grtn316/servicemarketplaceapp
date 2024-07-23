@@ -9,11 +9,15 @@ const context = [
     "/api/booking",
     "/api/business",
     "/api/businessuser",
-    "/api/customeruser",
+    "/api/user",
     "/api/inquiry",
     "/api/review",
     "/api/serviceavailability",
     "/api/service",
+    "/pingauth",
+    "/register",
+    "/login",
+    "/logout",
 ];
 
 const onError = (err, req, resp, target) => {

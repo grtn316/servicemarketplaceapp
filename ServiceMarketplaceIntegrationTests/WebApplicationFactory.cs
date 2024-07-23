@@ -51,7 +51,7 @@ namespace ServiceMarketplace.Tests
             dbContext.Bookings.RemoveRange(dbContext.Bookings);
             dbContext.Businesses.RemoveRange(dbContext.Businesses);
             dbContext.BusinessUsers.RemoveRange(dbContext.BusinessUsers);
-            dbContext.CustomerUsers.RemoveRange(dbContext.CustomerUsers);
+            dbContext.Users.RemoveRange(dbContext.Users);
             dbContext.Inquiries.RemoveRange(dbContext.Inquiries);
             dbContext.Reviews.RemoveRange(dbContext.Reviews);
             dbContext.Services.RemoveRange(dbContext.Services);
