@@ -15,11 +15,12 @@ function Logout() {
             })
                 .then((data) => {
                     if (data.ok) {
-                        navigate("/login");
+                        navigate("/lin");
                     }
                 })
                 .catch((error) => {
                     console.error(error);
+                    navigate("/lin");
                 });
         };
 

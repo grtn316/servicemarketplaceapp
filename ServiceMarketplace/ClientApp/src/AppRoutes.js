@@ -3,13 +3,13 @@ import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import { Messages } from "./components/pages/Messages";
-import { Register } from "./components/pages/Register";
+import { default as Register } from "./components/pages/Register";
 import { SearchListings } from "./components/pages/SearchListings";
 import { Appointments } from "./components/pages/Appointments";
 import { Listings } from "./components/pages/Listings";
 import { Profile } from "./components/pages/Profile";
 import { CreateBooking } from "./components/pages/CreateBooking";
-import { Login } from "./components/pages/Login";
+import { default as Login } from "./components/pages/Login";
 import Logout from "./components/pages/Logout";
 
 const AppRoutes = [
@@ -46,7 +46,7 @@ const AppRoutes = [
         element: <Account />
     },
     {
-        path: '/login',
+        path: '/lin',
         element: <Login />
     },
     {

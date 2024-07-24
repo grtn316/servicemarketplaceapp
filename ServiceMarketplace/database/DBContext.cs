@@ -99,11 +99,11 @@ namespace ServiceMarketplace.Data
 
             //Dummy data for Bookings
             modelBuilder.Entity<Booking>().HasData(
-            new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
-            new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = 2, BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled },
-            new Booking { Id = 3, StartTime = DateTime.Now.AddDays(3), EndTime = DateTime.Now.AddDays(3).AddHours(1), ServiceId = 3, CustomerID = 3, BusinessID = 3, Cost = 200, Status = BookingStatus.Complete },
-            new Booking { Id = 4, StartTime = DateTime.Now.AddDays(4), EndTime = DateTime.Now.AddDays(4).AddHours(1), ServiceId = 4, CustomerID = 4, BusinessID = 4, Cost = 250, Status = BookingStatus.Confirmed },
-            new Booking { Id = 5, StartTime = DateTime.Now.AddDays(5), EndTime = DateTime.Now.AddDays(5).AddHours(1), ServiceId = 5, CustomerID = 5, BusinessID = 5, Cost = 300, Status = BookingStatus.Canceled }
+            new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4", BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
+            new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = "06874549-8158-4144-891c-1a33141904bd", BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled },
+            new Booking { Id = 3, StartTime = DateTime.Now.AddDays(3), EndTime = DateTime.Now.AddDays(3).AddHours(1), ServiceId = 3, CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4", BusinessID = 3, Cost = 200, Status = BookingStatus.Complete },
+            new Booking { Id = 4, StartTime = DateTime.Now.AddDays(4), EndTime = DateTime.Now.AddDays(4).AddHours(1), ServiceId = 4, CustomerID = "06874549-8158-4144-891c-1a33141904bd", BusinessID = 4, Cost = 250, Status = BookingStatus.Confirmed },
+            new Booking { Id = 5, StartTime = DateTime.Now.AddDays(5), EndTime = DateTime.Now.AddDays(5).AddHours(1), ServiceId = 5, CustomerID = "06874549-8158-4144-891c-1a33141904bd", BusinessID = 5, Cost = 300, Status = BookingStatus.Canceled }
         );
 
 

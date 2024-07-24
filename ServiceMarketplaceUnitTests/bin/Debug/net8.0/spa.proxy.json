@@ -1,8 +1,0 @@
-{
-"SpaProxyServer": {
-"ServerUrl": "https://localhost:44466",
-"LaunchCommand": "npm start",
-"WorkingDirectory": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\",
-"MaxTimeoutInSeconds": "120"
-}
-}

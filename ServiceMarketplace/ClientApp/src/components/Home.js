@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import AuthorizeView, { AuthorizedUser } from '../components/utils/authorize';
+import AuthorizeView from './utils/authorize';
+//import AuthorizeView, { AuthorizedUser } from '../components/utils/authorize';
 
 export class Home extends Component {
   static displayName = Home.name;

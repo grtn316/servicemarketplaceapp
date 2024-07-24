@@ -4,6 +4,7 @@ using ServiceMarketplace.Data;
 using ServiceMarketplace.Entities;
 using ServiceMarketplace.Repository;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 
 public class Program
 {
@@ -64,12 +65,70 @@ public class Program
 
         }).RequireAuthorization();
 
-        app.MapGet("/pingauth", (ClaimsPrincipal user) =>
+        app.MapGet("/pingauth", async (UserManager<User> userManager, ClaimsPrincipal user) =>
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId != null)
             {
-                var email = user.FindFirstValue(ClaimTypes.Email);
-                return Results.Json(new { Email = email });
-
+                var appUser = await userManager.FindByIdAsync(userId);
+                if (appUser != null)
+                {
+                    var firstName = appUser.FirstName;
+                    var lastName = appUser.LastName;
+                    var email = appUser.Email;
+                    var accountType = appUser.AccountType;
+                    return Results.Json(new { id = userId, firstName, lastName, email, accountType });
+                }
+            }
+            return Results.Unauthorized();
         }).RequireAuthorization();
+
+        app.MapPost("/registeruser", async ([FromBody] RegisterUser model, UserManager<User> userManager, SignInManager<User> signInManager) =>
+        {
+            if (model == null)
+            {
+                return Results.BadRequest("Invalid user data.");
+            }
+
+            var user = new User
+            {
+                AccountType = model.AccountType,
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Address = model.Address,
+                City = model.City,
+                State = model.State,
+                ZipCode = model.ZipCode,
+                PhoneNumber = model.PhoneNumber
+            };
+
+            var result = await userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                await signInManager.SignInAsync(user, isPersistent: false);
+                return Results.Ok("User registered successfully.");
+            }
+
+            var errors = string.Join("; ", result.Errors.Select(e => e.Description));
+            return Results.BadRequest(errors);
+        });
+
+        //Block default register api
+        app.Use(async (context, next) =>
+        {
+            if (context.Request.Path == "/register" && context.Request.Method == "POST")
+            {
+                context.Response.StatusCode = StatusCodes.Status404NotFound;
+                await context.Response.WriteAsync("Not Accessible, please use /registeruser");
+            }
+            else
+            {
+                await next();
+            }
+        });
 
         app.UseRouting();
         app.UseAuthorization();

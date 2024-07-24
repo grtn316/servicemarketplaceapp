@@ -8,7 +8,7 @@ namespace ServiceMarketplace.Entities
         [Key]
         public int Id { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         [Required]
         public bool IsAdmin { get; set; } = false;
         [Required]
@@ -16,6 +16,9 @@ namespace ServiceMarketplace.Entities
 
         public BusinessUser()
         {
+            UserId = String.Empty;
+            IsAdmin = false;
+
         }
     }
 

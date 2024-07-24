@@ -1,7 +1,8 @@
 ﻿import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { withNavigate } from '../utils/navigate';
 
-export class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -50,7 +51,7 @@ export class Login extends Component {
                 .then((data) => {
                     if (data.ok) {
                         this.setState({ error: "Successful Login." });
-                        window.location.href = '/';
+                        this.props.navigate("/");
                     } else {
                         this.setState({ error: "Error Logging In." });
                     }
@@ -111,3 +112,5 @@ export class Login extends Component {
         );
     }
 }
+
+export default withNavigate(Login);
