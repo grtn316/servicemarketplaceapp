@@ -12,13 +12,13 @@ namespace ServiceMarketplace.Entities
         [Required]
         public int ServiceId { get; set; }
         [Required]
-        public int CustomerID { get; set; }
+        public string CustomerID { get; set; }
         [Required]
         public int BusinessID { get; set; }
         public float Cost { get; set; }
         public BookingStatus Status { get; set; }
 
-        public Booking(DateTime startTime, DateTime endTime, int serviceId, int customerID, int businessID, float cost, BookingStatus status)
+        public Booking(DateTime startTime, DateTime endTime, int serviceId, string customerID, int businessID, float cost, BookingStatus status)
         {
 
             this.StartTime = startTime;

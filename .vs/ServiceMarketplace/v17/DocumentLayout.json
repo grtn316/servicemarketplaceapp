@@ -1,0 +1,83 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\pages\\logout.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\clientapp\\src\\components\\pages\\logout.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\navmenu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\clientapp\\src\\components\\navmenu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\utils\\authorize.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\clientapp\\src\\components\\utils\\authorize.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Logout.js",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\Logout.js",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Logout.js",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\Logout.js",
+              "RelativeToolTip": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Logout.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-07-24T01:37:22.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "authorize.js",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\utils\\authorize.js",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\ClientApp\\src\\components\\utils\\authorize.js",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\utils\\authorize.js",
+              "RelativeToolTip": "ServiceMarketplace\\ClientApp\\src\\components\\utils\\authorize.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-07-24T01:21:53.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NavMenu.js",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\NavMenu.js",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\ClientApp\\src\\components\\NavMenu.js",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\NavMenu.js",
+              "RelativeToolTip": "ServiceMarketplace\\ClientApp\\src\\components\\NavMenu.js",
+              "ViewState": "AQIAACgAAAAAAAAAAAAgwEkAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-07-24T01:21:35.429Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
