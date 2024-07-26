@@ -35,12 +35,19 @@ namespace ServiceMarketplace.Repository
         Task UpdateBusinessUsersAsync(BusinessUser entity);
         Task DeleteBusinessUsersAsync(int id);
 
-        //CustomerUser
-        Task<IEnumerable<CustomerUser>> GetAllCustomerUsersAsync();
-        Task<CustomerUser> GetCustomerUsersByIdAsync(int id);
-        Task AddCustomerUsersAsync(CustomerUser entity);
-        Task UpdateCustomerUsersAsync(CustomerUser entity);
-        Task DeleteCustomerUsersAsync(int id);
+        ////CustomerUser
+        //Task<IEnumerable<CustomerUser>> GetAllCustomerUsersAsync();
+        //Task<CustomerUser> GetCustomerUsersByIdAsync(int id);
+        //Task AddCustomerUsersAsync(CustomerUser entity);
+        //Task UpdateCustomerUsersAsync(CustomerUser entity);
+        //Task DeleteCustomerUsersAsync(int id);
+
+        //User
+        Task<IEnumerable<User>> GetAllUsersAsync();
+        Task<User> GetUsersByIdAsync(int id);
+        Task AddUsersAsync(User entity);
+        Task UpdateUsersAsync(User entity);
+        Task DeleteUsersAsync(int id);
 
         //Inquiry
         Task<IEnumerable<Inquiry>> GetAllInquiriesAsync();
@@ -182,35 +189,68 @@ namespace ServiceMarketplace.Repository
             }
         }
 
+        ////CustomerUser
+        //public async Task<IEnumerable<CustomerUser>> GetAllCustomerUsersAsync()
+        //{
+        //    return await _context.CustomerUsers.ToListAsync();
+        //}
+
+        //public async Task<CustomerUser> GetCustomerUsersByIdAsync(int id)
+        //{
+        //    return await _context.CustomerUsers.FindAsync(id);
+        //}
+
+        //public async Task AddCustomerUsersAsync(CustomerUser entity)
+        //{
+        //    await _context.CustomerUsers.AddAsync(entity);
+        //    await _context.SaveChangesAsync();
+        //}
+
+        //public async Task UpdateCustomerUsersAsync(CustomerUser entity)
+        //{
+        //    _context.CustomerUsers.Update(entity);
+        //    await _context.SaveChangesAsync();
+        //}
+
+        //public async Task DeleteCustomerUsersAsync(int id)
+        //{
+        //    var entity = await _context.CustomerUsers.FindAsync(id);
+        //    if (entity != null)
+        //    {
+        //        _context.CustomerUsers.Remove(entity);
+        //        await _context.SaveChangesAsync();
+        //    }
+        //}
+
         //CustomerUser
-        public async Task<IEnumerable<CustomerUser>> GetAllCustomerUsersAsync()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            return await _context.CustomerUsers.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
-        public async Task<CustomerUser> GetCustomerUsersByIdAsync(int id)
+        public async Task<User> GetUsersByIdAsync(int id)
         {
-            return await _context.CustomerUsers.FindAsync(id);
+            return await _context.Users.FindAsync(id);
         }
 
-        public async Task AddCustomerUsersAsync(CustomerUser entity)
+        public async Task AddUsersAsync(User entity)
         {
-            await _context.CustomerUsers.AddAsync(entity);
+            await _context.Users.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateCustomerUsersAsync(CustomerUser entity)
+        public async Task UpdateUsersAsync(User entity)
         {
-            _context.CustomerUsers.Update(entity);
+            _context.Users.Update(entity);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteCustomerUsersAsync(int id)
+        public async Task DeleteUsersAsync(int id)
         {
-            var entity = await _context.CustomerUsers.FindAsync(id);
+            var entity = await _context.Users.FindAsync(id);
             if (entity != null)
             {
-                _context.CustomerUsers.Remove(entity);
+                _context.Users.Remove(entity);
                 await _context.SaveChangesAsync();
             }
         }

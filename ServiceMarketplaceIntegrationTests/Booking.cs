@@ -53,8 +53,8 @@ public class BookingIntegrationTests : IClassFixture<CustomWebApplicationFactory
         // Add test data to the database.
         dbContext.Bookings.AddRange(new List<Booking>
     {
-        new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
-        new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = 2, BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled }
+        new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4", BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
+        new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = "06874549-8158-4144-891c-1a33141904bd", BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled }
     });
         dbContext.SaveChanges();
     }
@@ -96,7 +96,7 @@ public class BookingIntegrationTests : IClassFixture<CustomWebApplicationFactory
     public async Task Add_AddsBooking()
     {
 
-        var newBooking = new Booking { Id = 3, StartTime = DateTime.Now.AddDays(3), EndTime = DateTime.Now.AddDays(3).AddHours(1), ServiceId = 3, CustomerID = 3, BusinessID = 3, Cost = 200, Status = BookingStatus.Complete };
+        var newBooking = new Booking { Id = 3, StartTime = DateTime.Now.AddDays(3), EndTime = DateTime.Now.AddDays(3).AddHours(1), ServiceId = 3, CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4", BusinessID = 3, Cost = 200, Status = BookingStatus.Complete };
         var content = new StringContent(JsonConvert.SerializeObject(newBooking), Encoding.UTF8, "application/json");
 
         var response = await _client.PostAsync("/api/Booking", content);

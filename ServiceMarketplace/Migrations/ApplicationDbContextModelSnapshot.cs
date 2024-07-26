@@ -17,6 +17,134 @@ namespace ServiceMarketplace.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.20");
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
             modelBuilder.Entity("ServiceMarketplace.Entities.Booking", b =>
                 {
                     b.Property<int>("Id")
@@ -59,9 +187,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 100f,
                             CustomerID = 1,
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 16, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(6994),
+                            EndTime = new DateTime(2024, 7, 24, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5752),
                             ServiceId = 1,
-                            StartTime = new DateTime(2024, 7, 15, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(6941),
+                            StartTime = new DateTime(2024, 7, 24, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5707),
                             Status = 0
                         },
                         new
@@ -71,9 +199,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 150f,
                             CustomerID = 2,
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 17, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7001),
+                            EndTime = new DateTime(2024, 7, 25, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5757),
                             ServiceId = 2,
-                            StartTime = new DateTime(2024, 7, 16, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(6999),
+                            StartTime = new DateTime(2024, 7, 25, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5756),
                             Status = 1
                         },
                         new
@@ -83,9 +211,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 200f,
                             CustomerID = 3,
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 18, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7006),
+                            EndTime = new DateTime(2024, 7, 26, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5761),
                             ServiceId = 3,
-                            StartTime = new DateTime(2024, 7, 17, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7004),
+                            StartTime = new DateTime(2024, 7, 26, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5760),
                             Status = 2
                         },
                         new
@@ -95,9 +223,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 250f,
                             CustomerID = 4,
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 19, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7012),
+                            EndTime = new DateTime(2024, 7, 27, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5765),
                             ServiceId = 4,
-                            StartTime = new DateTime(2024, 7, 18, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7010),
+                            StartTime = new DateTime(2024, 7, 27, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5764),
                             Status = 0
                         },
                         new
@@ -107,9 +235,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 300f,
                             CustomerID = 5,
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 20, 0, 16, 23, 265, DateTimeKind.Local).AddTicks(7018),
+                            EndTime = new DateTime(2024, 7, 28, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5768),
                             ServiceId = 5,
-                            StartTime = new DateTime(2024, 7, 19, 23, 16, 23, 265, DateTimeKind.Local).AddTicks(7016),
+                            StartTime = new DateTime(2024, 7, 28, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5767),
                             Status = 1
                         });
                 });
@@ -180,35 +308,11 @@ namespace ServiceMarketplace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AccountType")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -218,217 +322,62 @@ namespace ServiceMarketplace.Migrations
                         new
                         {
                             Id = 1,
-                            AccountType = 1,
-                            Email = "businessuser1a@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = true,
-                            LastName = "1A",
-                            Password = "password",
-                            PhoneNumber = "5555555551",
-                            Username = "businessuser1a"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 2,
-                            AccountType = 1,
-                            Email = "businessuser1b@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = false,
-                            LastName = "1B",
-                            Password = "password",
-                            PhoneNumber = "5555555552",
-                            Username = "businessuser1b"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 3,
-                            AccountType = 1,
-                            Email = "businessuser2a@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = true,
-                            LastName = "2A",
-                            Password = "password",
-                            PhoneNumber = "5555555551",
-                            Username = "businessuser2a"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 4,
-                            AccountType = 1,
-                            Email = "businessuser2b@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = false,
-                            LastName = "2B",
-                            Password = "password",
-                            PhoneNumber = "5555555552",
-                            Username = "businessuser2b"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 5,
-                            AccountType = 1,
-                            Email = "businessuser3a@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = true,
-                            LastName = "3A",
-                            Password = "password",
-                            PhoneNumber = "5555555551",
-                            Username = "businessuser3a"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 6,
-                            AccountType = 1,
-                            Email = "businessuser3b@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = false,
-                            LastName = "3B",
-                            Password = "password",
-                            PhoneNumber = "5555555552",
-                            Username = "businessuser3b"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 7,
-                            AccountType = 1,
-                            Email = "businessuser4a@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = true,
-                            LastName = "4A",
-                            Password = "password",
-                            PhoneNumber = "5555555551",
-                            Username = "businessuser4a"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 8,
-                            AccountType = 1,
-                            Email = "businessuser4b@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = false,
-                            LastName = "4B",
-                            Password = "password",
-                            PhoneNumber = "5555555552",
-                            Username = "businessuser4b"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 9,
-                            AccountType = 1,
-                            Email = "businessuser5a@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = true,
-                            LastName = "5A",
-                            Password = "password",
-                            PhoneNumber = "5555555551",
-                            Username = "businessuser5a"
+                            UserId = 0
                         },
                         new
                         {
                             Id = 10,
-                            AccountType = 1,
-                            Email = "businessuser5b@gmail.com",
-                            FirstName = "BusinessUser",
                             IsAdmin = false,
-                            LastName = "5B",
-                            Password = "password",
-                            PhoneNumber = "5555555552",
-                            Username = "businessuser5b"
-                        });
-                });
-
-            modelBuilder.Entity("ServiceMarketplace.Entities.CustomerUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AccountType")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CustomerUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AccountType = 0,
-                            Email = "customer1@yahoo.com",
-                            FirstName = "Customer",
-                            LastName = "One",
-                            Password = "password1",
-                            PhoneNumber = "5555555555",
-                            Username = "customer1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AccountType = 0,
-                            Email = "customer2@yahoo.com",
-                            FirstName = "Customer",
-                            LastName = "Two",
-                            Password = "password2",
-                            PhoneNumber = "5555555555",
-                            Username = "customer2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AccountType = 0,
-                            Email = "customer3@yahoo.com",
-                            FirstName = "Customer",
-                            LastName = "Three",
-                            Password = "password3",
-                            PhoneNumber = "5555555555",
-                            Username = "customer3"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AccountType = 0,
-                            Email = "customer4@yahoo.com",
-                            FirstName = "Customer",
-                            LastName = "Four",
-                            Password = "password4",
-                            PhoneNumber = "5555555555",
-                            Username = "customer4"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AccountType = 0,
-                            Email = "customer5@yahoo.com",
-                            FirstName = "Customer",
-                            LastName = "Five",
-                            Password = "password5",
-                            PhoneNumber = "5555555555",
-                            Username = "customer5"
+                            UserId = 0
                         });
                 });
 
@@ -600,6 +549,199 @@ namespace ServiceMarketplace.Migrations
                     b.ToTable("ServiceAvailability");
                 });
 
+            modelBuilder.Entity("ServiceMarketplace.Entities.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AccountType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            AccountType = 0,
+                            Address = "",
+                            City = "",
+                            ConcurrencyStamp = "8d9b750b-2073-4c81-ac16-85cda7108c6d",
+                            Email = "customer1@yahoo.com",
+                            EmailConfirmed = false,
+                            FirstName = "Customer",
+                            LastName = "One",
+                            LockoutEnabled = false,
+                            PhoneNumber = "5555555555",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "74483242-948a-4481-a315-dd92a438a22c",
+                            State = "",
+                            TwoFactorEnabled = false,
+                            ZipCode = ""
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            AccountType = 0,
+                            Address = "",
+                            City = "",
+                            ConcurrencyStamp = "d6080169-37fb-4e4d-baa2-579d4a5038ec",
+                            Email = "customer2@yahoo.com",
+                            EmailConfirmed = false,
+                            FirstName = "Customer",
+                            LastName = "Two",
+                            LockoutEnabled = false,
+                            PhoneNumber = "5555555555",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "871dcd58-7bfa-44fa-88b3-43573d63e6ee",
+                            State = "",
+                            TwoFactorEnabled = false,
+                            ZipCode = ""
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            AccountType = 0,
+                            Address = "",
+                            City = "",
+                            ConcurrencyStamp = "95b170b2-7a7f-4919-b2d2-19b1bf962a4c",
+                            Email = "customer3@yahoo.com",
+                            EmailConfirmed = false,
+                            FirstName = "Customer",
+                            LastName = "Three",
+                            LockoutEnabled = false,
+                            PhoneNumber = "5555555555",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "eb901afc-4295-4e68-b91f-d9d67f3b3933",
+                            State = "",
+                            TwoFactorEnabled = false,
+                            ZipCode = ""
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            AccountType = 0,
+                            Address = "",
+                            City = "",
+                            ConcurrencyStamp = "14e4a872-12d1-4bd5-ae31-2fd2ac64a5b3",
+                            Email = "customer4@yahoo.com",
+                            EmailConfirmed = false,
+                            FirstName = "Customer",
+                            LastName = "Four",
+                            LockoutEnabled = false,
+                            PhoneNumber = "5555555555",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "acb49cbf-28f2-41d8-8675-2609ca2a2c3e",
+                            State = "",
+                            TwoFactorEnabled = false,
+                            ZipCode = ""
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AccessFailedCount = 0,
+                            AccountType = 0,
+                            Address = "",
+                            City = "",
+                            ConcurrencyStamp = "48ab210c-db1a-4ed7-9935-5a29bc156647",
+                            Email = "customer5@yahoo.com",
+                            EmailConfirmed = false,
+                            FirstName = "Customer",
+                            LastName = "Five",
+                            LockoutEnabled = false,
+                            PhoneNumber = "5555555555",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9ea3df3d-de66-4b7b-844a-9e68d7995aab",
+                            State = "",
+                            TwoFactorEnabled = false,
+                            ZipCode = ""
+                        });
+                });
+
             modelBuilder.Entity("ServiceMarketplace.Entities.WeatherForecast", b =>
                 {
                     b.Property<int>("Id")
@@ -690,6 +832,57 @@ namespace ServiceMarketplace.Migrations
                             Summary = "Scorching",
                             TemperatureC = 40
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("ServiceMarketplace.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("ServiceMarketplace.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ServiceMarketplace.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("ServiceMarketplace.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ServiceMarketplace.Entities.Business", b =>

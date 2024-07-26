@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
+import AuthorizeView, { AuthorizedUser } from '../components/utils/authorize';
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -32,6 +33,7 @@ export class NavMenu extends Component {
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
               </NavItem>
+              
               <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/create-booking">Create Booking</NavLink>
               </NavItem>
@@ -53,23 +55,23 @@ export class NavMenu extends Component {
               <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/account">Account</NavLink>
               </NavItem>
+              {/*<NavItem>*/}
+              {/*    <NavLink tag={Link} className="text-dark" to="/lin">Login</NavLink>*/}
+              {/*</NavItem>*/}
+              {/*<NavItem>*/}
+              {/*    <NavLink tag={Link} className="text-dark" to="/register">Register</NavLink>*/}
+              {/*</NavItem>*/}
               <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/lo">Logout</NavLink>
               </NavItem>
-              <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/register">Register</NavLink>
-              </NavItem>
-              <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/logout">Logout</NavLink>
-              </NavItem>
+              
 
-
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-              </NavItem>
+              {/*<NavItem>*/}
+              {/*  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>*/}
+              {/*</NavItem>*/}
+              {/*<NavItem>*/}
+              {/*  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>*/}
+                        {/*</NavItem>*/}
               
             </ul>
           </Collapse>
