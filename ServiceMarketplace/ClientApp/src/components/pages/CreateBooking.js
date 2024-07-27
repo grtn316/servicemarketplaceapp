@@ -9,9 +9,9 @@ export class CreateBooking extends Component {
             businessId: "", // can be retrieved from the loggedin user during submission
             serviceName: "",
             description: "",
-            price: "0.00", // any number (double)
-            duration: "", // TimeSpanConvert in C# takes a string number (eg. 1000 for 1000 ticks, where there's 10000 ticks in 1 millisecond)
-        };
+            price: "0", // any number (double)
+            duration: "", // TimeSpanConvert in C# takes the following format:
+        };                // JSON format: https://learn.microsoft.com/en-us/dotnet/core/compatibility/serialization/6.0/timespan-serialization-format
     }
 
     changeServiceName = (event) => {
@@ -36,12 +36,10 @@ export class CreateBooking extends Component {
         event.preventDefault();
 
         // Calculating duration.
-        const index = event.target.selectedIndex;
-        const el = event.target.childNodes[index]
-        let hours = el.getAttribute('hours');
-        let minutes = el.getAttribute('minutes');
-        let form_duration = toString(36000000000 * parseInt(hours) + 600000000 * parseInt(minutes)); // ticks conversion (10000 ticks = 1ms, 36000000000 ticks = 1hr, 600000000 ticks = 1min)
-        
+        let hours = this.props.hours;
+        let minutes = this.props.minutes;
+        let form_duration = "2.00:00:01"; // example test duration
+
         this.setState({ // TODO: RETRIEVE BUSINESS ID, USING DUMMY BUSINESS ID FOR NOW.
             businessId: "1",
             duration: form_duration
@@ -52,6 +50,9 @@ export class CreateBooking extends Component {
         const response = await fetch('/api/service',
             {
                 method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: JSON.stringify(this.state)
             }
         ).then(r => r.json());
@@ -127,33 +128,33 @@ export class CreateBooking extends Component {
 
                         {/*Days*/}
                         <div className="form-group">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="sundayBox" value="Sunday" />
-                                <label class="form-check-label" for="sundayBox">Sunday</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="checkbox" id="sundayBox" value="Sunday" />
+                                <label className="form-check-label" htmlFor="sundayBox">Sunday</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="mondayBox" value="Monday" />
-                                <label class="form-check-label" for="mondayBox">Monday</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="checkbox" id="mondayBox" value="Monday" />
+                                <label className="form-check-label" htmlFor="mondayBox">Monday</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="tuesdayBox" value="Tuesday" />
-                                <label class="form-check-label" for="tuesdayBox">Tuesday</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="checkbox" id="tuesdayBox" value="Tuesday" />
+                                <label className="form-check-label" htmlFor="tuesdayBox">Tuesday</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="wednesdayBox" value="Wednesday" />
-                                <label class="form-check-label" for="wednesdayBox">Wednesday</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="checkbox" id="wednesdayBox" value="Wednesday" />
+                                <label className="form-check-label" htmlFor="wednesdayBox">Wednesday</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="thursdayBox" value="Thursday" />
-                                <label class="form-check-label" for="thursdayBox">Thursday</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="checkbox" id="thursdayBox" value="Thursday" />
+                                <label className="form-check-label" htmlFor="thursdayBox">Thursday</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="fridayBox" value="Friday" />
-                                <label class="form-check-label" for="fridayBox">Friday</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="checkbox" id="fridayBox" value="Friday" />
+                                <label className="form-check-label" htmlFor="fridayBox">Friday</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="saturdayBox" value="Saturday" />
-                                <label class="form-check-label" for="saturdayBox">Saturday</label>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="checkbox" id="saturdayBox" value="Saturday" />
+                                <label className="form-check-label" htmlFor="saturdayBox">Saturday</label>
                             </div>
                         </div>
                         <br></br>
