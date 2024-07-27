@@ -6,7 +6,7 @@ export class CreateBooking extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // businessId: can be retrieved from the loggedin user during submission
+            businessId: "", // can be retrieved from the loggedin user during submission
             serviceName: "",
             description: "",
             price: "0.00", // any number (double)
@@ -42,7 +42,8 @@ export class CreateBooking extends Component {
         let minutes = el.getAttribute('minutes');
         let form_duration = toString(36000000000 * parseInt(hours) + 600000000 * parseInt(minutes)); // ticks conversion (10000 ticks = 1ms, 36000000000 ticks = 1hr, 600000000 ticks = 1min)
         
-        this.setState({
+        this.setState({ // TODO: RETRIEVE BUSINESS ID, USING DUMMY BUSINESS ID FOR NOW.
+            businessId: "1",
             duration: form_duration
         });
         
