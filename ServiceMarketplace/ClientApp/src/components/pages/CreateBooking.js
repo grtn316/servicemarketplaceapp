@@ -12,6 +12,8 @@ export class CreateBooking extends Component {
             price: "0", // any number (double)
             duration: "", // TimeSpanConvert in C# takes the following format:
         };                // JSON format: https://learn.microsoft.com/en-us/dotnet/core/compatibility/serialization/6.0/timespan-serialization-format
+
+        this.handleSubmit = this.handleSubmit.bind(this); // "this" becomes undefined in other functions without this line
     }
 
     changeServiceName = (event) => {
@@ -35,15 +37,13 @@ export class CreateBooking extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Calculating duration.
-        let hours = this.props.hours;
-        let minutes = this.props.minutes;
-        let form_duration = "2.00:00:01"; // example test duration
+        let { businessId, serviceName, description, price, duration } = this.state;
 
-        this.setState({ // TODO: RETRIEVE BUSINESS ID, USING DUMMY BUSINESS ID FOR NOW.
-            businessId: "1",
-            duration: form_duration
-        });
+        // Calculating duration.
+        let hours = this.props.hours; // this is wrong
+        let minutes = this.props.minutes; // this is wrong
+        duration = "2.00:00:01"; // TODO: properly format duration, using test duration
+        businessId = "1"; // TODO: RETRIEVE BUSINESS ID, USING DUMMY BUSINESS ID FOR NOW.
         
         // POST request to the service controller.
         // Persist new service listing to the controller/database.
@@ -53,10 +53,9 @@ export class CreateBooking extends Component {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(this.state)
+                body: JSON.stringify({ businessId, serviceName, description, price, duration })
             }
         ).then(r => r.json());
-
     }
 
     render() {
