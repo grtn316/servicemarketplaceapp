@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ServiceMarketplace.Entities;
 
 namespace ServiceMarketplace.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<User> 
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -17,8 +19,8 @@ namespace ServiceMarketplace.Data
         //public DbSet<BookingStatus> BookingStatuses { get; set; }
         public DbSet<Business> Businesses { get; set; }
         public DbSet<BusinessUser> BusinessUsers { get; set; }
-        public DbSet<CustomerUser> CustomerUsers { get; set; }
-        //public DbSet<User> Users { get; set; }
+        //public DbSet<CustomerUser> CustomerUsers { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Inquiry> Inquiries { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Service> Services { get; set; }
@@ -36,13 +38,22 @@ namespace ServiceMarketplace.Data
             });
 
 
+            ////Dummy data for Customers
+            //modelBuilder.Entity<CustomerUser>().HasData(
+            //    new CustomerUser { Id = 1, AccountType = AccountType.Standard, Username = "customer1", Password = "password1", Email = "customer1@yahoo.com", FirstName = "Customer", LastName = "One", PhoneNumber = "5555555555" },
+            //    new CustomerUser { Id = 2, AccountType = AccountType.Standard, Username = "customer2", Password = "password2", Email = "customer2@yahoo.com", FirstName = "Customer", LastName = "Two", PhoneNumber = "5555555555" },
+            //    new CustomerUser { Id = 3, AccountType = AccountType.Standard, Username = "customer3", Password = "password3", Email = "customer3@yahoo.com", FirstName = "Customer", LastName = "Three", PhoneNumber = "5555555555" },
+            //    new CustomerUser { Id = 4, AccountType = AccountType.Standard, Username = "customer4", Password = "password4", Email = "customer4@yahoo.com", FirstName = "Customer", LastName = "Four", PhoneNumber = "5555555555" },
+            //    new CustomerUser { Id = 5, AccountType = AccountType.Standard, Username = "customer5", Password = "password5", Email = "customer5@yahoo.com", FirstName = "Customer", LastName = "Five", PhoneNumber = "5555555555" }
+            //);
+
             //Dummy data for Customers
-            modelBuilder.Entity<CustomerUser>().HasData(
-                new CustomerUser { Id = 1, AccountType = AccountType.Standard, Username = "customer1", Password = "password1", Email = "customer1@yahoo.com", FirstName = "Customer", LastName = "One", PhoneNumber = "5555555555" },
-                new CustomerUser { Id = 2, AccountType = AccountType.Standard, Username = "customer2", Password = "password2", Email = "customer2@yahoo.com", FirstName = "Customer", LastName = "Two", PhoneNumber = "5555555555" },
-                new CustomerUser { Id = 3, AccountType = AccountType.Standard, Username = "customer3", Password = "password3", Email = "customer3@yahoo.com", FirstName = "Customer", LastName = "Three", PhoneNumber = "5555555555" },
-                new CustomerUser { Id = 4, AccountType = AccountType.Standard, Username = "customer4", Password = "password4", Email = "customer4@yahoo.com", FirstName = "Customer", LastName = "Four", PhoneNumber = "5555555555" },
-                new CustomerUser { Id = 5, AccountType = AccountType.Standard, Username = "customer5", Password = "password5", Email = "customer5@yahoo.com", FirstName = "Customer", LastName = "Five", PhoneNumber = "5555555555" }
+            modelBuilder.Entity<User>().HasData(
+                new User { Id = "1", AccountType = AccountType.Standard, Email = "customer1@yahoo.com", FirstName = "Customer", LastName = "One", PhoneNumber = "5555555555" },
+                new User { Id = "2", AccountType = AccountType.Standard, Email = "customer2@yahoo.com", FirstName = "Customer", LastName = "Two", PhoneNumber = "5555555555" },
+                new User { Id = "3", AccountType = AccountType.Standard, Email = "customer3@yahoo.com", FirstName = "Customer", LastName = "Three", PhoneNumber = "5555555555" },
+                new User { Id = "4", AccountType = AccountType.Standard, Email = "customer4@yahoo.com", FirstName = "Customer", LastName = "Four", PhoneNumber = "5555555555" },
+                new User { Id = "5", AccountType = AccountType.Standard, Email = "customer5@yahoo.com", FirstName = "Customer", LastName = "Five", PhoneNumber = "5555555555" }
             );
 
             //Dummy data for Businesses
@@ -65,16 +76,16 @@ namespace ServiceMarketplace.Data
 
             //Dummy data for Business Users
             modelBuilder.Entity<BusinessUser>().HasData(
-                new BusinessUser { Id = 1 * 2 - 1, AccountType = AccountType.Business, Username = $"businessuser1a", Password = "password", Email = $"businessuser1a@gmail.com", FirstName = "BusinessUser", LastName = $"1A", PhoneNumber = "5555555551", IsAdmin = true, BusinessId = 1 },
-                new BusinessUser { Id = 1 * 2, AccountType = AccountType.Business, Username = $"businessuser1b", Password = "password", Email = $"businessuser1b@gmail.com", FirstName = "BusinessUser", LastName = $"1B", PhoneNumber = "5555555552", IsAdmin = false, BusinessId = 1 },
-                new BusinessUser { Id = 2 * 2 - 1, AccountType = AccountType.Business, Username = $"businessuser2a", Password = "password", Email = $"businessuser2a@gmail.com", FirstName = "BusinessUser", LastName = $"2A", PhoneNumber = "5555555551", IsAdmin = true, BusinessId = 2 },
-                new BusinessUser { Id = 2 * 2, AccountType = AccountType.Business, Username = $"businessuser2b", Password = "password", Email = $"businessuser2b@gmail.com", FirstName = "BusinessUser", LastName = $"2B", PhoneNumber = "5555555552", IsAdmin = false, BusinessId = 2 },
-                new BusinessUser { Id = 3 * 2 - 1, AccountType = AccountType.Business, Username = $"businessuser3a", Password = "password", Email = $"businessuser3a@gmail.com", FirstName = "BusinessUser", LastName = $"3A", PhoneNumber = "5555555551", IsAdmin = true, BusinessId = 3 },
-                new BusinessUser { Id = 3 * 2, AccountType = AccountType.Business, Username = $"businessuser3b", Password = "password", Email = $"businessuser3b@gmail.com", FirstName = "BusinessUser", LastName = $"3B", PhoneNumber = "5555555552", IsAdmin = false, BusinessId = 3 },
-                new BusinessUser { Id = 4 * 2 - 1, AccountType = AccountType.Business, Username = $"businessuser4a", Password = "password", Email = $"businessuser4a@gmail.com", FirstName = "BusinessUser", LastName = $"4A", PhoneNumber = "5555555551", IsAdmin = true, BusinessId = 4 },
-                new BusinessUser { Id = 4 * 2, AccountType = AccountType.Business, Username = $"businessuser4b", Password = "password", Email = $"businessuser4b@gmail.com", FirstName = "BusinessUser", LastName = $"4B", PhoneNumber = "5555555552", IsAdmin = false, BusinessId = 4 },
-                new BusinessUser { Id = 5 * 2 - 1, AccountType = AccountType.Business, Username = $"businessuser5a", Password = "password", Email = $"businessuser5a@gmail.com", FirstName = "BusinessUser", LastName = $"5A", PhoneNumber = "5555555551", IsAdmin = true, BusinessId = 5 },
-                new BusinessUser { Id = 5 * 2, AccountType = AccountType.Business, Username = $"businessuser5b", Password = "password", Email = $"businessuser5b@gmail.com", FirstName = "BusinessUser", LastName = $"5B", PhoneNumber = "5555555552", IsAdmin = false, BusinessId = 5 }
+                new BusinessUser { Id = 1, IsAdmin = true, BusinessId = 1 },
+                new BusinessUser { Id = 2, IsAdmin = false, BusinessId = 1 },
+                new BusinessUser { Id = 3,  IsAdmin = true, BusinessId = 2 },
+                new BusinessUser { Id = 4, IsAdmin = false, BusinessId = 2 },
+                new BusinessUser { Id = 5, IsAdmin = true, BusinessId = 3 },
+                new BusinessUser { Id = 6, IsAdmin = false, BusinessId = 3 },
+                new BusinessUser { Id = 7, IsAdmin = true, BusinessId = 4 },
+                new BusinessUser { Id = 8, IsAdmin = false, BusinessId = 4 },
+                new BusinessUser { Id = 9, IsAdmin = true, BusinessId = 5 },
+                new BusinessUser { Id = 10, IsAdmin = false, BusinessId = 5 }
             );
 
             //Dummy data for Business Services
@@ -88,11 +99,11 @@ namespace ServiceMarketplace.Data
 
             //Dummy data for Bookings
             modelBuilder.Entity<Booking>().HasData(
-            new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
-            new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = 2, BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled },
-            new Booking { Id = 3, StartTime = DateTime.Now.AddDays(3), EndTime = DateTime.Now.AddDays(3).AddHours(1), ServiceId = 3, CustomerID = 3, BusinessID = 3, Cost = 200, Status = BookingStatus.Complete },
-            new Booking { Id = 4, StartTime = DateTime.Now.AddDays(4), EndTime = DateTime.Now.AddDays(4).AddHours(1), ServiceId = 4, CustomerID = 4, BusinessID = 4, Cost = 250, Status = BookingStatus.Confirmed },
-            new Booking { Id = 5, StartTime = DateTime.Now.AddDays(5), EndTime = DateTime.Now.AddDays(5).AddHours(1), ServiceId = 5, CustomerID = 5, BusinessID = 5, Cost = 300, Status = BookingStatus.Canceled }
+            new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4", BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
+            new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = "06874549-8158-4144-891c-1a33141904bd", BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled },
+            new Booking { Id = 3, StartTime = DateTime.Now.AddDays(3), EndTime = DateTime.Now.AddDays(3).AddHours(1), ServiceId = 3, CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4", BusinessID = 3, Cost = 200, Status = BookingStatus.Complete },
+            new Booking { Id = 4, StartTime = DateTime.Now.AddDays(4), EndTime = DateTime.Now.AddDays(4).AddHours(1), ServiceId = 4, CustomerID = "06874549-8158-4144-891c-1a33141904bd", BusinessID = 4, Cost = 250, Status = BookingStatus.Confirmed },
+            new Booking { Id = 5, StartTime = DateTime.Now.AddDays(5), EndTime = DateTime.Now.AddDays(5).AddHours(1), ServiceId = 5, CustomerID = "06874549-8158-4144-891c-1a33141904bd", BusinessID = 5, Cost = 300, Status = BookingStatus.Canceled }
         );
 
 
