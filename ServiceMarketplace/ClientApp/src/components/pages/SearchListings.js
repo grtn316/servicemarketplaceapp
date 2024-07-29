@@ -1,5 +1,12 @@
 ﻿import React, { Component } from 'react';
 import './SearchListings.css';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { CreateBooking } from './CreateBooking';
+
+const mapContainerStyle = {
+    height: "200px",
+    width: "100%"
+};
 
 export class SearchListings extends Component {
     static displayName = SearchListings.name;
@@ -8,6 +15,7 @@ export class SearchListings extends Component {
         super(props);
         this.state = {
             searchTerm: '',
+            selectedService: null,
             listings: [
                 {
                     id: 1,
@@ -19,7 +27,9 @@ export class SearchListings extends Component {
                             street: '123 Main St',
                             city: 'Townsville',
                             state: 'TS',
-                            zip: '12345'
+                            zip: '12345',
+                            lat: 37.7749,
+                            lng: -122.4194
                         },
                         phoneNumber: {
                             countryCode: '+1',
@@ -50,7 +60,9 @@ export class SearchListings extends Component {
                             street: '456 Oak St',
                             city: 'Villageton',
                             state: 'VS',
-                            zip: '67890'
+                            zip: '67890',
+                            lat: 34.0522,
+                            lng: -118.2437
                         },
                         phoneNumber: {
                             countryCode: '+1',
@@ -81,7 +93,9 @@ export class SearchListings extends Component {
                             street: '789 Pine St',
                             city: 'Cityburg',
                             state: 'CB',
-                            zip: '11223'
+                            zip: '11223',
+                            lat: 40.7128,
+                            lng: -74.0060
                         },
                         phoneNumber: {
                             countryCode: '+1',
@@ -110,8 +124,28 @@ export class SearchListings extends Component {
         this.setState({ searchTerm: event.target.value });
     };
 
+    handleBookClick = (service) => {
+        this.setState({ selectedService: service });
+    };
+
+    handleCloseForm = () => {
+        this.setState({ selectedService: null });
+    };
+
+    updateServiceAvailability = (serviceId, updatedAvailability) => {
+        this.setState(prevState => {
+            const updatedListings = prevState.listings.map(listing => {
+                if (listing.id === serviceId) {
+                    return { ...listing, availability: updatedAvailability };
+                }
+                return listing;
+            });
+            return { listings: updatedListings, selectedService: null };
+        });
+    };
+
     render() {
-        const { searchTerm, listings } = this.state;
+        const { searchTerm, listings, selectedService } = this.state;
         const filteredListings = listings.filter(listing => {
             const searchLower = searchTerm.toLowerCase();
             return (
@@ -148,6 +182,18 @@ export class SearchListings extends Component {
                                     <p><span>Phone:</span> {listing.business.phoneNumber.countryCode} {listing.business.phoneNumber.number}</p>
                                 </li>
                             </ul>
+                            <h3>Location:</h3>
+                            <div className="map-container">
+                                <LoadScript googleMapsApiKey="AIzaSyBHBIIaxRnkkLvtY0mY1B8HmwNb91M9JcI">
+                                    <GoogleMap
+                                        mapContainerStyle={mapContainerStyle}
+                                        center={{ lat: listing.business.address.lat, lng: listing.business.address.lng }}
+                                        zoom={15}
+                                    >
+                                        <Marker position={{ lat: listing.business.address.lat, lng: listing.business.address.lng }} />
+                                    </GoogleMap>
+                                </LoadScript>
+                            </div>
                             <h3>Reviews:</h3>
                             <ul className="reviews-list">
                                 {listing.reviews.map(review => (
@@ -164,13 +210,27 @@ export class SearchListings extends Component {
                                     </li>
                                 ))}
                             </ul>
+                            <button className="book-button" onClick={() => this.handleBookClick(listing)}>Book</button>
                         </li>
                     ))}
                 </ul>
+                {selectedService && (
+                    <div className="booking-form-overlay">
+                        <div className="booking-form-container">
+                            <button className="close-button" onClick={this.handleCloseForm}>X</button>
+                            <CreateBooking service={selectedService} updateServiceAvailability={this.updateServiceAvailability} />
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }
 }
+
+
+
+
+
 
 
 
