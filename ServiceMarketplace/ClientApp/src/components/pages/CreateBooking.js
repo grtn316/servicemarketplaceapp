@@ -1,153 +1,146 @@
 ﻿import React, { Component } from 'react';
+import './CreateBooking.css';
 
 export class CreateBooking extends Component {
     static displayName = CreateBooking.name;
 
-    render() {
-        const placeholderFunction = () => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedSlot: null,
+            errorMessage: '',
+            bookingSuccessful: false
+        };
+    }
 
+    handleSlotChange = (event) => {
+        this.setState({ selectedSlot: event.target.value });
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const { service } = this.props;
+        const { selectedSlot } = this.state;
+
+        if (!selectedSlot) {
+            this.setState({ errorMessage: 'Please select a time slot.' });
+            return;
         }
 
+        const selectedSlotDetails = service.availability.find(slot => slot.id.toString() === selectedSlot);
+
+        const booking = {
+            startTime: selectedSlotDetails.startTime,
+            endTime: selectedSlotDetails.endTime,
+            duration: selectedSlotDetails.endTime - selectedSlotDetails.startTime,
+            serviceId: service.id,
+            customerID: 1, // Example customer ID, replace with actual logged-in user ID
+            businessID: service.business.id,
+            cost: service.price,
+            status: 'Confirmed'
+        };
+
+        console.log('Booking data to be sent:', booking);
+
+        try {
+            const response = await fetch('/api/Booking', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(booking)
+            });
+
+            if (response.ok) {
+                this.setState({ bookingSuccessful: true });
+                alert('Booking successful!');
+                // Remove the booked slot from availability
+                const updatedAvailability = service.availability.filter(slot => slot.id !== selectedSlotDetails.id);
+                this.props.updateServiceAvailability(service.id, updatedAvailability);
+            } else {
+                const errorData = await response.json();
+                console.error('Error response:', errorData);
+                this.setState({ errorMessage: `Booking failed: ${response.statusText}` });
+            }
+        } catch (error) {
+            console.error('There was an error submitting the booking!', error);
+            this.setState({ errorMessage: 'There was an error submitting the booking. Please try again.' });
+        }
+    }
+
+    render() {
+        const { service } = this.props;
+        const { selectedSlot, errorMessage, bookingSuccessful } = this.state;
+
         return (
-            <>
-                <div className="container-sm col-10" >
-                    {/*Service Name*/}
-                    <div className="form-group col-3">
-                        <label htmlFor="service-name" className="form-label">Service Name</label>
-                        <input className="form-control" placeholder="Service" />
-                    </div>
-                    <br></br>
-
-                    {/*Description*/}
-                    <div className="form-group col-3">
-                        <label htmlFor="service-description" className="form-label">Description</label>
-                        <textarea className="form-control" placeholder="Description" />
-                    </div>
-                    <br></br>
-
-
-                    {/*Price*/}
-                    <div className="form-group col-3">
-                        <label htmlFor="service-price" className="form-label">Price</label>
-                        <input className="form-control" placeholder="Price" />
-                    </div>
-                    <br></br>
-
-                    {/*Duration*/}
-                    <div className="row">
-                        <label htmlFor="service-duration">Duration</label>
-
-
-                        {/*Hours*/}
-                        <div className="form-group col-md-1">
-                            <p>Hours</p>
-                            <select id="hours" className="form-control" placeholder="0">
-                                <option>0</option>
-                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
-                                <option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
-                                <option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option>
-                                <option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option>
-                            </select>
-                            
-                        </div>
-
-                        {/*Minutes*/}
-                        <div className="form-group col-md-1">
-                            <p>Minutes</p>
-                            <select id="minutes" className="form-control" placeholder="0">
-                                <option>0</option><option>15</option><option>30</option><option>45</option>
-                            </select>
-                        </div>
-                    </div>
-                    <br></br>
-
-                    {/*Set Availability*/}
-                    <label htmlFor="service-availability" className="form-label">Availability</label>
-
-                    {/*Days*/}
+            <div className="booking-form">
+                <div className="container-sm">
+                    {/* Service Name */}
                     <div className="form-group">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="sundayBox" value="Sunday" />
-                            <label class="form-check-label" for="sundayBox">Sunday</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="mondayBox" value="Monday" />
-                                <label class="form-check-label" for="mondayBox">Monday</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="tuesdayBox" value="Tuesday" />
-                            <label class="form-check-label" for="tuesdayBox">Tuesday</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="wednesdayBox" value="Wednesday" />
-                            <label class="form-check-label" for="wednesdayBox">Wednesday</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="thursdayBox" value="Thursday" />
-                            <label class="form-check-label" for="thursdayBox">Thursday</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="fridayBox" value="Friday" />
-                            <label class="form-check-label" for="fridayBox">Friday</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="saturdayBox" value="Saturday" />
-                            <label class="form-check-label" for="saturdayBox">Saturday</label>
-                        </div>
+                        <label className="form-label">Service Name</label>
+                        <p className="form-control-static">{service.serviceName}</p>
                     </div>
-                    <br></br>
+                    <br />
 
-                    {/*Time Range*/}
-
-                    {/*Start Time*/}
-                    <div className="row">
-                        <label htmlFor="service-duration">Start</label>
-                        <div className="form-group col-md-1">
-                            <select id="start-hours" className="form-control">
-                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
-                                <option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>                                </select>
-
-                        </div>
-                        <div className="form-group col-md-1">
-                            <select id="start-minutes" className="form-control">
-                                <option>00</option><option>15</option><option>30</option><option>45</option>
-                            </select>
-                        </div>
-                        <div className="form-group col-md-1">
-                            <select id="start-period" className="form-control" placeholder="am">
-                                <option>am</option><option>pm</option>
-                            </select>
-                        </div>
+                    {/* Description */}
+                    <div className="form-group">
+                        <label className="form-label">Description</label>
+                        <p className="form-control-static">{service.description}</p>
                     </div>
+                    <br />
 
-                    {/*End Time*/}
-                    <div className="row">
-                        <label htmlFor="service-duration">End</label>
-                        <div className="form-group col-md-1">
-                            <select id="end-hours" className="form-control">
-                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
-                                <option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>                                </select>
-
-                        </div>
-                        <div className="form-group col-md-1">
-                            <select id="end-minutes" className="form-control">
-                                <option>00</option><option>15</option><option>30</option><option>45</option>
-                            </select>
-                        </div>
-                        <div className="form-group col-md-1">
-                            <select id="end-period" className="form-control" placeholder="am">
-                                <option>am</option><option>pm</option>
-                            </select>
-                        </div>
+                    {/* Price */}
+                    <div className="form-group">
+                        <label className="form-label">Price</label>
+                        <p className="form-control-static">${service.price}</p>
                     </div>
-                    <br></br>
+                    <br />
 
-                    {/*Submit*/}
+                    {/* Duration */}
+                    <div className="form-group">
+                        <label className="form-label">Duration</label>
+                        <p className="form-control-static">{`${Math.floor(service.duration / 60)} hours ${service.duration % 60} minutes`}</p>
+                    </div>
+                    <br />
+
+                    {/* Set Availability */}
+                    <label className="form-label">Availability</label>
+                    <div className="form-group">
+                        {service.availability.map(slot => (
+                            <div key={slot.id} className="form-check form-check-inline">
+                                <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    id={`availability-${slot.id}`}
+                                    name="availability"
+                                    value={slot.id}
+                                    checked={selectedSlot === slot.id.toString()}
+                                    onChange={this.handleSlotChange}
+                                    disabled={bookingSuccessful}
+                                />
+                                <label className="form-check-label" htmlFor={`availability-${slot.id}`}>
+                                    {slot.startTime.toLocaleString()} - {slot.endTime.toLocaleString()}
+                                </label>
+                            </div>
+                        ))}
+                    </div>
+                    <br />
+
+                    {errorMessage && <p className="text-danger">{errorMessage}</p>}
+
+                    {/* Submit */}
                     <div>
-                        <button className="btn btn-primary" type="submit" onClick={placeholderFunction}>Submit</button>
+                        <button className="btn btn-primary" type="submit" onClick={this.handleSubmit} disabled={bookingSuccessful}>Submit</button>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }
+
+
+
+
+
+
