@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import './CreateBooking.css';
 
 export class CreateBooking extends Component {
     static displayName = CreateBooking.name;
@@ -213,6 +214,13 @@ export class CreateBooking extends Component {
 
                 
                 
+
         );
     }
 }
+
+
+
+
+
+
