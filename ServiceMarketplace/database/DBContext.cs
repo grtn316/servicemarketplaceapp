@@ -67,11 +67,11 @@ namespace ServiceMarketplace.Data
 
             //Dummy data for Businesses Addresses
             modelBuilder.Entity<Business>().OwnsOne(b => b.Address).HasData(
-                new { BusinessId = 1, Street = "Street 1", City = "City 1", State = "State 1", Zipcode = "Zip1" },
-                new { BusinessId = 2, Street = "Street 2", City = "City 2", State = "State 2", Zipcode = "Zip2" },
-                new { BusinessId = 3, Street = "Street 3", City = "City 3", State = "State 3", Zipcode = "Zip3" },
-                new { BusinessId = 4, Street = "Street 4", City = "City 4", State = "State 4", Zipcode = "Zip4" },
-                new { BusinessId = 5, Street = "Street 5", City = "City 5", State = "State 5", Zipcode = "Zip5" }
+                new { BusinessId = 1, Street = "Street 1", City = "City 1", State = "State 1", Zipcode = "Zip1", Coordinate = "" },
+                new { BusinessId = 2, Street = "Street 2", City = "City 2", State = "State 2", Zipcode = "Zip2", Coordinate = "" },
+                new { BusinessId = 3, Street = "Street 3", City = "City 3", State = "State 3", Zipcode = "Zip3", Coordinate = "" },
+                new { BusinessId = 4, Street = "Street 4", City = "City 4", State = "State 4", Zipcode = "Zip4", Coordinate = "" },
+                new { BusinessId = 5, Street = "Street 5", City = "City 5", State = "State 5", Zipcode = "Zip5", Coordinate = "" }
             );
 
             //Dummy data for Business Users
