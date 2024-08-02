@@ -297,16 +297,41 @@ namespace ServiceMarketplace.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TimeSlot",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CustomerID = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsAvailable = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Date = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    StartTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    EndTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    Duration = table.Column<TimeSpan>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TimeSlot", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TimeSlot_Services_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Services",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "AccountType", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "TwoFactorEnabled", "UserName", "ZipCode" },
                 values: new object[,]
                 {
-                    { "1", 0, 0, "", "", "c0357d4b-92cd-4c07-8808-085800f4ec95", "customer1@yahoo.com", false, "Customer", "One", false, null, null, null, null, "5555555555", false, "fbd6e22f-d6a7-4df3-a74b-8877882026c1", "", false, null, "" },
-                    { "2", 0, 0, "", "", "38828fdb-badb-43ec-8f56-3806e457efd9", "customer2@yahoo.com", false, "Customer", "Two", false, null, null, null, null, "5555555555", false, "905e1c7f-27a9-48ee-a4cb-0871f96cb64e", "", false, null, "" },
-                    { "3", 0, 0, "", "", "eda7d35b-3fef-4a46-9f90-ad0eefb91dc8", "customer3@yahoo.com", false, "Customer", "Three", false, null, null, null, null, "5555555555", false, "ac19e32f-e7a4-4bd8-9ef3-0f274694e443", "", false, null, "" },
-                    { "4", 0, 0, "", "", "f4f53b55-c34b-480b-9257-5743e1190511", "customer4@yahoo.com", false, "Customer", "Four", false, null, null, null, null, "5555555555", false, "97ed19fe-dd46-47eb-b227-e7685254a975", "", false, null, "" },
-                    { "5", 0, 0, "", "", "c70dd11c-ddc5-4d4c-ad38-43cfc8b2d392", "customer5@yahoo.com", false, "Customer", "Five", false, null, null, null, null, "5555555555", false, "91606e35-d033-413c-beec-d3c8f981e888", "", false, null, "" }
+                    { "1", 0, 0, "", "", "3d8880c6-5f98-4140-99bf-2473eb98d580", "customer1@yahoo.com", false, "Customer", "One", false, null, null, null, null, "5555555555", false, "3a28a955-b905-4c6a-a358-096b0559ac1d", "", false, null, "" },
+                    { "2", 0, 0, "", "", "106c9215-a9c5-4eb0-b5e4-9d1fad3b5b0b", "customer2@yahoo.com", false, "Customer", "Two", false, null, null, null, null, "5555555555", false, "c83d82e9-7970-4b50-8db4-333c10c7ec91", "", false, null, "" },
+                    { "3", 0, 0, "", "", "373e670a-bf7e-4463-80ae-b825de24423b", "customer3@yahoo.com", false, "Customer", "Three", false, null, null, null, null, "5555555555", false, "0abbca24-053c-46c1-b634-19f67d4fa7a2", "", false, null, "" },
+                    { "4", 0, 0, "", "", "25784bcd-a118-48f6-8e8d-cfa8a669f58a", "customer4@yahoo.com", false, "Customer", "Four", false, null, null, null, null, "5555555555", false, "006dc535-500d-4da6-9646-49f069f27a97", "", false, null, "" },
+                    { "5", 0, 0, "", "", "1c607530-586b-4678-9bc7-32027fc73a57", "customer5@yahoo.com", false, "Customer", "Five", false, null, null, null, null, "5555555555", false, "c166df1e-3987-4f8a-a0b9-27502d323371", "", false, null, "" }
                 });
 
             migrationBuilder.InsertData(
@@ -314,11 +339,11 @@ namespace ServiceMarketplace.Migrations
                 columns: new[] { "Id", "BusinessID", "Cost", "CustomerID", "Duration", "EndTime", "ServiceId", "StartTime", "Status" },
                 values: new object[,]
                 {
-                    { 1, 1, 100f, "b01873ec-546c-4813-b93b-e7bef86a4de4", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 2, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9175), 1, new DateTime(2024, 8, 2, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9128), 0 },
-                    { 2, 2, 150f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 3, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9182), 2, new DateTime(2024, 8, 3, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9180), 1 },
-                    { 3, 3, 200f, "b01873ec-546c-4813-b93b-e7bef86a4de4", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 4, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9186), 3, new DateTime(2024, 8, 4, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9185), 2 },
-                    { 4, 4, 250f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 5, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9190), 4, new DateTime(2024, 8, 5, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9189), 0 },
-                    { 5, 5, 300f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 6, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9194), 5, new DateTime(2024, 8, 6, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9193), 1 }
+                    { 1, 1, 100f, "b01873ec-546c-4813-b93b-e7bef86a4de4", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 2, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6743), 1, new DateTime(2024, 8, 2, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6695), 0 },
+                    { 2, 2, 150f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 3, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6748), 2, new DateTime(2024, 8, 3, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6747), 1 },
+                    { 3, 3, 200f, "b01873ec-546c-4813-b93b-e7bef86a4de4", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 4, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6752), 3, new DateTime(2024, 8, 4, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6751), 2 },
+                    { 4, 4, 250f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 5, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6756), 4, new DateTime(2024, 8, 5, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6755), 0 },
+                    { 5, 5, 300f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 6, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6759), 5, new DateTime(2024, 8, 6, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6758), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -403,6 +428,11 @@ namespace ServiceMarketplace.Migrations
                 name: "IX_Reviews_ServiceId",
                 table: "Reviews",
                 column: "ServiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TimeSlot_ServiceId",
+                table: "TimeSlot",
+                column: "ServiceId");
         }
 
         /// <inheritdoc />
@@ -440,6 +470,9 @@ namespace ServiceMarketplace.Migrations
 
             migrationBuilder.DropTable(
                 name: "ServiceAvailability");
+
+            migrationBuilder.DropTable(
+                name: "TimeSlot");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
