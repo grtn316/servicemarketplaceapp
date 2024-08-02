@@ -22,6 +22,8 @@ namespace ServiceMarketplace.Entities {
             EndTime = endTime;
             Duration = duration;
         }
+
+        public TimeSlot() { }
         public void MakeAvailable() {
             IsAvailable = true;
             CustomerID = 0;
