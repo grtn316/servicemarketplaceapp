@@ -188,9 +188,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 100f,
                             CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 2, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6843),
+                            EndTime = new DateTime(2024, 8, 2, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9175),
                             ServiceId = 1,
-                            StartTime = new DateTime(2024, 8, 2, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6798),
+                            StartTime = new DateTime(2024, 8, 2, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9128),
                             Status = 0
                         },
                         new
@@ -200,9 +200,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 150f,
                             CustomerID = "06874549-8158-4144-891c-1a33141904bd",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 3, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6849),
+                            EndTime = new DateTime(2024, 8, 3, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9182),
                             ServiceId = 2,
-                            StartTime = new DateTime(2024, 8, 3, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6847),
+                            StartTime = new DateTime(2024, 8, 3, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9180),
                             Status = 1
                         },
                         new
@@ -212,9 +212,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 200f,
                             CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 4, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6853),
+                            EndTime = new DateTime(2024, 8, 4, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9186),
                             ServiceId = 3,
-                            StartTime = new DateTime(2024, 8, 4, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6852),
+                            StartTime = new DateTime(2024, 8, 4, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9185),
                             Status = 2
                         },
                         new
@@ -224,9 +224,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 250f,
                             CustomerID = "06874549-8158-4144-891c-1a33141904bd",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 5, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6858),
+                            EndTime = new DateTime(2024, 8, 5, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9190),
                             ServiceId = 4,
-                            StartTime = new DateTime(2024, 8, 5, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6857),
+                            StartTime = new DateTime(2024, 8, 5, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9189),
                             Status = 0
                         },
                         new
@@ -236,9 +236,9 @@ namespace ServiceMarketplace.Migrations
                             Cost = 300f,
                             CustomerID = "06874549-8158-4144-891c-1a33141904bd",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 6, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6862),
+                            EndTime = new DateTime(2024, 8, 6, 20, 20, 11, 285, DateTimeKind.Local).AddTicks(9194),
                             ServiceId = 5,
-                            StartTime = new DateTime(2024, 8, 6, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6861),
+                            StartTime = new DateTime(2024, 8, 6, 19, 20, 11, 285, DateTimeKind.Local).AddTicks(9193),
                             Status = 1
                         });
                 });
@@ -309,6 +309,9 @@ namespace ServiceMarketplace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("BusinessId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("INTEGER");
 
@@ -324,60 +327,70 @@ namespace ServiceMarketplace.Migrations
                         new
                         {
                             Id = 1,
+                            BusinessId = 1,
                             IsAdmin = true,
                             UserId = ""
                         },
                         new
                         {
                             Id = 2,
+                            BusinessId = 1,
                             IsAdmin = false,
                             UserId = ""
                         },
                         new
                         {
                             Id = 3,
+                            BusinessId = 2,
                             IsAdmin = true,
                             UserId = ""
                         },
                         new
                         {
                             Id = 4,
+                            BusinessId = 2,
                             IsAdmin = false,
                             UserId = ""
                         },
                         new
                         {
                             Id = 5,
+                            BusinessId = 3,
                             IsAdmin = true,
                             UserId = ""
                         },
                         new
                         {
                             Id = 6,
+                            BusinessId = 3,
                             IsAdmin = false,
                             UserId = ""
                         },
                         new
                         {
                             Id = 7,
+                            BusinessId = 4,
                             IsAdmin = true,
                             UserId = ""
                         },
                         new
                         {
                             Id = 8,
+                            BusinessId = 4,
                             IsAdmin = false,
                             UserId = ""
                         },
                         new
                         {
                             Id = 9,
+                            BusinessId = 5,
                             IsAdmin = true,
                             UserId = ""
                         },
                         new
                         {
                             Id = 10,
+                            BusinessId = 5,
                             IsAdmin = false,
                             UserId = ""
                         });
@@ -661,7 +674,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "871170d6-6f35-4a1b-9441-a9eda6f82e83",
+                            ConcurrencyStamp = "c0357d4b-92cd-4c07-8808-085800f4ec95",
                             Email = "customer1@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -669,7 +682,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "51be67de-1b3d-458f-8892-a1aa6072bf90",
+                            SecurityStamp = "fbd6e22f-d6a7-4df3-a74b-8877882026c1",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -681,7 +694,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "f7381f47-9ab1-4354-a59d-12061ca33645",
+                            ConcurrencyStamp = "38828fdb-badb-43ec-8f56-3806e457efd9",
                             Email = "customer2@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -689,7 +702,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "13be536a-808f-46c5-a219-950523f349a8",
+                            SecurityStamp = "905e1c7f-27a9-48ee-a4cb-0871f96cb64e",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -701,7 +714,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "34c21988-2728-4458-a71a-8b76e3a43b49",
+                            ConcurrencyStamp = "eda7d35b-3fef-4a46-9f90-ad0eefb91dc8",
                             Email = "customer3@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -709,7 +722,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8abb6f13-9a95-4190-bd24-b446524838e8",
+                            SecurityStamp = "ac19e32f-e7a4-4bd8-9ef3-0f274694e443",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -721,7 +734,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "1a6c79ca-5a61-4122-82f7-7d1e6e2bc6f7",
+                            ConcurrencyStamp = "f4f53b55-c34b-480b-9257-5743e1190511",
                             Email = "customer4@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -729,7 +742,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "24b34e3f-9d7a-43ef-9cd6-66fe8146e072",
+                            SecurityStamp = "97ed19fe-dd46-47eb-b227-e7685254a975",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -741,7 +754,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "b32852ed-0831-4889-82d4-51bf811c18b3",
+                            ConcurrencyStamp = "c70dd11c-ddc5-4d4c-ad38-43cfc8b2d392",
                             Email = "customer5@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -749,7 +762,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c36a5c7b-3437-4296-bfe9-56ebd9b4ca12",
+                            SecurityStamp = "91606e35-d033-413c-beec-d3c8f981e888",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
