@@ -157,8 +157,9 @@ namespace ServiceMarketplace.Migrations
                     b.Property<float>("Cost")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("CustomerID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<TimeSpan>("Duration")
                         .HasColumnType("TEXT");
@@ -185,11 +186,11 @@ namespace ServiceMarketplace.Migrations
                             Id = 1,
                             BusinessID = 1,
                             Cost = 100f,
-                            CustomerID = 1,
+                            CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 24, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5752),
+                            EndTime = new DateTime(2024, 8, 2, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6843),
                             ServiceId = 1,
-                            StartTime = new DateTime(2024, 7, 24, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5707),
+                            StartTime = new DateTime(2024, 8, 2, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6798),
                             Status = 0
                         },
                         new
@@ -197,11 +198,11 @@ namespace ServiceMarketplace.Migrations
                             Id = 2,
                             BusinessID = 2,
                             Cost = 150f,
-                            CustomerID = 2,
+                            CustomerID = "06874549-8158-4144-891c-1a33141904bd",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 25, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5757),
+                            EndTime = new DateTime(2024, 8, 3, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6849),
                             ServiceId = 2,
-                            StartTime = new DateTime(2024, 7, 25, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5756),
+                            StartTime = new DateTime(2024, 8, 3, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6847),
                             Status = 1
                         },
                         new
@@ -209,11 +210,11 @@ namespace ServiceMarketplace.Migrations
                             Id = 3,
                             BusinessID = 3,
                             Cost = 200f,
-                            CustomerID = 3,
+                            CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 26, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5761),
+                            EndTime = new DateTime(2024, 8, 4, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6853),
                             ServiceId = 3,
-                            StartTime = new DateTime(2024, 7, 26, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5760),
+                            StartTime = new DateTime(2024, 8, 4, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6852),
                             Status = 2
                         },
                         new
@@ -221,11 +222,11 @@ namespace ServiceMarketplace.Migrations
                             Id = 4,
                             BusinessID = 4,
                             Cost = 250f,
-                            CustomerID = 4,
+                            CustomerID = "06874549-8158-4144-891c-1a33141904bd",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 27, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5765),
+                            EndTime = new DateTime(2024, 8, 5, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6858),
                             ServiceId = 4,
-                            StartTime = new DateTime(2024, 7, 27, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5764),
+                            StartTime = new DateTime(2024, 8, 5, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6857),
                             Status = 0
                         },
                         new
@@ -233,11 +234,11 @@ namespace ServiceMarketplace.Migrations
                             Id = 5,
                             BusinessID = 5,
                             Cost = 300f,
-                            CustomerID = 5,
+                            CustomerID = "06874549-8158-4144-891c-1a33141904bd",
                             Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 7, 28, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5768),
+                            EndTime = new DateTime(2024, 8, 6, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6862),
                             ServiceId = 5,
-                            StartTime = new DateTime(2024, 7, 28, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5767),
+                            StartTime = new DateTime(2024, 8, 6, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6861),
                             Status = 1
                         });
                 });
@@ -311,8 +312,9 @@ namespace ServiceMarketplace.Migrations
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -323,61 +325,61 @@ namespace ServiceMarketplace.Migrations
                         {
                             Id = 1,
                             IsAdmin = true,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 2,
                             IsAdmin = false,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 3,
                             IsAdmin = true,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 4,
                             IsAdmin = false,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 5,
                             IsAdmin = true,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 6,
                             IsAdmin = false,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 7,
                             IsAdmin = true,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 8,
                             IsAdmin = false,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 9,
                             IsAdmin = true,
-                            UserId = 0
+                            UserId = ""
                         },
                         new
                         {
                             Id = 10,
                             IsAdmin = false,
-                            UserId = 0
+                            UserId = ""
                         });
                 });
 
@@ -390,8 +392,9 @@ namespace ServiceMarketplace.Migrations
                     b.Property<int>("BusinessId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("ParentInquiriesId")
                         .HasColumnType("INTEGER");
@@ -421,8 +424,9 @@ namespace ServiceMarketplace.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("CustomerID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("ParentReviewId")
                         .HasColumnType("INTEGER");
@@ -532,16 +536,26 @@ namespace ServiceMarketplace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("DaysAvailable")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<TimeSpan>("Duration")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("EndTime")
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<TimeOnly>("EndTime")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ServiceId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("StartTime")
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<TimeOnly>("StartTime")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -647,7 +661,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "8d9b750b-2073-4c81-ac16-85cda7108c6d",
+                            ConcurrencyStamp = "871170d6-6f35-4a1b-9441-a9eda6f82e83",
                             Email = "customer1@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -655,7 +669,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "74483242-948a-4481-a315-dd92a438a22c",
+                            SecurityStamp = "51be67de-1b3d-458f-8892-a1aa6072bf90",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -667,7 +681,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "d6080169-37fb-4e4d-baa2-579d4a5038ec",
+                            ConcurrencyStamp = "f7381f47-9ab1-4354-a59d-12061ca33645",
                             Email = "customer2@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -675,7 +689,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "871dcd58-7bfa-44fa-88b3-43573d63e6ee",
+                            SecurityStamp = "13be536a-808f-46c5-a219-950523f349a8",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -687,7 +701,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "95b170b2-7a7f-4919-b2d2-19b1bf962a4c",
+                            ConcurrencyStamp = "34c21988-2728-4458-a71a-8b76e3a43b49",
                             Email = "customer3@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -695,7 +709,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eb901afc-4295-4e68-b91f-d9d67f3b3933",
+                            SecurityStamp = "8abb6f13-9a95-4190-bd24-b446524838e8",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -707,7 +721,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "14e4a872-12d1-4bd5-ae31-2fd2ac64a5b3",
+                            ConcurrencyStamp = "1a6c79ca-5a61-4122-82f7-7d1e6e2bc6f7",
                             Email = "customer4@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -715,7 +729,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "acb49cbf-28f2-41d8-8675-2609ca2a2c3e",
+                            SecurityStamp = "24b34e3f-9d7a-43ef-9cd6-66fe8146e072",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -727,7 +741,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "",
                             City = "",
-                            ConcurrencyStamp = "48ab210c-db1a-4ed7-9935-5a29bc156647",
+                            ConcurrencyStamp = "b32852ed-0831-4889-82d4-51bf811c18b3",
                             Email = "customer5@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Customer",
@@ -735,7 +749,7 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = false,
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9ea3df3d-de66-4b7b-844a-9e68d7995aab",
+                            SecurityStamp = "c36a5c7b-3437-4296-bfe9-56ebd9b4ca12",
                             State = "",
                             TwoFactorEnabled = false,
                             ZipCode = ""
@@ -896,6 +910,10 @@ namespace ServiceMarketplace.Migrations
                                 .IsRequired()
                                 .HasColumnType("TEXT");
 
+                            b1.Property<string>("Coordinate")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+
                             b1.Property<string>("State")
                                 .IsRequired()
                                 .HasColumnType("TEXT");
@@ -920,6 +938,7 @@ namespace ServiceMarketplace.Migrations
                                 {
                                     BusinessId = 1,
                                     City = "City 1",
+                                    Coordinate = "",
                                     State = "State 1",
                                     Street = "Street 1",
                                     Zipcode = "Zip1"
@@ -928,6 +947,7 @@ namespace ServiceMarketplace.Migrations
                                 {
                                     BusinessId = 2,
                                     City = "City 2",
+                                    Coordinate = "",
                                     State = "State 2",
                                     Street = "Street 2",
                                     Zipcode = "Zip2"
@@ -936,6 +956,7 @@ namespace ServiceMarketplace.Migrations
                                 {
                                     BusinessId = 3,
                                     City = "City 3",
+                                    Coordinate = "",
                                     State = "State 3",
                                     Street = "Street 3",
                                     Zipcode = "Zip3"
@@ -944,6 +965,7 @@ namespace ServiceMarketplace.Migrations
                                 {
                                     BusinessId = 4,
                                     City = "City 4",
+                                    Coordinate = "",
                                     State = "State 4",
                                     Street = "Street 4",
                                     Zipcode = "Zip4"
@@ -952,6 +974,7 @@ namespace ServiceMarketplace.Migrations
                                 {
                                     BusinessId = 5,
                                     City = "City 5",
+                                    Coordinate = "",
                                     State = "State 5",
                                     Street = "Street 5",
                                     Zipcode = "Zip5"

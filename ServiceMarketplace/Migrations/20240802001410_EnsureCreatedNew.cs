@@ -69,7 +69,7 @@ namespace ServiceMarketplace.Migrations
                     EndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Duration = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
-                    CustomerID = table.Column<int>(type: "INTEGER", nullable: false),
+                    CustomerID = table.Column<string>(type: "TEXT", nullable: false),
                     BusinessID = table.Column<int>(type: "INTEGER", nullable: false),
                     Cost = table.Column<float>(type: "REAL", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false)
@@ -90,6 +90,7 @@ namespace ServiceMarketplace.Migrations
                     Address_City = table.Column<string>(type: "TEXT", nullable: false),
                     Address_State = table.Column<string>(type: "TEXT", nullable: false),
                     Address_Zipcode = table.Column<string>(type: "TEXT", nullable: false),
+                    Address_Coordinate = table.Column<string>(type: "TEXT", nullable: false),
                     PhoneNumber = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -103,7 +104,7 @@ namespace ServiceMarketplace.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
                     IsAdmin = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -117,7 +118,7 @@ namespace ServiceMarketplace.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CustomerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CustomerId = table.Column<string>(type: "TEXT", nullable: false),
                     BusinessId = table.Column<int>(type: "INTEGER", nullable: false),
                     ParentInquiriesId = table.Column<int>(type: "INTEGER", nullable: false),
                     Response = table.Column<string>(type: "TEXT", nullable: false),
@@ -135,8 +136,11 @@ namespace ServiceMarketplace.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DaysAvailable = table.Column<string>(type: "TEXT", nullable: false),
+                    StartDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    EndDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    StartTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    EndTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
                     Duration = table.Column<TimeSpan>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -275,7 +279,7 @@ namespace ServiceMarketplace.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ParentReviewId = table.Column<int>(type: "INTEGER", nullable: false),
-                    CustomerID = table.Column<int>(type: "INTEGER", nullable: false),
+                    CustomerID = table.Column<string>(type: "TEXT", nullable: false),
                     BusinessID = table.Column<int>(type: "INTEGER", nullable: false),
                     TimeStamp = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Rating = table.Column<float>(type: "REAL", nullable: false),
@@ -297,11 +301,11 @@ namespace ServiceMarketplace.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "AccountType", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "TwoFactorEnabled", "UserName", "ZipCode" },
                 values: new object[,]
                 {
-                    { "1", 0, 0, "", "", "8d9b750b-2073-4c81-ac16-85cda7108c6d", "customer1@yahoo.com", false, "Customer", "One", false, null, null, null, null, "5555555555", false, "74483242-948a-4481-a315-dd92a438a22c", "", false, null, "" },
-                    { "2", 0, 0, "", "", "d6080169-37fb-4e4d-baa2-579d4a5038ec", "customer2@yahoo.com", false, "Customer", "Two", false, null, null, null, null, "5555555555", false, "871dcd58-7bfa-44fa-88b3-43573d63e6ee", "", false, null, "" },
-                    { "3", 0, 0, "", "", "95b170b2-7a7f-4919-b2d2-19b1bf962a4c", "customer3@yahoo.com", false, "Customer", "Three", false, null, null, null, null, "5555555555", false, "eb901afc-4295-4e68-b91f-d9d67f3b3933", "", false, null, "" },
-                    { "4", 0, 0, "", "", "14e4a872-12d1-4bd5-ae31-2fd2ac64a5b3", "customer4@yahoo.com", false, "Customer", "Four", false, null, null, null, null, "5555555555", false, "acb49cbf-28f2-41d8-8675-2609ca2a2c3e", "", false, null, "" },
-                    { "5", 0, 0, "", "", "48ab210c-db1a-4ed7-9935-5a29bc156647", "customer5@yahoo.com", false, "Customer", "Five", false, null, null, null, null, "5555555555", false, "9ea3df3d-de66-4b7b-844a-9e68d7995aab", "", false, null, "" }
+                    { "1", 0, 0, "", "", "871170d6-6f35-4a1b-9441-a9eda6f82e83", "customer1@yahoo.com", false, "Customer", "One", false, null, null, null, null, "5555555555", false, "51be67de-1b3d-458f-8892-a1aa6072bf90", "", false, null, "" },
+                    { "2", 0, 0, "", "", "f7381f47-9ab1-4354-a59d-12061ca33645", "customer2@yahoo.com", false, "Customer", "Two", false, null, null, null, null, "5555555555", false, "13be536a-808f-46c5-a219-950523f349a8", "", false, null, "" },
+                    { "3", 0, 0, "", "", "34c21988-2728-4458-a71a-8b76e3a43b49", "customer3@yahoo.com", false, "Customer", "Three", false, null, null, null, null, "5555555555", false, "8abb6f13-9a95-4190-bd24-b446524838e8", "", false, null, "" },
+                    { "4", 0, 0, "", "", "1a6c79ca-5a61-4122-82f7-7d1e6e2bc6f7", "customer4@yahoo.com", false, "Customer", "Four", false, null, null, null, null, "5555555555", false, "24b34e3f-9d7a-43ef-9cd6-66fe8146e072", "", false, null, "" },
+                    { "5", 0, 0, "", "", "b32852ed-0831-4889-82d4-51bf811c18b3", "customer5@yahoo.com", false, "Customer", "Five", false, null, null, null, null, "5555555555", false, "c36a5c7b-3437-4296-bfe9-56ebd9b4ca12", "", false, null, "" }
                 });
 
             migrationBuilder.InsertData(
@@ -309,11 +313,11 @@ namespace ServiceMarketplace.Migrations
                 columns: new[] { "Id", "BusinessID", "Cost", "CustomerID", "Duration", "EndTime", "ServiceId", "StartTime", "Status" },
                 values: new object[,]
                 {
-                    { 1, 1, 100f, 1, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 24, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5752), 1, new DateTime(2024, 7, 24, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5707), 0 },
-                    { 2, 2, 150f, 2, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 25, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5757), 2, new DateTime(2024, 7, 25, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5756), 1 },
-                    { 3, 3, 200f, 3, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 26, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5761), 3, new DateTime(2024, 7, 26, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5760), 2 },
-                    { 4, 4, 250f, 4, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 27, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5765), 4, new DateTime(2024, 7, 27, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5764), 0 },
-                    { 5, 5, 300f, 5, new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 7, 28, 19, 24, 38, 545, DateTimeKind.Local).AddTicks(5768), 5, new DateTime(2024, 7, 28, 18, 24, 38, 545, DateTimeKind.Local).AddTicks(5767), 1 }
+                    { 1, 1, 100f, "b01873ec-546c-4813-b93b-e7bef86a4de4", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 2, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6843), 1, new DateTime(2024, 8, 2, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6798), 0 },
+                    { 2, 2, 150f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 3, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6849), 2, new DateTime(2024, 8, 3, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6847), 1 },
+                    { 3, 3, 200f, "b01873ec-546c-4813-b93b-e7bef86a4de4", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 4, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6853), 3, new DateTime(2024, 8, 4, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6852), 2 },
+                    { 4, 4, 250f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 5, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6858), 4, new DateTime(2024, 8, 5, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6857), 0 },
+                    { 5, 5, 300f, "06874549-8158-4144-891c-1a33141904bd", new TimeSpan(0, 0, 0, 0, 0), new DateTime(2024, 8, 6, 20, 14, 10, 529, DateTimeKind.Local).AddTicks(6862), 5, new DateTime(2024, 8, 6, 19, 14, 10, 529, DateTimeKind.Local).AddTicks(6861), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -321,28 +325,28 @@ namespace ServiceMarketplace.Migrations
                 columns: new[] { "Id", "IsAdmin", "UserId" },
                 values: new object[,]
                 {
-                    { 1, true, 0 },
-                    { 2, false, 0 },
-                    { 3, true, 0 },
-                    { 4, false, 0 },
-                    { 5, true, 0 },
-                    { 6, false, 0 },
-                    { 7, true, 0 },
-                    { 8, false, 0 },
-                    { 9, true, 0 },
-                    { 10, false, 0 }
+                    { 1, true, "" },
+                    { 2, false, "" },
+                    { 3, true, "" },
+                    { 4, false, "" },
+                    { 5, true, "" },
+                    { 6, false, "" },
+                    { 7, true, "" },
+                    { 8, false, "" },
+                    { 9, true, "" },
+                    { 10, false, "" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Businesses",
-                columns: new[] { "Id", "Address_City", "Address_State", "Address_Street", "Address_Zipcode", "Description", "Name", "PhoneNumber" },
+                columns: new[] { "Id", "Address_City", "Address_Coordinate", "Address_State", "Address_Street", "Address_Zipcode", "Description", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, "City 1", "State 1", "Street 1", "Zip1", "Description for Business 1", "Business 1", "5555555551" },
-                    { 2, "City 2", "State 2", "Street 2", "Zip2", "Description for Business 2", "Business 2", "5555555552" },
-                    { 3, "City 3", "State 3", "Street 3", "Zip3", "Description for Business 3", "Business 3", "5555555553" },
-                    { 4, "City 4", "State 4", "Street 4", "Zip4", "Description for Business 4", "Business 4", "5555555554" },
-                    { 5, "City 5", "State 5", "Street 5", "Zip5", "Description for Business 5", "Business 5", "5555555555" }
+                    { 1, "City 1", "", "State 1", "Street 1", "Zip1", "Description for Business 1", "Business 1", "5555555551" },
+                    { 2, "City 2", "", "State 2", "Street 2", "Zip2", "Description for Business 2", "Business 2", "5555555552" },
+                    { 3, "City 3", "", "State 3", "Street 3", "Zip3", "Description for Business 3", "Business 3", "5555555553" },
+                    { 4, "City 4", "", "State 4", "Street 4", "Zip4", "Description for Business 4", "Business 4", "5555555554" },
+                    { 5, "City 5", "", "State 5", "Street 5", "Zip5", "Description for Business 5", "Business 5", "5555555555" }
                 });
 
             migrationBuilder.InsertData(

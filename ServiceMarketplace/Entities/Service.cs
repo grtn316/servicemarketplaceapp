@@ -15,7 +15,7 @@ namespace ServiceMarketplace.Entities
         public TimeSpan Duration { get; set; }
         public double Rating { get; set; }
         public List<Review> Reviews { get; set; }
-        public ServiceCalendar ServiceCalendar { get; set; }
+        //public ServiceCalendar ServiceCalendar { get; set; }
 
         public Service(int id, int businessId, string serviceName, string description, float price, TimeSpan duration)
         {
@@ -27,7 +27,7 @@ namespace ServiceMarketplace.Entities
             this.Duration = duration;
             this.Rating = 0;
             this.Reviews = new List<Review>();
-            this.ServiceCalendar = new ServiceCalendar();
+            //this.ServiceCalendar = new ServiceCalendar();
         }
 
         public Service()
@@ -35,7 +35,7 @@ namespace ServiceMarketplace.Entities
             ServiceName = string.Empty;
             Description = string.Empty;
             Reviews = new List<Review>();
-            ServiceCalendar = new ServiceCalendar();
+            //ServiceCalendar = new ServiceCalendar();
         }
     }
 }
