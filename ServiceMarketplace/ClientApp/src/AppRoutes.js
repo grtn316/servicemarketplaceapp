@@ -9,6 +9,7 @@ import { Appointments } from "./components/pages/Appointments";
 import { Listings } from "./components/pages/Listings";
 import { Profile } from "./components/pages/Profile";
 import { CreateBooking } from "./components/pages/CreateBooking";
+import { UserBooking } from "./components/pages/UserBooking"
 import { default as Login } from "./components/pages/Login";
 import Logout from "./components/pages/Logout";
 
@@ -20,6 +21,10 @@ const AppRoutes = [
     {
         path: '/create-booking',
         element: <CreateBooking />
+    },
+    {
+        path: '/user-booking',
+        element: <UserBooking />
     },
     {
         path: '/listings',
