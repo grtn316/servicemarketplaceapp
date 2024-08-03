@@ -11,7 +11,7 @@ using ServiceMarketplace.Data;
 namespace ServiceMarketplace.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240802012027_EnsureCreatedNew")]
+    [Migration("20240803183103_EnsureCreatedNew")]
     partial class EnsureCreatedNew
     {
         /// <inheritdoc />
@@ -154,29 +154,17 @@ namespace ServiceMarketplace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BusinessID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<float>("Cost")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("CustomerID")
+                    b.Property<string>("CustomerId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("EndTime")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ServiceId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TimeSlotId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -187,62 +175,26 @@ namespace ServiceMarketplace.Migrations
                         new
                         {
                             Id = 1,
-                            BusinessID = 1,
-                            Cost = 100f,
-                            CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4",
-                            Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 2, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6743),
+                            CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed",
                             ServiceId = 1,
-                            StartTime = new DateTime(2024, 8, 2, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6695),
-                            Status = 0
+                            Status = 0,
+                            TimeSlotId = 1
                         },
                         new
                         {
                             Id = 2,
-                            BusinessID = 2,
-                            Cost = 150f,
-                            CustomerID = "06874549-8158-4144-891c-1a33141904bd",
-                            Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 3, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6748),
+                            CustomerId = "1633f073-0193-4bed-815e-db4cdeaf4713",
                             ServiceId = 2,
-                            StartTime = new DateTime(2024, 8, 3, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6747),
-                            Status = 1
+                            Status = 1,
+                            TimeSlotId = 2
                         },
                         new
                         {
                             Id = 3,
-                            BusinessID = 3,
-                            Cost = 200f,
-                            CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4",
-                            Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 4, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6752),
+                            CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed",
                             ServiceId = 3,
-                            StartTime = new DateTime(2024, 8, 4, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6751),
-                            Status = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BusinessID = 4,
-                            Cost = 250f,
-                            CustomerID = "06874549-8158-4144-891c-1a33141904bd",
-                            Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 5, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6756),
-                            ServiceId = 4,
-                            StartTime = new DateTime(2024, 8, 5, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6755),
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 5,
-                            BusinessID = 5,
-                            Cost = 300f,
-                            CustomerID = "06874549-8158-4144-891c-1a33141904bd",
-                            Duration = new TimeSpan(0, 0, 0, 0, 0),
-                            EndTime = new DateTime(2024, 8, 6, 21, 20, 27, 288, DateTimeKind.Local).AddTicks(6759),
-                            ServiceId = 5,
-                            StartTime = new DateTime(2024, 8, 6, 20, 20, 27, 288, DateTimeKind.Local).AddTicks(6758),
-                            Status = 1
+                            Status = 2,
+                            TimeSlotId = 3
                         });
                 });
 
@@ -272,37 +224,23 @@ namespace ServiceMarketplace.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Description for Business 1",
-                            Name = "Business 1",
-                            PhoneNumber = "5555555551"
+                            Description = "Providing top-notch alpha services.",
+                            Name = "Alpha Services",
+                            PhoneNumber = "1234567890"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Description for Business 2",
-                            Name = "Business 2",
-                            PhoneNumber = "5555555552"
+                            Description = "Innovative solutions for your business needs.",
+                            Name = "Beta Solutions",
+                            PhoneNumber = "9876543210"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Description for Business 3",
-                            Name = "Business 3",
-                            PhoneNumber = "5555555553"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Description for Business 4",
-                            Name = "Business 4",
-                            PhoneNumber = "5555555554"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Description for Business 5",
-                            Name = "Business 5",
-                            PhoneNumber = "5555555555"
+                            Description = "Your go-to partner for business growth.",
+                            Name = "Gamma Enterprises",
+                            PhoneNumber = "5551234567"
                         });
                 });
 
@@ -332,70 +270,21 @@ namespace ServiceMarketplace.Migrations
                             Id = 1,
                             BusinessId = 1,
                             IsAdmin = true,
-                            UserId = ""
+                            UserId = "2a0ee853-cec6-421c-b705-fcb67eecc5cd"
                         },
                         new
                         {
                             Id = 2,
-                            BusinessId = 1,
-                            IsAdmin = false,
-                            UserId = ""
+                            BusinessId = 2,
+                            IsAdmin = true,
+                            UserId = "2a0ee853-cec6-421c-b705-fcb67eecc5cd"
                         },
                         new
                         {
                             Id = 3,
-                            BusinessId = 2,
-                            IsAdmin = true,
-                            UserId = ""
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BusinessId = 2,
-                            IsAdmin = false,
-                            UserId = ""
-                        },
-                        new
-                        {
-                            Id = 5,
                             BusinessId = 3,
                             IsAdmin = true,
-                            UserId = ""
-                        },
-                        new
-                        {
-                            Id = 6,
-                            BusinessId = 3,
-                            IsAdmin = false,
-                            UserId = ""
-                        },
-                        new
-                        {
-                            Id = 7,
-                            BusinessId = 4,
-                            IsAdmin = true,
-                            UserId = ""
-                        },
-                        new
-                        {
-                            Id = 8,
-                            BusinessId = 4,
-                            IsAdmin = false,
-                            UserId = ""
-                        },
-                        new
-                        {
-                            Id = 9,
-                            BusinessId = 5,
-                            IsAdmin = true,
-                            UserId = ""
-                        },
-                        new
-                        {
-                            Id = 10,
-                            BusinessId = 5,
-                            IsAdmin = false,
-                            UserId = ""
+                            UserId = "2a0ee853-cec6-421c-b705-fcb67eecc5cd"
                         });
                 });
 
@@ -433,14 +322,11 @@ namespace ServiceMarketplace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BusinessID")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Comment")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("CustomerID")
+                    b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -450,7 +336,7 @@ namespace ServiceMarketplace.Migrations
                     b.Property<float>("Rating")
                         .HasColumnType("REAL");
 
-                    b.Property<int?>("ServiceId")
+                    b.Property<int>("ServiceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("TimeStamp")
@@ -461,6 +347,38 @@ namespace ServiceMarketplace.Migrations
                     b.HasIndex("ServiceId");
 
                     b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Comment = "I love this service. Repeat customer!",
+                            CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed",
+                            ParentReviewId = 0,
+                            Rating = 5f,
+                            ServiceId = 1,
+                            TimeStamp = new DateTime(2024, 8, 3, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3334)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Comment = "Service was okay. Would use again.",
+                            CustomerId = "1633f073-0193-4bed-815e-db4cdeaf4713",
+                            ParentReviewId = 0,
+                            Rating = 3f,
+                            ServiceId = 2,
+                            TimeStamp = new DateTime(2024, 8, 1, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3338)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Comment = "BEWARE!! SEO did not work!!",
+                            CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed",
+                            ParentReviewId = 0,
+                            Rating = 1f,
+                            ServiceId = 3,
+                            TimeStamp = new DateTime(2024, 7, 24, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3341)
+                        });
                 });
 
             modelBuilder.Entity("ServiceMarketplace.Entities.Service", b =>
@@ -498,51 +416,31 @@ namespace ServiceMarketplace.Migrations
                         {
                             Id = 1,
                             BusinessId = 1,
-                            Description = "Description for Service 1",
-                            Duration = new TimeSpan(0, 0, 30, 0, 0),
+                            Description = "Building modern and responsive websites.",
+                            Duration = new TimeSpan(0, 1, 0, 0, 0),
                             Price = 50.0,
                             Rating = 1.0,
-                            ServiceName = "Service 1"
+                            ServiceName = "Web Development"
                         },
                         new
                         {
                             Id = 2,
                             BusinessId = 2,
-                            Description = "Description for Service 2",
-                            Duration = new TimeSpan(0, 1, 0, 0, 0),
-                            Price = 60.0,
+                            Description = "Creating stunning visual content.",
+                            Duration = new TimeSpan(0, 1, 30, 0, 0),
+                            Price = 75.0,
                             Rating = 2.0,
-                            ServiceName = "Service 2"
+                            ServiceName = "Graphic Design"
                         },
                         new
                         {
                             Id = 3,
                             BusinessId = 3,
-                            Description = "Description for Service 3",
-                            Duration = new TimeSpan(0, 0, 30, 0, 0),
-                            Price = 70.0,
+                            Description = "Improving your website ranking on search engines.",
+                            Duration = new TimeSpan(0, 2, 0, 0, 0),
+                            Price = 100.0,
                             Rating = 3.0,
-                            ServiceName = "Service 3"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BusinessId = 4,
-                            Description = "Description for Service 4",
-                            Duration = new TimeSpan(0, 1, 0, 0, 0),
-                            Price = 80.0,
-                            Rating = 4.0,
-                            ServiceName = "Service 4"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            BusinessId = 5,
-                            Description = "Description for Service 5",
-                            Duration = new TimeSpan(0, 1, 30, 0, 0),
-                            Price = 90.0,
-                            Rating = 5.0,
-                            ServiceName = "Service 5"
+                            ServiceName = "SEO Optimization"
                         });
                 });
 
@@ -585,25 +483,13 @@ namespace ServiceMarketplace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateOnly>("Date")
+                    b.Property<DateTime>("EndTime")
                         .HasColumnType("TEXT");
-
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("TEXT");
-
-                    b.Property<TimeOnly>("EndTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ServiceId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<TimeOnly>("StartTime")
+                    b.Property<DateTime>("StartTime")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -611,6 +497,50 @@ namespace ServiceMarketplace.Migrations
                     b.HasIndex("ServiceId");
 
                     b.ToTable("TimeSlot");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3266),
+                            ServiceId = 1,
+                            StartTime = new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3216)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3270),
+                            ServiceId = 2,
+                            StartTime = new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3269)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3274),
+                            ServiceId = 3,
+                            StartTime = new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3273)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3277),
+                            ServiceId = 1,
+                            StartTime = new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3276)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3280),
+                            ServiceId = 2,
+                            StartTime = new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3279)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3283),
+                            ServiceId = 3,
+                            StartTime = new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3282)
+                        });
                 });
 
             modelBuilder.Entity("ServiceMarketplace.Entities.User", b =>
@@ -706,103 +636,72 @@ namespace ServiceMarketplace.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = "9a54338d-49f5-420b-904e-a7d6b94ef8ed",
                             AccessFailedCount = 0,
                             AccountType = 0,
-                            Address = "",
-                            City = "",
-                            ConcurrencyStamp = "3d8880c6-5f98-4140-99bf-2473eb98d580",
-                            Email = "customer1@yahoo.com",
+                            Address = "612 Warf Avenue",
+                            City = "Seattle",
+                            ConcurrencyStamp = "e1c40dcc-125e-44c7-aac8-cdd160bc357a",
+                            Email = "USER1@SERVICEMARKETPLACE.COM",
                             EmailConfirmed = false,
-                            FirstName = "Customer",
-                            LastName = "One",
-                            LockoutEnabled = false,
+                            FirstName = "John",
+                            LastName = "Doe",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "USER1@SERVICEMARKETPLACE.COM",
+                            NormalizedUserName = "USER1@SERVICEMARKETPLACE.COM",
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3a28a955-b905-4c6a-a358-096b0559ac1d",
-                            State = "",
+                            SecurityStamp = "c8f63e76-7226-482d-9253-d552c7b6abbb",
+                            State = "WA",
                             TwoFactorEnabled = false,
-                            ZipCode = ""
+                            UserName = "user1@servicemarketplace.com",
+                            ZipCode = "66666"
                         },
                         new
                         {
-                            Id = "2",
+                            Id = "1633f073-0193-4bed-815e-db4cdeaf4713",
                             AccessFailedCount = 0,
                             AccountType = 0,
-                            Address = "",
-                            City = "",
-                            ConcurrencyStamp = "106c9215-a9c5-4eb0-b5e4-9d1fad3b5b0b",
-                            Email = "customer2@yahoo.com",
+                            Address = "612 Warf Avenue",
+                            City = "Seattle",
+                            ConcurrencyStamp = "28d91fbf-2df6-411b-919a-6a8f0f8029fe",
+                            Email = "USER2@SERVICEMARKETPLACE.COM",
                             EmailConfirmed = false,
-                            FirstName = "Customer",
-                            LastName = "Two",
-                            LockoutEnabled = false,
+                            FirstName = "Jane",
+                            LastName = "Doe",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "USER2@SERVICEMARKETPLACE.COM",
+                            NormalizedUserName = "USER2@SERVICEMARKETPLACE.COM",
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c83d82e9-7970-4b50-8db4-333c10c7ec91",
-                            State = "",
+                            SecurityStamp = "f6f78e70-4c38-4a48-93f8-5178dabe9125",
+                            State = "WA",
                             TwoFactorEnabled = false,
-                            ZipCode = ""
+                            UserName = "user2@servicemarketplace.com",
+                            ZipCode = "66666"
                         },
                         new
                         {
-                            Id = "3",
+                            Id = "2a0ee853-cec6-421c-b705-fcb67eecc5cd",
                             AccessFailedCount = 0,
-                            AccountType = 0,
-                            Address = "",
-                            City = "",
-                            ConcurrencyStamp = "373e670a-bf7e-4463-80ae-b825de24423b",
-                            Email = "customer3@yahoo.com",
+                            AccountType = 1,
+                            Address = "612 Warf Avenue",
+                            City = "Seattle",
+                            ConcurrencyStamp = "19902036-46c2-4d38-8c3a-b8a46bb58282",
+                            Email = "USER3@SERVICEMARKETPLACE.COM",
                             EmailConfirmed = false,
-                            FirstName = "Customer",
-                            LastName = "Three",
-                            LockoutEnabled = false,
+                            FirstName = "Jack",
+                            LastName = "Doe",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "USER3@SERVICEMARKETPLACE.COM",
+                            NormalizedUserName = "USER3@SERVICEMARKETPLACE.COM",
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0abbca24-053c-46c1-b634-19f67d4fa7a2",
-                            State = "",
+                            SecurityStamp = "833dd20a-1db5-4bf8-adf5-e5efdbe2b40d",
+                            State = "WA",
                             TwoFactorEnabled = false,
-                            ZipCode = ""
-                        },
-                        new
-                        {
-                            Id = "4",
-                            AccessFailedCount = 0,
-                            AccountType = 0,
-                            Address = "",
-                            City = "",
-                            ConcurrencyStamp = "25784bcd-a118-48f6-8e8d-cfa8a669f58a",
-                            Email = "customer4@yahoo.com",
-                            EmailConfirmed = false,
-                            FirstName = "Customer",
-                            LastName = "Four",
-                            LockoutEnabled = false,
-                            PhoneNumber = "5555555555",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "006dc535-500d-4da6-9646-49f069f27a97",
-                            State = "",
-                            TwoFactorEnabled = false,
-                            ZipCode = ""
-                        },
-                        new
-                        {
-                            Id = "5",
-                            AccessFailedCount = 0,
-                            AccountType = 0,
-                            Address = "",
-                            City = "",
-                            ConcurrencyStamp = "1c607530-586b-4678-9bc7-32027fc73a57",
-                            Email = "customer5@yahoo.com",
-                            EmailConfirmed = false,
-                            FirstName = "Customer",
-                            LastName = "Five",
-                            LockoutEnabled = false,
-                            PhoneNumber = "5555555555",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "c166df1e-3987-4f8a-a0b9-27502d323371",
-                            State = "",
-                            TwoFactorEnabled = false,
-                            ZipCode = ""
+                            UserName = "user3@servicemarketplace.com",
+                            ZipCode = "66666"
                         });
                 });
 
@@ -824,78 +723,6 @@ namespace ServiceMarketplace.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WeatherForecasts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Date = new DateOnly(2023, 6, 1),
-                            Summary = "Freezing",
-                            TemperatureC = -5
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Date = new DateOnly(2023, 6, 2),
-                            Summary = "Bracing",
-                            TemperatureC = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateOnly(2023, 6, 3),
-                            Summary = "Chilly",
-                            TemperatureC = 5
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateOnly(2023, 6, 4),
-                            Summary = "Cool",
-                            TemperatureC = 10
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Date = new DateOnly(2023, 6, 5),
-                            Summary = "Mild",
-                            TemperatureC = 15
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Date = new DateOnly(2023, 6, 6),
-                            Summary = "Warm",
-                            TemperatureC = 20
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Date = new DateOnly(2023, 6, 7),
-                            Summary = "Balmy",
-                            TemperatureC = 25
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Date = new DateOnly(2023, 6, 8),
-                            Summary = "Hot",
-                            TemperatureC = 30
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Date = new DateOnly(2023, 6, 9),
-                            Summary = "Sweltering",
-                            TemperatureC = 35
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Date = new DateOnly(2023, 6, 10),
-                            Summary = "Scorching",
-                            TemperatureC = 40
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -987,47 +814,29 @@ namespace ServiceMarketplace.Migrations
                                 new
                                 {
                                     BusinessId = 1,
-                                    City = "City 1",
+                                    City = "Townsville",
                                     Coordinate = "",
-                                    State = "State 1",
-                                    Street = "Street 1",
-                                    Zipcode = "Zip1"
+                                    State = "TS",
+                                    Street = "123 Main St, TS ",
+                                    Zipcode = "12345"
                                 },
                                 new
                                 {
                                     BusinessId = 2,
-                                    City = "City 2",
+                                    City = "Villageton",
                                     Coordinate = "",
-                                    State = "State 2",
-                                    Street = "Street 2",
-                                    Zipcode = "Zip2"
+                                    State = "VS",
+                                    Street = "456 Oak St",
+                                    Zipcode = "67890"
                                 },
                                 new
                                 {
                                     BusinessId = 3,
-                                    City = "City 3",
+                                    City = "Cityburg",
                                     Coordinate = "",
-                                    State = "State 3",
-                                    Street = "Street 3",
-                                    Zipcode = "Zip3"
-                                },
-                                new
-                                {
-                                    BusinessId = 4,
-                                    City = "City 4",
-                                    Coordinate = "",
-                                    State = "State 4",
-                                    Street = "Street 4",
-                                    Zipcode = "Zip4"
-                                },
-                                new
-                                {
-                                    BusinessId = 5,
-                                    City = "City 5",
-                                    Coordinate = "",
-                                    State = "State 5",
-                                    Street = "Street 5",
-                                    Zipcode = "Zip5"
+                                    State = "CB",
+                                    Street = "789 Pine St",
+                                    Zipcode = "11223"
                                 });
                         });
 
@@ -1039,7 +848,9 @@ namespace ServiceMarketplace.Migrations
                 {
                     b.HasOne("ServiceMarketplace.Entities.Service", null)
                         .WithMany("Reviews")
-                        .HasForeignKey("ServiceId");
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ServiceMarketplace.Entities.TimeSlot", b =>

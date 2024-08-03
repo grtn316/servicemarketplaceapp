@@ -20,7 +20,10 @@ namespace ServiceMarketplace.Entities {
             while (dateIterator <= availability.EndDate) {
                 while ((timeIterator.AddMinutes(duration.TotalMinutes)) <= availability.EndTime) {
                     if (availability.DaysAvailable.Contains(dateIterator.Day.ToString())) {
-                        TimeSlot timeSlot = new TimeSlot(dateIterator, timeIterator, timeIterator.AddMinutes(duration.TotalMinutes), availability.Duration);
+                        //TimeSlot timeSlot = new TimeSlot(dateIterator, timeIterator, timeIterator.AddMinutes(duration.TotalMinutes), availability.Duration);
+                        //TimeSlot timeSlot = new TimeSlot(dateIterator, timeIterator, timeIterator.AddMinutes(duration.TotalMinutes));
+                        //TODO:MAY NEED TO BE FIXED
+                        TimeSlot timeSlot = new TimeSlot();
                         this.TimeSlots.Add(timeSlot);
                     }
                 }

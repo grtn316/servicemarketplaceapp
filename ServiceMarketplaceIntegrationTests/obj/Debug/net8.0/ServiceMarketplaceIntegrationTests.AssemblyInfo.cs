@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServiceMarketplaceIntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5633009e58d939de3bf59d8a03a1ad99111b9b8b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd419f702f98d98130291175e1ec3296256c07ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServiceMarketplaceIntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServiceMarketplaceIntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -26,7 +26,8 @@ class Register extends Component {
 
     handleChange(e) {
         const { name, value } = e.target;
-        this.setState({ [name]: value });
+        const parsedValue = name === 'accountType' ? parseInt(value, 10) : value;
+        this.setState({ [name]: parsedValue });
     }
 
     handleSubmit(e) {
@@ -123,8 +124,8 @@ class Register extends Component {
                                 type="radio"
                                 name="accountType"
                                 id="accountType1"
-                                value="0"
-                                checked={accountType === '0'}
+                                value='0'
+                                checked={accountType === 0}
                                 onChange={this.handleChange}
                             />
                             <label className="form-check-label" htmlFor="accountType1">
@@ -137,8 +138,8 @@ class Register extends Component {
                                 type="radio"
                                 name="accountType"
                                 id="accountType2"
-                                value="1"
-                                checked={accountType === '1'}
+                                value='1'
+                                checked={accountType === 1}
                                 onChange={this.handleChange}
                             />
                             <label className="form-check-label" htmlFor="accountType2">

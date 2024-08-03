@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.OpenApi.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServiceMarketplace.Entities
 {
@@ -6,28 +7,31 @@ namespace ServiceMarketplace.Entities
     {
         [Key]
         public int Id { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-        public TimeSpan Duration { get; set; }
+        //public DateTime StartTime { get; set; }
+        //public DateTime EndTime { get; set; }
+        //public TimeSpan Duration { get; set; }
         [Required]
         public int ServiceId { get; set; }
         [Required]
-        public string CustomerID { get; set; }
+        public string CustomerId { get; set; }
         [Required]
-        public int BusinessID { get; set; }
-        public float Cost { get; set; }
+        public int TimeSlotId { get; set; }
+        //[Required]
+        //public int BusinessID { get; set; }
+        //public float Cost { get; set; }
         public BookingStatus Status { get; set; }
 
-        public Booking(DateTime startTime, DateTime endTime, int serviceId, string customerID, int businessID, float cost, BookingStatus status)
+        public Booking(DateTime startTime, DateTime endTime, int serviceId, string customerId, int timeSlotId, int businessId, float cost, BookingStatus status)
         {
 
-            this.StartTime = startTime;
-            this.EndTime = endTime;
-            this.Duration = this.EndTime - this.StartTime;
+            //this.StartTime = startTime;
+            //this.EndTime = endTime;
+            //this.Duration = this.EndTime - this.StartTime;
             this.ServiceId = serviceId;
-            this.CustomerID = customerID;
-            this.BusinessID = businessID;
-            this.Cost = cost;
+            this.CustomerId = customerId;
+            this.TimeSlotId = timeSlotId;
+            //this.BusinessID = businessID;
+            //this.Cost = cost;
             this.Status = status;
         }
 

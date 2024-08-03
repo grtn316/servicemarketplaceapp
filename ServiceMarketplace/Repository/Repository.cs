@@ -72,7 +72,7 @@ namespace ServiceMarketplace.Repository
         Task DeleteServiceAvailabilityAsync(int id);
 
         //Service
-        Task<IEnumerable<Service>> GetAllServicesAsync();
+        Task<IEnumerable<object>> GetAllServicesAsync();
         Task<Service> GetServicesByIdAsync(int id);
         Task AddServicesAsync(Service entity);
         Task UpdateServicesAsync(Service entity);
@@ -357,9 +357,47 @@ namespace ServiceMarketplace.Repository
         }
 
         //Service
-        public async Task<IEnumerable<Service>> GetAllServicesAsync()
+        public async Task<IEnumerable<object>> GetAllServicesAsync()
         {
-            return await _context.Services.ToListAsync();
+            //return await _context.Services.ToListAsync();
+
+            //return await _context.Services
+            //             .Include(s => s.Reviews)
+            //             .Include(s => s.TimeSlots)
+            //             .ToListAsync();
+
+            // Load services with their time slots and reviews
+            var services = await _context.Services
+                                         .Include(s => s.TimeSlots)
+                                         .Include(s => s.Reviews)
+                                         .ToListAsync();
+
+            // Load all bookings related to these services
+            var bookedTimeSlotIds = await _context.Bookings
+                                                  .Select(b => b.TimeSlotId)
+                                                  .ToListAsync();
+
+            // Create a new object with IsBooked property
+            var result = services.Select(service => new
+            {
+                service.Id,
+                service.BusinessId,
+                service.ServiceName,
+                service.Description,
+                service.Price,
+                service.Duration,
+                service.Rating,
+                Reviews = service.Reviews,
+                TimeSlots = service.TimeSlots.Select(ts => new
+                {
+                    ts.Id,
+                    ts.StartTime,
+                    ts.EndTime,
+                    IsBooked = bookedTimeSlotIds.Contains(ts.Id)
+                }).ToList()
+            }).ToList();
+
+            return result;
         }
 
         public async Task<Service> GetServicesByIdAsync(int id)

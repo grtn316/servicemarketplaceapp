@@ -33,7 +33,13 @@ namespace ServiceMarketplace.Entities
             this.Reviews = new List<Review>();
             //this.ServiceCalendar = new ServiceCalendar();
 
-            TimeSlot slot = new TimeSlot(new DateOnly(2024, 8, 1), new TimeOnly(00, 30, 00), new TimeOnly(00, 00, 00), new TimeSpan(00, 30, 00));
+            //TimeSlot slot = new TimeSlot(new DateOnly(2024, 8, 1), new TimeOnly(00, 30, 00), new TimeOnly(00, 00, 00), new TimeSpan(00, 30, 00));
+            //TimeSlot slot = new TimeSlot(new DateTime(2024, 8, 1), new DateTime(2024, 8, 1));
+
+            DateTime startDateTime = new DateTime(2024, 8, 4, 9, 0, 0);
+            DateTime endDateTime = new DateTime(2024, 8, 4, 17, 0, 0);
+            TimeSlot slot = new TimeSlot(startDateTime, endDateTime);
+
             this.TimeSlots.Add(slot);
         }
 

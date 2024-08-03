@@ -1,30 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\",
+  "WorkspaceRootPath": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\thatb\\onedrive\\documents\\github\\servicemarketplaceapp\\servicemarketplace\\entities\\timeslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\timeslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\controllers\\servicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\controllers\\servicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\thatb\\onedrive\\documents\\github\\servicemarketplaceapp\\servicemarketplace\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\thatb\\onedrive\\documents\\github\\servicemarketplaceapp\\servicemarketplace\\entities\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\entities\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\thatb\\onedrive\\documents\\github\\servicemarketplaceapp\\servicemarketplace\\database\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\database\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\database\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\thatb\\onedrive\\documents\\github\\servicemarketplaceapp\\servicemarketplace\\entities\\serviceavailability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\serviceavailability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\entities\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\thatb\\onedrive\\documents\\github\\servicemarketplaceapp\\servicemarketplace\\entities\\servicecalendar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\servicecalendar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\entities\\timeslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\timeslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\pages\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\clientapp\\src\\components\\pages\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\controllers\\businesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\controllers\\businesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\entities\\businessuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\businessuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\entities\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\david baumgarten\\source\\repos\\servicemarketplaceapp\\servicemarketplace\\entities\\bookingstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\entities\\bookingstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,61 +57,9 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 402,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TimeSlot.cs",
-              "DocumentMoniker": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\TimeSlot.cs",
-              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\TimeSlot.cs",
-              "ToolTip": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\TimeSlot.cs",
-              "RelativeToolTip": "ServiceMarketplace\\Entities\\TimeSlot.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAA4wBsAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T01:09:58.786Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DBContext.cs",
-              "DocumentMoniker": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\database\\DBContext.cs",
-              "RelativeDocumentMoniker": "ServiceMarketplace\\database\\DBContext.cs",
-              "ToolTip": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\database\\DBContext.cs",
-              "RelativeToolTip": "ServiceMarketplace\\database\\DBContext.cs",
-              "ViewState": "AQIAAFMAAAAAAAAAAAAswFwAAACtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T01:01:20.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Review.cs",
-              "DocumentMoniker": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Review.cs",
-              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\Review.cs",
-              "ToolTip": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Review.cs",
-              "RelativeToolTip": "ServiceMarketplace\\Entities\\Review.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAA9wAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T00:42:46.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ServiceCalendar.cs",
-              "DocumentMoniker": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\ServiceCalendar.cs",
-              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\ServiceCalendar.cs",
-              "ToolTip": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\ServiceCalendar.cs",
-              "RelativeToolTip": "ServiceMarketplace\\Entities\\ServiceCalendar.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T00:40:11.839Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -102,29 +74,155 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ServiceAvailability.cs",
-              "DocumentMoniker": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\ServiceAvailability.cs",
-              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\ServiceAvailability.cs",
-              "ToolTip": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\ServiceAvailability.cs",
-              "RelativeToolTip": "ServiceMarketplace\\Entities\\ServiceAvailability.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAAqAAAA",
+              "DocumentIndex": 1,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Repository\\Repository.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Repository\\Repository.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Repository\\Repository.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Repository\\Repository.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAjwEoAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T00:38:51.639Z",
+              "WhenOpened": "2024-08-03T18:22:47.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Register.js",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\Register.js",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Register.js",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\Register.js",
+              "RelativeToolTip": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Register.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-03T17:19:03.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DBContext.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\database\\DBContext.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\database\\DBContext.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\database\\DBContext.cs",
+              "RelativeToolTip": "ServiceMarketplace\\database\\DBContext.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAgwGIAAABzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T00:10:31.806Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Service.cs",
-              "DocumentMoniker": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Service.cs",
-              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\Service.cs",
-              "ToolTip": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Service.cs",
-              "RelativeToolTip": "ServiceMarketplace\\Entities\\Service.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAA3wCMAAAB1AAAA",
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Booking.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\Booking.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Booking.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Entities\\Booking.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAQwBQAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T00:38:30.229Z",
+              "WhenOpened": "2024-08-02T00:16:01.578Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Service.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Service.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\Service.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Service.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Entities\\Service.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T18:21:31.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ServiceController.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Controllers\\ServiceController.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Controllers\\ServiceController.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Controllers\\ServiceController.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Controllers\\ServiceController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T18:22:17.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TimeSlot.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\TimeSlot.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\TimeSlot.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\TimeSlot.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Entities\\TimeSlot.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T18:00:30.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Program.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Program.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Program.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Program.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAwwFUAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T00:25:52.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BusinessController.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Controllers\\BusinessController.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Controllers\\BusinessController.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Controllers\\BusinessController.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Controllers\\BusinessController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwBoAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T00:23:30.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Address.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Address.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\Address.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\Address.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Entities\\Address.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T00:16:10.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BookingStatus.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\BookingStatus.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\BookingStatus.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\BookingStatus.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Entities\\BookingStatus.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T00:16:07.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BusinessUser.cs",
+              "DocumentMoniker": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\BusinessUser.cs",
+              "RelativeDocumentMoniker": "ServiceMarketplace\\Entities\\BusinessUser.cs",
+              "ToolTip": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\Entities\\BusinessUser.cs",
+              "RelativeToolTip": "ServiceMarketplace\\Entities\\BusinessUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T00:15:48.775Z"
             }
           ]
         }

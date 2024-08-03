@@ -9,9 +9,9 @@ namespace ServiceMarketplace.Entities
         [Required]
         public int ParentReviewId { get; set; }
         [Required]
-        public string CustomerID { get; set; }
+        public string CustomerId { get; set; }
         [Required]
-        public int BusinessID { get; set; }
+        public int ServiceId { get; set; }
         public DateTime TimeStamp { get; set; } = DateTime.Now;
         public float Rating { get; set; }
         public string Comment { get; set; }
@@ -20,8 +20,8 @@ namespace ServiceMarketplace.Entities
         {
             this.Id = id;
             this.ParentReviewId = parentReviewId;
-            this.CustomerID = customerID;
-            this.BusinessID = businessID;
+            this.CustomerId = customerID;
+            this.ServiceId = businessID;
             this.TimeStamp = timeStamp;
             this.Rating = rating;
             this.Comment = comment;
