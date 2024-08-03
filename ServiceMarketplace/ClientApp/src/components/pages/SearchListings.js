@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import './SearchListings.css';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import { CreateBooking } from './CreateBooking';
+import { UserBooking } from './UserBooking';
 
 const mapContainerStyle = {
     height: "200px",
@@ -218,7 +218,7 @@ export class SearchListings extends Component {
                     <div className="booking-form-overlay">
                         <div className="booking-form-container">
                             <button className="close-button" onClick={this.handleCloseForm}>X</button>
-                            <CreateBooking service={selectedService} updateServiceAvailability={this.updateServiceAvailability} />
+                            <UserBooking service={selectedService} updateServiceAvailability={this.updateServiceAvailability} />
                         </div>
                     </div>
                 )}
@@ -226,12 +226,3 @@ export class SearchListings extends Component {
         );
     }
 }
-
-
-
-
-
-
-
-
-
