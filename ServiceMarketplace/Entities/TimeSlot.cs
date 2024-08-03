@@ -7,31 +7,28 @@ namespace ServiceMarketplace.Entities {
         [Required]
         public int ServiceId { get; set; }
         [Required]
-        public int CustomerID { get; set; }
-        public bool IsAvailable { get; set; }
-        public DateOnly Date { get; set; }
-        public TimeOnly StartTime { get; set; }
-        public TimeOnly EndTime { get; set; }
-        public TimeSpan Duration { get; set; }
+        //public string CustomerId { get; set; }
+        //public bool IsAvailable { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
 
-        public TimeSlot(DateOnly dateOnly, TimeOnly startTime, TimeOnly endTime, TimeSpan duration) {
-            IsAvailable = true;
-
-            Date = dateOnly;
+        public TimeSlot(DateTime startTime, DateTime endTime) {
+            //IsAvailable = true;
             StartTime = startTime;
             EndTime = endTime;
-            Duration = duration;
         }
+
+        public TimeSlot() { }
         public void MakeAvailable() {
-            IsAvailable = true;
-            CustomerID = 0;
+            //IsAvailable = true;
+            //CustomerId = String.Empty;
         }
         public void MakeNotAvailable() {
-            IsAvailable = false;
+            //IsAvailable = false;
         }
-        public void MakeNotAvailable(int customerID) {
-            IsAvailable = false;
-            CustomerID = customerID;
+        public void MakeNotAvailable(string customerID) {
+            //IsAvailable = false;
+            //CustomerId = customerID;
         }
     }
 }

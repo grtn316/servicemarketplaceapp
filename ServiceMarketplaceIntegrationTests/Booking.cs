@@ -53,8 +53,8 @@ public class BookingIntegrationTests : IClassFixture<CustomWebApplicationFactory
         // Add test data to the database.
         dbContext.Bookings.AddRange(new List<Booking>
     {
-        new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4", BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
-        new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = "06874549-8158-4144-891c-1a33141904bd", BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled }
+            new Booking { Id = 1, ServiceId = 1, CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", Status = BookingStatus.Confirmed },
+            new Booking { Id = 2, ServiceId = 2, CustomerId = "1633f073-0193-4bed-815e-db4cdeaf4713", Status = BookingStatus.Canceled }
     });
         dbContext.SaveChanges();
     }
@@ -80,7 +80,7 @@ public class BookingIntegrationTests : IClassFixture<CustomWebApplicationFactory
         response.EnsureSuccessStatusCode(); // Status Code 200-299
         var stringResponse = await response.Content.ReadAsStringAsync();
         var booking = JsonConvert.DeserializeObject<Booking>(stringResponse);
-        Assert.Equal(100, booking.Cost);
+        Assert.Equal(BookingStatus.Confirmed, booking.Status);
     }
 
     [Fact]
@@ -96,7 +96,7 @@ public class BookingIntegrationTests : IClassFixture<CustomWebApplicationFactory
     public async Task Add_AddsBooking()
     {
 
-        var newBooking = new Booking { Id = 3, StartTime = DateTime.Now.AddDays(3), EndTime = DateTime.Now.AddDays(3).AddHours(1), ServiceId = 3, CustomerID = "b01873ec-546c-4813-b93b-e7bef86a4de4", BusinessID = 3, Cost = 200, Status = BookingStatus.Complete };
+        var newBooking = new Booking { Id = 3, ServiceId = 1, CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", Status = BookingStatus.Canceled };
         var content = new StringContent(JsonConvert.SerializeObject(newBooking), Encoding.UTF8, "application/json");
 
         var response = await _client.PostAsync("/api/Booking", content);
@@ -104,8 +104,8 @@ public class BookingIntegrationTests : IClassFixture<CustomWebApplicationFactory
         response.EnsureSuccessStatusCode(); // Status Code 201
         var stringResponse = await response.Content.ReadAsStringAsync();
         var addedBooking = JsonConvert.DeserializeObject<Booking>(stringResponse);
-        Assert.Equal(200, addedBooking.Cost);
-    }
+           Assert.Equal(BookingStatus.Canceled, addedBooking.Status);
+        }
 }
 
 }

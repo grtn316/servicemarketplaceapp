@@ -19,7 +19,7 @@ namespace ServiceMarketplace.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Service>> Get()
+        public async Task<IEnumerable<object>> Get()
         {
             return await _repository.GetAllServicesAsync();
         }
