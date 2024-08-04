@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj": {}
+    "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj": {
+    "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj",
         "projectName": "ServiceMarketplaceUnitTests",
-        "projectPath": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj",
-        "packagesPath": "C:\\Users\\David Baumgarten\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\obj\\",
+        "projectPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj",
+        "packagesPath": "C:\\Users\\thatb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\David Baumgarten\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thatb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj": {
-                "projectPath": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj"
+              "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj": {
+                "projectPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj"
               }
             }
           }
@@ -96,20 +96,20 @@
         }
       }
     },
-    "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj": {
+    "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj",
+        "projectUniqueName": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj",
         "projectName": "ServiceMarketplace",
-        "projectPath": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj",
-        "packagesPath": "C:\\Users\\David Baumgarten\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\David Baumgarten\\source\\repos\\servicemarketplaceapp\\ServiceMarketplace\\obj\\",
+        "projectPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj",
+        "packagesPath": "C:\\Users\\thatb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\David Baumgarten\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thatb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

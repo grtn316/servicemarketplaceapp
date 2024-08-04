@@ -41,6 +41,14 @@ namespace ServiceMarketplace.Entities
             TimeSlot slot = new TimeSlot(startDateTime, endDateTime);
 
             this.TimeSlots.Add(slot);
+
+            for (int i = 0; i < 6; i++)
+            {
+                DateTime newStart = startDateTime.AddDays(1);
+                DateTime newEnd = endDateTime.AddDays(1);
+                TimeSlot newSlot = new TimeSlot(newStart, newEnd);
+                this.TimeSlots.Add(newSlot);
+            }
         }
 
         public Service()
@@ -49,6 +57,18 @@ namespace ServiceMarketplace.Entities
             Description = string.Empty;
             Reviews = new List<Review>();
             //ServiceCalendar = new ServiceCalendar();
+
+            DateTime startDateTime = new DateTime(2024, 8, 4, 9, 0, 0);
+            DateTime endDateTime = new DateTime(2024, 8, 4, 17, 0, 0);
+            TimeSlot slot = new TimeSlot(startDateTime, endDateTime);
+
+            for (int i = 0; i < 6; i++)
+            {
+                DateTime newStart = startDateTime.AddDays(1);
+                DateTime newEnd = endDateTime.AddDays(1);
+                TimeSlot newSlot = new TimeSlot(newStart, newEnd);
+                this.TimeSlots.Add(newSlot);
+            }
         }
     }
 }
