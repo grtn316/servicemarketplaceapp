@@ -31,10 +31,6 @@ namespace ServiceMarketplace.Entities
             this.Duration = duration;
             this.Rating = 0;
             this.Reviews = new List<Review>();
-            //this.ServiceCalendar = new ServiceCalendar();
-
-            //TimeSlot slot = new TimeSlot(new DateOnly(2024, 8, 1), new TimeOnly(00, 30, 00), new TimeOnly(00, 00, 00), new TimeSpan(00, 30, 00));
-            //TimeSlot slot = new TimeSlot(new DateTime(2024, 8, 1), new DateTime(2024, 8, 1));
 
             DateTime startDateTime = new DateTime(2024, 8, 4, 9, 0, 0);
             DateTime endDateTime = new DateTime(2024, 8, 4, 17, 0, 0);
@@ -48,7 +44,30 @@ namespace ServiceMarketplace.Entities
             ServiceName = string.Empty;
             Description = string.Empty;
             Reviews = new List<Review>();
-            //ServiceCalendar = new ServiceCalendar();
+        }
+
+        public void CreateWeekLongTimeSlot()
+        {
+            this.TimeSlots.Clear();
+
+            DateTime startDateTime = new DateTime(2024, 8, 4, 9, 0, 0);
+            DateTime endDateTime = new DateTime(2024, 8, 4, 17, 0, 0);
+            TimeSlot timeSlot = new TimeSlot(startDateTime, endDateTime);
+            this.TimeSlots.Add(timeSlot);
+
+            DateTime nextStart = startDateTime.AddDays(1);
+            DateTime nextEnd = endDateTime.AddDays(1);
+            TimeSlot nextTimeSlot = new TimeSlot(nextStart, nextEnd);
+            this.TimeSlots.Add(nextTimeSlot);
+
+            for (int i = 0; i < 6; i++)
+            {
+                nextStart = nextStart.AddDays(1);
+                nextEnd = nextEnd.AddDays(1);
+
+                nextTimeSlot = new TimeSlot(nextStart, nextEnd);
+                this.TimeSlots.Add(nextTimeSlot);
+            }
         }
     }
 }
