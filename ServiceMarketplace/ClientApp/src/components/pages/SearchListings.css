@@ -1,4 +1,5 @@
-﻿.listings-container {
+﻿/* SearchListings.css */
+.listings-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -11,14 +12,31 @@
         margin-bottom: 30px;
     }
 
-.search-bar {
-    width: 100%;
-    padding: 10px;
+.search-bar-container {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
+
+}
+
+.search-bar {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    margin-left: 32px;
 }
+
+.radius-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+    .radius-checkbox input {
+        margin-right: 5px;
+    }
 
 .listing-item {
     background: #fff;
@@ -50,7 +68,6 @@
 
     .listing-item span {
         font-weight: bold;
-        color: #000;
     }
 
 .business-info, .reviews-list, .availability-list {
@@ -74,3 +91,59 @@
                 font-weight: bold;
                 color: #333;
             }
+
+.map-container {
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.book-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+    .book-button:hover {
+        background-color: #0056b3;
+    }
+
+.booking-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.booking-form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}

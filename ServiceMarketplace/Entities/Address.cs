@@ -9,5 +9,6 @@ namespace ServiceMarketplace.Entities
         public string City { get; set; } = string.Empty;
         public string State { get; set; } = string.Empty;
         public string Zipcode { get; set; } = string.Empty;
+        public string Coordinate { get; set; } = string.Empty;
     }
 }

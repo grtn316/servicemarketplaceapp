@@ -3,27 +3,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ServiceMarketplace.Entities
 {
-    public class BusinessUser : User
+    public class BusinessUser
     {
-        public BusinessUser(int id, AccountType accountType, string username, string password, string email, string firstName, string lastName, string phoneNumber) : base(id, accountType, username, password, email, firstName, lastName, phoneNumber)
-        {
-            this.Id = id;
-            this.AccountType = accountType;
-            this.Username = username;
-            this.Password = password;
-            this.Email = email;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.PhoneNumber = phoneNumber;
-        }
-
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public int BusinessId { get; set; }
+        [Required]
+        public string UserId { get; set; }
         [Required]
         public bool IsAdmin { get; set; } = false;
-        [Required]
-        public int BusinessId;
 
         public BusinessUser()
         {
+            UserId = String.Empty;
+            IsAdmin = false;
+            BusinessId = 0;
+
         }
     }
 

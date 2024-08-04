@@ -19,7 +19,7 @@ namespace ServiceMarketplace.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Service>> Get()
+        public async Task<IEnumerable<object>> Get()
         {
             return await _repository.GetAllServicesAsync();
         }
@@ -36,7 +36,7 @@ namespace ServiceMarketplace.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Service service)
+        public async Task<IActionResult> Add([FromBody] Service service)
         {
             await _repository.AddServicesAsync(service);
             return CreatedAtAction(nameof(GetById), new { id = service.Id }, service);

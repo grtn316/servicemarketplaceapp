@@ -1,5 +1,19 @@
 ﻿import React, { Component } from 'react';
 import './SearchListings.css';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { UserBooking } from './UserBooking';
+
+const mapContainerStyle = {
+    height: "200px",
+    width: "100%"
+};
+
+const googleMapsApiKey = "AIzaSyBHBIIaxRnkkLvtY0mY1B8HmwNb91M9JcI";
+
+const mapOptions = {
+    fullscreenControl: true,
+    streetViewControl: false // Disable the Street View control
+};
 
 export class SearchListings extends Component {
     static displayName = SearchListings.name;
@@ -8,136 +22,210 @@ export class SearchListings extends Component {
         super(props);
         this.state = {
             searchTerm: '',
-            listings: [
-                {
-                    id: 1,
-                    business: {
-                        id: '101',
-                        name: 'Alpha Services',
-                        description: 'Providing top-notch alpha services.',
-                        address: {
-                            street: '123 Main St',
-                            city: 'Townsville',
-                            state: 'TS',
-                            zip: '12345'
-                        },
-                        phoneNumber: {
-                            countryCode: '+1',
-                            number: '123-456-7890'
-                        }
-                    },
-                    serviceName: 'Web Development',
-                    description: 'Building modern and responsive websites.',
-                    price: 50.0,
-                    duration: 60,
-                    rating: 4.5,
-                    reviews: [
-                        { id: 1, content: 'Great service!', rating: 5 },
-                        { id: 2, content: 'Very professional.', rating: 4 }
-                    ],
-                    availability: [
-                        { id: 1, startTime: new Date('2024-07-13T09:00:00'), endTime: new Date('2024-07-13T10:00:00') },
-                        { id: 2, startTime: new Date('2024-07-13T11:00:00'), endTime: new Date('2024-07-13T12:00:00') }
-                    ]
-                },
-                {
-                    id: 2,
-                    business: {
-                        id: '102',
-                        name: 'Beta Solutions',
-                        description: 'Innovative solutions for your business needs.',
-                        address: {
-                            street: '456 Oak St',
-                            city: 'Villageton',
-                            state: 'VS',
-                            zip: '67890'
-                        },
-                        phoneNumber: {
-                            countryCode: '+1',
-                            number: '987-654-3210'
-                        }
-                    },
-                    serviceName: 'Graphic Design',
-                    description: 'Creating stunning visual content.',
-                    price: 75.0,
-                    duration: 90,
-                    rating: 4.0,
-                    reviews: [
-                        { id: 3, content: 'Good value for money.', rating: 4 },
-                        { id: 4, content: 'Satisfactory.', rating: 3 }
-                    ],
-                    availability: [
-                        { id: 3, startTime: new Date('2024-07-13T13:00:00'), endTime: new Date('2024-07-13T14:30:00') },
-                        { id: 4, startTime: new Date('2024-07-13T15:00:00'), endTime: new Date('2024-07-13T16:30:00') }
-                    ]
-                },
-                {
-                    id: 3,
-                    business: {
-                        id: '103',
-                        name: 'Gamma Enterprises',
-                        description: 'Your go-to partner for business growth.',
-                        address: {
-                            street: '789 Pine St',
-                            city: 'Cityburg',
-                            state: 'CB',
-                            zip: '11223'
-                        },
-                        phoneNumber: {
-                            countryCode: '+1',
-                            number: '555-123-4567'
-                        }
-                    },
-                    serviceName: 'SEO Optimization',
-                    description: 'Improving your website ranking on search engines.',
-                    price: 100.0,
-                    duration: 120,
-                    rating: 5.0,
-                    reviews: [
-                        { id: 5, content: 'Excellent service!', rating: 5 },
-                        { id: 6, content: 'Highly recommended.', rating: 5 }
-                    ],
-                    availability: [
-                        { id: 5, startTime: new Date('2024-07-13T17:00:00'), endTime: new Date('2024-07-13T19:00:00') },
-                        { id: 6, startTime: new Date('2024-07-13T20:00:00'), endTime: new Date('2024-07-13T22:00:00') }
-                    ]
-                }
-            ]
+            withinRadius: false,
+            userLocation: null,
+            selectedService: null,
+            listings: []
         };
     }
+
+    componentDidMount() {
+        this.fetchServices();
+        this.fetchUserAddress();
+    }
+
+    fetchUserAddress = async () => {
+        try {
+            const authResponse = await fetch('/pingauth');
+            if (!authResponse.ok) {
+                throw new Error('Failed to fetch user information');
+            }
+            const authData = await authResponse.json();
+            const userId = authData.id;
+
+            const userResponse = await fetch(`/api/user/${userId}`);
+            if (!userResponse.ok) {
+                throw new Error('Failed to fetch user address');
+            }
+            const user = await userResponse.json();
+            const address = `${user.street}, ${user.city}, ${user.state} ${user.zipcode}`;
+            const coordinates = await this.getCoordinates({ street: user.street, city: user.city, state: user.state, zipcode: user.zipcode });
+
+            this.setState({
+                userLocation: {
+                    lat: coordinates.lat,
+                    lng: coordinates.lng
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching user address:', error);
+        }
+    };
+
+    fetchServices = async () => {
+        try {
+            const response = await fetch('/api/service');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const services = await response.json();
+            const listings = await Promise.all(services.map(async (service) => {
+                const businessResponse = await fetch(`/api/business/${service.businessId}`);
+                if (!businessResponse.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const business = await businessResponse.json();
+                const coordinates = await this.getCoordinates(business.address);
+                return {
+                    id: service.id,
+                    business: {
+                        id: business.id.toString(),
+                        name: business.name,
+                        description: business.description,
+                        address: {
+                            street: business.address.street,
+                            city: business.address.city,
+                            state: business.address.state,
+                            zip: business.address.zipcode,
+                            lat: coordinates.lat,
+                            lng: coordinates.lng
+                        },
+                        phoneNumber: {
+                            countryCode: '+1',
+                            number: business.phoneNumber
+                        }
+                    },
+                    serviceName: service.serviceName,
+                    description: service.description,
+                    price: service.price,
+                    duration: service.duration,
+                    rating: service.rating,
+                    reviews: service.reviews,
+                    availability: service.timeSlots
+                };
+            }));
+            this.setState({ listings });
+        } catch (error) {
+            console.error('Error fetching services:', error);
+        }
+    };
+
+    getCoordinates = async (address) => {
+        try {
+            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address.street + ', ' + address.city + ', ' + address.state + ' ' + address.zipcode)}&key=${googleMapsApiKey}`);
+            const data = await response.json();
+            if (data.status === 'OK') {
+                const location = data.results[0].geometry.location;
+                return {
+                    lat: location.lat,
+                    lng: location.lng
+                };
+            } else {
+                throw new Error('Geocoding failed: ' + data.status);
+            }
+        } catch (error) {
+            console.error('Error getting coordinates:', error);
+            return {
+                lat: 0,
+                lng: 0
+            };
+        }
+    };
 
     handleSearchChange = (event) => {
         this.setState({ searchTerm: event.target.value });
     };
 
-    render() {
-        const { searchTerm, listings } = this.state;
-        const filteredListings = listings.filter(listing => {
-            const searchLower = searchTerm.toLowerCase();
-            return (
+    handleRadiusChange = (event) => {
+        this.setState({ withinRadius: event.target.checked });
+    };
+
+    handleBookClick = (service) => {
+        this.setState({ selectedService: service });
+    };
+
+    handleCloseForm = () => {
+        this.setState({ selectedService: null });
+    };
+
+    updateServiceAvailability = (serviceId, updatedAvailability) => {
+        this.setState(prevState => {
+            const updatedListings = prevState.listings.map(listing => {
+                if (listing.id === serviceId) {
+                    return { ...listing, availability: updatedAvailability };
+                }
+                return listing;
+            });
+            return { listings: updatedListings, selectedService: null };
+        });
+    };
+
+    calculateDistance = (lat1, lon1, lat2, lon2) => {
+        const R = 3958.8; // Radius of the Earth in miles
+        const dLat = (lat2 - lat1) * (Math.PI / 180);
+        const dLon = (lon2 - lon1) * (Math.PI / 180);
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    };
+
+    filterListings = () => {
+        const { searchTerm, withinRadius, listings, userLocation } = this.state;
+        const searchLower = searchTerm.toLowerCase();
+        return listings.filter(listing => {
+            const matchesSearchTerm =
                 listing.serviceName.toLowerCase().includes(searchLower) ||
                 listing.business.name.toLowerCase().includes(searchLower) ||
-                listing.business.description.toLowerCase().includes(searchLower)
+                listing.business.description.toLowerCase().includes(searchLower);
+
+            if (!withinRadius || !userLocation) {
+                return matchesSearchTerm;
+            }
+
+            const distance = this.calculateDistance(
+                userLocation.lat,
+                userLocation.lng,
+                listing.business.address.lat,
+                listing.business.address.lng
             );
+            return matchesSearchTerm && distance <= 20;
         });
+    };
+
+    render() {
+        const { searchTerm, withinRadius, selectedService } = this.state;
+        const filteredListings = this.filterListings();
 
         return (
             <div className="listings-container">
                 <h1>Service Listings</h1>
-                <input
-                    type="text"
-                    className="search-bar"
-                    placeholder="Search for services or businesses..."
-                    value={searchTerm}
-                    onChange={this.handleSearchChange}
-                />
+                <div className="search-bar-container">
+                    <input
+                        type="text"
+                        className="search-bar"
+                        placeholder="Search for services or businesses..."
+                        value={searchTerm}
+                        onChange={this.handleSearchChange}
+                    />
+                    <label className="radius-checkbox">
+                        <input
+                            type="checkbox"
+                            checked={withinRadius}
+                            onChange={this.handleRadiusChange}
+                        />
+                        Search within 20 mi radius
+                    </label>
+                </div>
                 <ul>
                     {filteredListings.map(listing => (
                         <li key={listing.id} className="listing-item">
                             <h2>{listing.serviceName}</h2>
                             <p>{listing.description}</p>
                             <p><span>Price:</span> ${listing.price}</p>
-                            <p><span>Duration:</span> {listing.duration} minutes</p>
+                            <p><span>Duration:</span> {listing.duration}</p>
                             <p><span>Rating:</span> {listing.rating} stars</p>
                             <h3>Business Information:</h3>
                             <ul className="business-info">
@@ -148,11 +236,24 @@ export class SearchListings extends Component {
                                     <p><span>Phone:</span> {listing.business.phoneNumber.countryCode} {listing.business.phoneNumber.number}</p>
                                 </li>
                             </ul>
+                            <h3>Location:</h3>
+                            <div className="map-container">
+                                <LoadScript googleMapsApiKey={googleMapsApiKey}>
+                                    <GoogleMap
+                                        mapContainerStyle={mapContainerStyle}
+                                        center={{ lat: listing.business.address.lat, lng: listing.business.address.lng }}
+                                        zoom={15}
+                                        options={mapOptions}
+                                    >
+                                        <Marker position={{ lat: listing.business.address.lat, lng: listing.business.address.lng }} />
+                                    </GoogleMap>
+                                </LoadScript>
+                            </div>
                             <h3>Reviews:</h3>
                             <ul className="reviews-list">
                                 {listing.reviews.map(review => (
                                     <li key={review.id}>
-                                        <p><span>Review:</span> {review.content} - {review.rating} stars</p>
+                                        <p><span>Review:</span> {review.comment} - {review.rating} stars</p>
                                     </li>
                                 ))}
                             </ul>
@@ -160,17 +261,30 @@ export class SearchListings extends Component {
                             <ul className="availability-list">
                                 {listing.availability.map(slot => (
                                     <li key={slot.id}>
-                                        <p><span>From:</span> {slot.startTime.toLocaleString()} <span>To:</span> {slot.endTime.toLocaleString()}</p>
+                                        <p><span>From:</span> {new Date(slot.startTime).toLocaleString()} <span>To:</span> {new Date(slot.endTime).toLocaleString()}</p>
                                     </li>
                                 ))}
                             </ul>
+                            <button className="book-button" onClick={() => this.handleBookClick(listing)}>Book</button>
                         </li>
                     ))}
                 </ul>
+                {selectedService && (
+                    <div className="booking-form-overlay">
+                        <div className="booking-form-container">
+                            <button className="close-button" onClick={this.handleCloseForm}>X</button>
+                            <UserBooking service={selectedService} updateServiceAvailability={this.updateServiceAvailability} />
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }
 }
+
+
+
+
 
 
 

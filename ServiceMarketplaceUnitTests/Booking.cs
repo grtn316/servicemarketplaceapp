@@ -26,8 +26,8 @@ namespace ServiceMarketplace.Tests
             
             var bookings = new List<Booking>
             {
-                new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed },
-                new Booking { Id = 2, StartTime = DateTime.Now.AddDays(2), EndTime = DateTime.Now.AddDays(2).AddHours(1), ServiceId = 2, CustomerID = 2, BusinessID = 2, Cost = 150, Status = BookingStatus.Canceled }
+                new Booking { Id = 1, ServiceId = 1, CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", Status = BookingStatus.Confirmed },
+            new Booking { Id = 2, ServiceId = 2, CustomerId = "1633f073-0193-4bed-815e-db4cdeaf4713", Status = BookingStatus.Canceled }
             };
             _mockRepo.Setup(repo => repo.GetAllBookingsAsync()).ReturnsAsync(bookings);
 
@@ -54,8 +54,8 @@ namespace ServiceMarketplace.Tests
         [Fact]
         public async Task GetById_ReturnsBooking_WhenBookingExists()
         {
-            
-            var bookings = new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed };
+
+            var bookings = new Booking { Id = 1, ServiceId = 1, CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", Status = BookingStatus.Confirmed };
             _mockRepo.Setup(repo => repo.GetBookingsByIdAsync(1)).ReturnsAsync(bookings);
 
             
@@ -69,10 +69,10 @@ namespace ServiceMarketplace.Tests
         [Fact]
         public async Task Add_ReturnsCreatedAtAction()
         {
-            
-            var forecast = new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed };
 
-            
+            var forecast = new Booking { Id = 1, ServiceId = 1, CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", Status = BookingStatus.Confirmed };
+
+
             var result = await _controller.Add(forecast);
 
             
@@ -85,10 +85,10 @@ namespace ServiceMarketplace.Tests
         [Fact]
         public async Task Update_ReturnsBadRequest_WhenIdMismatch()
         {
-            
-            var forecast = new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed };
 
-            
+            var forecast = new Booking { Id = 1, ServiceId = 1, CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", Status = BookingStatus.Confirmed };
+
+
             var result = await _controller.Update(2, forecast);
 
             
@@ -98,8 +98,8 @@ namespace ServiceMarketplace.Tests
         [Fact]
         public async Task Update_ReturnsNoContent_WhenSuccessful()
         {
-            
-            var forecast = new Booking { Id = 1, StartTime = DateTime.Now.AddDays(1), EndTime = DateTime.Now.AddDays(1).AddHours(1), ServiceId = 1, CustomerID = 1, BusinessID = 1, Cost = 100, Status = BookingStatus.Confirmed };
+
+            var forecast = new Booking { Id = 1, ServiceId = 1, CustomerId = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", Status = BookingStatus.Confirmed };
 
             
             var result = await _controller.Update(1, forecast);
