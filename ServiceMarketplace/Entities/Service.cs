@@ -44,8 +44,8 @@ namespace ServiceMarketplace.Entities
 
             for (int i = 0; i < 6; i++)
             {
-                DateTime newStart = startDateTime.AddDays(1);
-                DateTime newEnd = endDateTime.AddDays(1);
+                DateTime newStart = newStart.AddDays(1);
+                DateTime newEnd = newEnd.AddDays(1);
                 TimeSlot newSlot = new TimeSlot(newStart, newEnd);
                 this.TimeSlots.Add(newSlot);
             }
@@ -64,8 +64,8 @@ namespace ServiceMarketplace.Entities
 
             for (int i = 0; i < 6; i++)
             {
-                DateTime newStart = startDateTime.AddDays(1);
-                DateTime newEnd = endDateTime.AddDays(1);
+                DateTime newStart = newStart.AddDays(1);
+                DateTime newEnd = newEnd.AddDays(1);
                 TimeSlot newSlot = new TimeSlot(newStart, newEnd);
                 this.TimeSlots.Add(newSlot);
             }
