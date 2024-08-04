@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.Core.Resource;
+using Microsoft.EntityFrameworkCore;
 using ServiceMarketplace.Data;
 using ServiceMarketplace.Entities;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace ServiceMarketplace.Repository
         //Booking
         Task<IEnumerable<Booking>> GetAllBookingsAsync();
         Task<Booking> GetBookingsByIdAsync(int id);
+        Task<List<Booking>> GetBookingsByCustomerIdAsync(string customerId);
         Task AddBookingsAsync(Booking entity);
         Task UpdateBookingsAsync(Booking entity);
         Task DeleteBookingsAsync(int id);
@@ -99,6 +101,14 @@ namespace ServiceMarketplace.Repository
         public async Task<Booking> GetBookingsByIdAsync(int id)
         {
             return await _context.Bookings.FindAsync(id);
+        }
+
+        public async Task<List<Booking>> GetBookingsByCustomerIdAsync(string customerId)
+        {
+            return await _context.Bookings
+                .Include(b => b.TimeSlot)
+                .Where(b => b.CustomerId == customerId)
+                .ToListAsync();
         }
 
         public async Task AddBookingsAsync(Booking entity)

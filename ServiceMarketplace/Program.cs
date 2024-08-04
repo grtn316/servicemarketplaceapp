@@ -76,8 +76,12 @@ public class Program
                     var firstName = appUser.FirstName;
                     var lastName = appUser.LastName;
                     var email = appUser.Email;
+                    var address = appUser.Address;
+                    var city = appUser.City;
+                    var state = appUser.State;
+                    var zipCode = appUser.ZipCode;
                     var accountType = appUser.AccountType;
-                    return Results.Json(new { id = userId, firstName, lastName, email, accountType });
+                    return Results.Json(new { id = userId, firstName, lastName, email, address, city, state, zipCode, accountType });
                 }
             }
             return Results.Unauthorized();

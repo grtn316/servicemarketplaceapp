@@ -12,14 +12,31 @@
         margin-bottom: 30px;
     }
 
-.search-bar {
-    width: 100%;
-    padding: 10px;
+.search-bar-container {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
+
+}
+
+.search-bar {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    margin-left: 32px;
 }
+
+.radius-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+    .radius-checkbox input {
+        margin-right: 5px;
+    }
 
 .listing-item {
     background: #fff;

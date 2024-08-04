@@ -7,9 +7,27 @@ export class UserBooking extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedSlot: null
+            selectedSlot: null,
+            customerId: null
         };
     }
+
+    componentDidMount() {
+        this.fetchCustomerId();
+    }
+
+    fetchCustomerId = async () => {
+        try {
+            const response = await fetch('/pingauth');
+            if (!response.ok) {
+                throw new Error('Failed to fetch customer ID');
+            }
+            const user = await response.json();
+            this.setState({ customerId: user.id });
+        } catch (error) {
+            console.error('Error fetching customer ID:', error);
+        }
+    };
 
     handleSlotChange = (event) => {
         this.setState({ selectedSlot: event.target.value });
@@ -18,7 +36,7 @@ export class UserBooking extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         const { service, updateServiceAvailability } = this.props;
-        const { selectedSlot } = this.state;
+        const { selectedSlot, customerId } = this.state;
 
         const selectedAvailability = service.availability.find(slot => slot.id === parseInt(selectedSlot));
 
@@ -28,12 +46,9 @@ export class UserBooking extends Component {
         }
 
         const booking = {
-            serviceId: service.id.toString(),
-            customerID: "1", // Replace with actual customer ID
-            businessID: service.business.id.toString(),
-            startTime: selectedAvailability.startTime.toISOString(),
-            endTime: selectedAvailability.endTime.toISOString(),
-            cost: service.price.toString(),
+            serviceId: service.id,
+            customerId: customerId, // Use the actual customer ID
+            timeSlotId: selectedAvailability.id, // Include the selected time slot ID
             status: 0 // Confirmed status
         };
 
@@ -91,7 +106,7 @@ export class UserBooking extends Component {
                         {/* Duration */}
                         <div className="form-group">
                             <label className="form-label">Duration</label>
-                            <p className="form-control-static">{`${Math.floor(service.duration / 60)} hours ${service.duration % 60} minutes`}</p>
+                            <p className="form-control-static">{service.duration}</p>
                         </div>
                         <br />
 
@@ -127,10 +142,5 @@ export class UserBooking extends Component {
         );
     }
 }
-
-
-
-
-
 
 

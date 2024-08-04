@@ -34,6 +34,17 @@ namespace ServiceMarketplace.Controllers
             return Ok(Booking);
         }
 
+        [HttpGet("/customer/{customerId}")]
+        public async Task<IActionResult> GetByCustomerId(string customerId)
+        {
+            var Booking = await _repository.GetBookingsByCustomerIdAsync(customerId);
+            if (Booking == null)
+            {
+                return NotFound();
+            }
+            return Ok(Booking);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(Booking Booking)
         {

@@ -1,5 +1,17 @@
 ﻿import React, { Component } from 'react';
 import './Listings.css';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+
+const mapContainerStyle = {
+    height: "200px",
+    width: "100%"
+};
+
+const googleMapsApiKey = "AIzaSyBHBIIaxRnkkLvtY0mY1B8HmwNb91M9JcI";
+
+const mapOptions = {
+    streetViewControl: false // Disable the Street View control
+};
 
 export class Listings extends Component {
     static displayName = Listings.name;
@@ -7,103 +19,112 @@ export class Listings extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listings: [
-                {
-                    id: 1,
-                    business: {
-                        id: '101',
-                        name: 'Business A',
-                        description: 'Description for Business A',
-                        address: {
-                            street: '123 Main St',
-                            city: 'Townsville',
-                            state: 'TS',
-                            zip: '12345'
-                        },
-                        phoneNumber: {
-                            countryCode: '+1',
-                            number: '123-456-7890'
-                        }
-                    },
-                    serviceName: 'Service A',
-                    description: 'Description for Service A',
-                    price: 50.0,
-                    duration: 60,
-                    rating: 4.5,
-                    reviews: [
-                        { id: 1, content: 'Great service!', rating: 5 },
-                        { id: 2, content: 'Very professional.', rating: 4 }
-                    ],
-                    availability: [
-                        { id: 1, startTime: new Date('2024-07-13T09:00:00'), endTime: new Date('2024-07-13T10:00:00') },
-                        { id: 2, startTime: new Date('2024-07-13T11:00:00'), endTime: new Date('2024-07-13T12:00:00') }
-                    ]
-                },
-                {
-                    id: 2,
-                    business: {
-                        id: '102',
-                        name: 'Business B',
-                        description: 'Description for Business B',
-                        address: {
-                            street: '456 Oak St',
-                            city: 'Villageton',
-                            state: 'VS',
-                            zip: '67890'
-                        },
-                        phoneNumber: {
-                            countryCode: '+1',
-                            number: '987-654-3210'
-                        }
-                    },
-                    serviceName: 'Service B',
-                    description: 'Description for Service B',
-                    price: 75.0,
-                    duration: 90,
-                    rating: 4.0,
-                    reviews: [
-                        { id: 3, content: 'Good value for money.', rating: 4 },
-                        { id: 4, content: 'Satisfactory.', rating: 3 }
-                    ],
-                    availability: [
-                        { id: 3, startTime: new Date('2024-07-13T13:00:00'), endTime: new Date('2024-07-13T14:30:00') },
-                        { id: 4, startTime: new Date('2024-07-13T15:00:00'), endTime: new Date('2024-07-13T16:30:00') }
-                    ]
-                },
-                {
-                    id: 3,
-                    business: {
-                        id: '103',
-                        name: 'Business C',
-                        description: 'Description for Business C',
-                        address: {
-                            street: '789 Pine St',
-                            city: 'Cityburg',
-                            state: 'CB',
-                            zip: '11223'
-                        },
-                        phoneNumber: {
-                            countryCode: '+1',
-                            number: '555-123-4567'
-                        }
-                    },
-                    serviceName: 'Service C',
-                    description: 'Description for Service C',
-                    price: 100.0,
-                    duration: 120,
-                    rating: 5.0,
-                    reviews: [
-                        { id: 5, content: 'Excellent service!', rating: 5 },
-                        { id: 6, content: 'Highly recommended.', rating: 5 }
-                    ],
-                    availability: [
-                        { id: 5, startTime: new Date('2024-07-13T17:00:00'), endTime: new Date('2024-07-13T19:00:00') },
-                        { id: 6, startTime: new Date('2024-07-13T20:00:00'), endTime: new Date('2024-07-13T22:00:00') }
-                    ]
-                }
-            ]
+            listings: []
         };
     }
+
+    componentDidMount() {
+        this.fetchUserBookings();
+    }
+
+    fetchUserBookings = async () => {
+        try {
+            // Fetch user information to get the customer ID
+            const userResponse = await fetch('/pingauth');
+            if (!userResponse.ok) {
+                throw new Error('Failed to fetch user information');
+            }
+            const user = await userResponse.json();
+            const customerId = user.id;
+
+            // Fetch bookings for the customer
+            const bookingsResponse = await fetch(`/api/booking?customerId=${customerId}`);
+            if (!bookingsResponse.ok) {
+                throw new Error('Failed to fetch bookings');
+            }
+            const bookings = await bookingsResponse.json();
+
+            // Filter bookings for the current customer
+            const userBookings = bookings.filter(booking => booking.customerId === customerId);
+
+            // Fetch services and businesses related to the user bookings
+            const services = await Promise.all(userBookings.map(async (booking) => {
+                const serviceResponse = await fetch(`/api/service/${booking.serviceId}`);
+                if (!serviceResponse.ok) {
+                    throw new Error('Failed to fetch service');
+                }
+                return await serviceResponse.json();
+            }));
+
+            const businesses = await Promise.all(services.map(async (service) => {
+                const businessResponse = await fetch(`/api/business/${service.businessId}`);
+                if (!businessResponse.ok) {
+                    throw new Error('Failed to fetch business');
+                }
+                return await businessResponse.json();
+            }));
+
+            // Format the listings data
+            const listings = await Promise.all(userBookings.map(async (booking, index) => {
+                const service = services[index];
+                const business = businesses.find(b => b.id === service.businessId);
+                const coordinates = await this.getCoordinates(business.address);
+
+                return {
+                    id: booking.id,
+                    business: {
+                        id: business.id.toString(),
+                        name: business.name,
+                        description: business.description,
+                        address: {
+                            street: business.address.street,
+                            city: business.address.city,
+                            state: business.address.state,
+                            zip: business.address.zipcode,
+                            lat: coordinates.lat,
+                            lng: coordinates.lng
+                        },
+                        phoneNumber: {
+                            countryCode: '+1',
+                            number: business.phoneNumber
+                        }
+                    },
+                    serviceName: service.serviceName,
+                    description: service.description,
+                    price: service.price,
+                    duration: service.duration,
+                    rating: service.rating,
+                    reviews: service.reviews,
+                };
+            }));
+
+            this.setState({ listings });
+        } catch (error) {
+            console.error('Error fetching user bookings:', error);
+        }
+    };
+
+    getCoordinates = async (address) => {
+        try {
+            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address.street + ', ' + address.city + ', ' + address.state + ' ' + address.zipcode)}&key=${googleMapsApiKey}`);
+            const data = await response.json();
+            if (data.status === 'OK') {
+                const location = data.results[0].geometry.location;
+                return {
+                    lat: location.lat,
+                    lng: location.lng
+                };
+            } else {
+                throw new Error('Geocoding failed: ' + data.status);
+            }
+        } catch (error) {
+            console.error('Error getting coordinates:', error);
+            return {
+                lat: 0,
+                lng: 0
+            };
+        }
+    };
 
     render() {
         return (
@@ -115,7 +136,7 @@ export class Listings extends Component {
                             <h2>{listing.serviceName}</h2>
                             <p>{listing.description}</p>
                             <p><span>Price:</span> ${listing.price}</p>
-                            <p><span>Duration:</span> {listing.duration} minutes</p>
+                            <p><span>Duration:</span> {listing.duration}</p>
                             <p><span>Rating:</span> {listing.rating} stars</p>
                             <h3>Business Information:</h3>
                             <ul className="business-info">
@@ -126,19 +147,24 @@ export class Listings extends Component {
                                     <p><span>Phone:</span> {listing.business.phoneNumber.countryCode} {listing.business.phoneNumber.number}</p>
                                 </li>
                             </ul>
+                            <h3>Location:</h3>
+                            <div className="map-container">
+                                <LoadScript googleMapsApiKey={googleMapsApiKey}>
+                                    <GoogleMap
+                                        mapContainerStyle={mapContainerStyle}
+                                        center={{ lat: listing.business.address.lat, lng: listing.business.address.lng }}
+                                        zoom={15}
+                                        options={mapOptions}
+                                    >
+                                        <Marker position={{ lat: listing.business.address.lat, lng: listing.business.address.lng }} />
+                                    </GoogleMap>
+                                </LoadScript>
+                            </div>
                             <h3>Reviews:</h3>
                             <ul className="reviews-list">
                                 {listing.reviews.map(review => (
                                     <li key={review.id}>
-                                        <p><span>Review:</span> {review.content} - {review.rating} stars</p>
-                                    </li>
-                                ))}
-                            </ul>
-                            <h3>Availability:</h3>
-                            <ul className="availability-list">
-                                {listing.availability.map(slot => (
-                                    <li key={slot.id}>
-                                        <p><span>From:</span> {slot.startTime.toLocaleString()} <span>To:</span> {slot.endTime.toLocaleString()}</p>
+                                        <p><span>Review:</span> {review.comment} - {review.rating} stars</p>
                                     </li>
                                 ))}
                             </ul>
@@ -149,3 +175,17 @@ export class Listings extends Component {
         );
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
