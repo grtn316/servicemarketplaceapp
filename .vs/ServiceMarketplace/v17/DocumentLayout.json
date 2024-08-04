@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Shayan\\servicemarketplaceapp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\shayan\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\pages\\searchlistings.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\clientapp\\src\\components\\pages\\searchlistings.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\shayan\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\pages\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\clientapp\\src\\components\\pages\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\shayan\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\pages\\profile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\clientapp\\src\\components\\pages\\profile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\shayan\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\pages\\searchlistings.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|solutionrelative:servicemarketplace\\clientapp\\src\\components\\pages\\searchlistings.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B9DB95A6-DC10-47D2-B806-627F86E8493F}|ServiceMarketplace\\ServiceMarketplace.csproj|c:\\users\\shayan\\servicemarketplaceapp\\servicemarketplace\\clientapp\\src\\components\\pages\\userbooking.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -86,23 +86,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Profile.js",
               "DocumentMoniker": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\Profile.js",
               "RelativeDocumentMoniker": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Profile.js",
@@ -115,13 +103,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "SearchListings.js",
               "DocumentMoniker": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\SearchListings.js",
               "RelativeDocumentMoniker": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\SearchListings.js",
               "ToolTip": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\SearchListings.js",
               "RelativeToolTip": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\SearchListings.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-08-04T20:34:59.288Z",
               "EditorCaption": ""
@@ -162,11 +150,12 @@
               "RelativeToolTip": "ServiceMarketplace\\Repository\\Repository.cs",
               "ViewState": "AQIAAFMAAAAAAAAAAAAAwF8AAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T18:22:47.866Z"
+              "WhenOpened": "2024-08-03T18:22:47.866Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\Program.cs",
               "RelativeDocumentMoniker": "ServiceMarketplace\\Program.cs",
@@ -179,20 +168,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Register.js",
               "DocumentMoniker": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\Register.js",
               "RelativeDocumentMoniker": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Register.js",
               "ToolTip": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\Register.js",
               "RelativeToolTip": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Register.js",
-              "ViewState": "AQIAACsAAAAAAAAAAAAgwJQAAAAaAAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAAgwDcAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-08-03T17:19:03.564Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Profile.css",
               "DocumentMoniker": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\ClientApp\\src\\components\\pages\\Profile.css",
               "RelativeDocumentMoniker": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Profile.css",
@@ -226,7 +215,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Entities\\Service.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAowBMAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T18:21:31.553Z"
+              "WhenOpened": "2024-08-03T18:21:31.553Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -238,7 +228,8 @@
               "RelativeToolTip": "ServiceMarketplace\\ClientApp\\src\\components\\pages\\Listings.js",
               "ViewState": "AQIAABgAAAAAAAAAAAAAABIAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-08-04T12:29:28.369Z"
+              "WhenOpened": "2024-08-04T12:29:28.369Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -250,7 +241,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Entities\\Review.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T12:32:54.337Z"
+              "WhenOpened": "2024-08-04T12:32:54.337Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -262,7 +254,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Controllers\\BookingController.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAQwCcAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T12:34:02.596Z"
+              "WhenOpened": "2024-08-04T12:34:02.596Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -274,7 +267,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Controllers\\ServiceController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T18:22:17.524Z"
+              "WhenOpened": "2024-08-03T18:22:17.524Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -286,7 +280,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Entities\\TimeSlot.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T18:00:30.056Z"
+              "WhenOpened": "2024-08-03T18:00:30.056Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -298,7 +293,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Controllers\\BusinessController.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAgwBoAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T00:23:30.624Z"
+              "WhenOpened": "2024-08-02T00:23:30.624Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -310,7 +306,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Entities\\Address.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T00:16:10.114Z"
+              "WhenOpened": "2024-08-02T00:16:10.114Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -322,7 +319,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Entities\\BookingStatus.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T00:16:07.734Z"
+              "WhenOpened": "2024-08-02T00:16:07.734Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -334,7 +332,8 @@
               "RelativeToolTip": "ServiceMarketplace\\Entities\\BusinessUser.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T00:15:48.775Z"
+              "WhenOpened": "2024-08-02T00:15:48.775Z",
+              "EditorCaption": ""
             }
           ]
         }
