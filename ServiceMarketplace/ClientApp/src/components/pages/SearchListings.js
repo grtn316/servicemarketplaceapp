@@ -41,7 +41,6 @@ export class SearchListings extends Component {
                 throw new Error('Failed to fetch user information');
             }
             const authData = await authResponse.json();
-            const address = `${authData.street}, ${authData.city}, ${authData.state} ${authData.zipcode}`;
             const coordinates = await this.getCoordinates({ street: authData.street, city: authData.city, state: authData.state, zipcode: authData.zipcode });
 
             this.setState({
