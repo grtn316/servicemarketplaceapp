@@ -4,6 +4,7 @@ using ServiceMarketplace.Data;
 using ServiceMarketplace.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static ServiceMarketplace.Entities.Booking;
 
 namespace ServiceMarketplace.Repository
 {
