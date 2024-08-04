@@ -35,6 +35,17 @@ namespace ServiceMarketplace.Controllers
             return Ok(business);
         }
 
+        [HttpGet("user/{id}")]
+        public async Task<IActionResult> GetBusinessesByUserId(string id)
+        {
+            var business = await _repository.GetUserBusinessesByUserIdAsync(id);
+            if (business == null)
+            {
+                return NotFound();
+            }
+            return Ok(business);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(BusinessUser business)
         {
