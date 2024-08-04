@@ -41,11 +41,29 @@ export class CreateBooking extends Component {
         let { businessId, serviceName, description, price, duration } = this.state;
 
         // Calculating duration.
-        let hours = this.props.hours; // this is wrong
-        let minutes = this.props.minutes; // this is wrong
+        //let hours = this.props.hours; // this is wrong
+        //let minutes = this.props.minutes; // this is wrong
         duration = "2.00:00:01"; // TODO: properly format duration, using test duration
         businessId = "1"; // TODO: RETRIEVE BUSINESS ID, USING DUMMY BUSINESS ID FOR NOW.
-        
+
+
+        const serviceData = {
+            businessId: businessId,
+            serviceName: serviceName,
+            description: description,
+            price: price,
+            duration: duration,
+            rating: 0, // no reviews
+            reviews: [ //no reviews
+            ],
+            timeSlots: [
+                {
+                    startTime: new Date().toISOString(),
+                    endTime: new Date(new Date().getTime() + 60 * 60 * 1000).toISOString()
+                }
+            ]
+        };
+
         // POST request to the service controller.
         // Persist new service listing to the controller/database.
         const response = await fetch('/api/service',
@@ -54,7 +72,8 @@ export class CreateBooking extends Component {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ businessId, serviceName, description, price, duration })
+                //body: JSON.stringify({ businessId, serviceName, description, price, duration })
+                body: JSON.stringify(serviceData)
             }
         ).then(r => r.json());
     }

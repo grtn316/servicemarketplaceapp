@@ -21,6 +21,8 @@ namespace ServiceMarketplace.Entities
         //public float Cost { get; set; }
         public BookingStatus Status { get; set; }
 
+        public TimeSlot TimeSlot { get; set; }
+
         public Booking(DateTime startTime, DateTime endTime, int serviceId, string customerId, int timeSlotId, int businessId, float cost, BookingStatus status)
         {
 
