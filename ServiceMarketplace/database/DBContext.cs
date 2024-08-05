@@ -186,7 +186,7 @@ namespace ServiceMarketplace.Data
 
             string commonPasswordHash = "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==";
 
-            var realAddresses = new List<string>
+            var realAddresses33755 = new List<string>
             {
                 "100 N Osceola Ave", "200 N Fort Harrison Ave", "300 N Betty Ln", "400 N Highland Ave",
                 "500 Eldridge St", "600 N Garden Ave", "700 N Myrtle Ave", "800 N Washington Ave",
@@ -203,6 +203,23 @@ namespace ServiceMarketplace.Data
                 "4900 Sunset Point Rd", "5000 Greenbriar Blvd"
             };
 
+            var realAddresses33417 = new List<string>
+            {
+                "1000 Village Blvd", "1100 Palm Beach Lakes Blvd", "1200 Presidential Way", "1300 Congress Ave",
+                "1400 Village Blvd", "1500 North Military Trail", "1600 Pine Tree Dr", "1700 Forum Pl",
+                "1800 Indian Rd", "1900 Northshore Dr", "2000 Lakeview Dr", "2100 Coral Lake Dr",
+                "2200 Liberty Cir", "2300 Quail Ridge Rd", "2400 Pinehurst Dr", "2500 Village Blvd",
+                "2600 Executive Center Dr", "2700 Embassy Dr", "2800 Egret Cir", "2900 Courtyard Cir",
+                "3000 Lakeside Green Blvd", "3100 Fairway Dr", "3200 Cumberland Cir", "3300 Timberline Dr",
+                "3400 Golfview Rd", "3500 Pinewood Ave", "3600 Sea Pines Dr", "3700 Woodside Dr",
+                "3800 Foxwood Cir", "3900 Summit Blvd", "4000 Summit Lakes Dr", "4100 Summit Pines Blvd",
+                "4200 Briar Bay Blvd", "4300 Lakeside Green Dr", "4400 Bay Club Cir", "4500 Cumberland Cir",
+                "4600 Village Blvd", "4700 Polo Club Dr", "4800 Timberline Dr", "4900 Twin Lakes Dr",
+                "5000 Winwood Way", "5100 Egret Lakes Ln", "5200 Palm Beach Lakes Blvd", "5300 Bear Lakes Ct",
+                "5400 Summit Pines Blvd", "5500 Woodway Dr", "5600 Fernley Dr", "5700 Willow Pond Rd",
+                "5800 Cypress Lakes Dr", "5900 Briarwood Cir"
+            };
+
             var realBusinessNames = new List<string>
             {
                 "Sunshine Lawn Care", "Ocean Breeze Spa", "Gulf Coast Plumbing", "Clearwater Auto Repair",
@@ -217,7 +234,21 @@ namespace ServiceMarketplace.Data
                 "Coastal Veterinary Clinic", "Sunshine Insurance", "Gulf Coast Home Repair",
                 "Sunset Photography", "Clearwater Window Cleaning", "Beachside Florist", "Sunshine Travel Agency",
                 "Bay Area Catering", "Sunshine Daycare", "Clearwater Dry Cleaning", "Gulf Coast Fitness",
-                "Sunshine Tutoring", "Clearwater Real Estate", "Tampa Bay Music Lessons", "Sunshine IT Services"
+                "Sunshine Tutoring", "Clearwater Real Estate", "Tampa Bay Music Lessons", "Sunshine IT Services",
+                "Palm Beach Auto Repair", "South Florida Spa", "West Palm Beach Plumbing", "Lakeview Electric",
+                "Greenways Landscaping", "Palm Beach Accounting", "Oceanfront Legal Services", "Palm Beach Realty",
+                "Northshore Fitness", "Southside Pet Grooming", "Palm Beach HVAC", "Seaside Bakery",
+                "Liberty Pest Control", "Lakeside Chiropractic", "Summit Tutoring", "Fernley Automotive",
+                "Pinehurst Florist", "Palm Beach Movers", "Lakeside Tech Support", "Egret Landscaping",
+                "Cumberland Salon", "Bayfront Yoga Studio", "Greenbriar Photography", "Willow Pond Travel Agency",
+                "Palm Beach Catering", "Cypress Lakes Fitness", "Briarwood Printing", "Northshore Music Lessons",
+                "Summit Event Planning", "Polo Club Veterinary Clinic", "Village Web Design", "Cypress Lakes Legal Services",
+                "Palm Shores Lawn Care", "Seaside Massage Therapy", "West End Plumbing", "Sunshine Auto Repair",
+                "Clearwater Cafe", "Gulfside Dental", "Bayview Financial Services", "Beachfront Yoga",
+                "Paradise Landscaping", "Sunset Electric", "Island Groomers", "Harborview Realty",
+                "Tropical Tree Services", "Ocean Blue Painting", "Shoreline Roofing", "Coral Coast Marina",
+                "Seabreeze Cleaning", "Tropical Salon", "Bay Area IT Solutions", "Fitness by the Bay",
+                "Everglades Pest Control", "Gulf Coast Bakery", "Seaside HVAC", "Palm Beach Legal Advisors"
             };
 
             var realServiceNames = new List<string>
@@ -225,16 +256,29 @@ namespace ServiceMarketplace.Data
                 "Lawn Mowing", "Massage Therapy", "Pipe Repair", "Oil Change",
                 "Coffee and Pastries", "Dental Cleaning", "Tax Preparation", "Yoga Classes",
                 "Garden Maintenance", "Electrical Repair", "Pet Grooming", "Real Estate Services",
-                "Painting Services", "Roof Repair", "Boat Docking", "House Cleaning",
-                "Hair Styling", "IT Support", "Personal Training", "Pest Control",
-                "Bakery Services", "HVAC Repair", "Legal Consultation", "Tutoring Services",
-                "Printing Services", "Chiropractic Adjustment", "Landscaping", "Auto Repair",
-                "Legal Services", "Bicycle Repair", "Moving Services", "Web Design",
-                "Financial Planning", "Event Planning", "Veterinary Services", "Insurance Services",
-                "Home Repair", "Photography", "Window Cleaning", "Florist Services",
-                "Travel Planning", "Catering", "Childcare", "Dry Cleaning",
-                "Fitness Training", "Academic Tutoring", "Real Estate Consulting", "Music Lessons",
-                "IT Consulting", "Bicycle Repair"
+                "Tree Trimming", "House Painting", "Roof Repair", "Boat Docking",
+                "Home Cleaning", "Hair Styling", "IT Support", "Personal Training",
+                "Pest Control", "Baking and Pastries", "HVAC Repair", "Legal Consultation",
+                "Private Tutoring", "Printing Services", "Chiropractic Adjustment", "Lawn Care",
+                "Auto Repair", "Legal Services", "Bicycle Repair", "Moving Services",
+                "Website Design", "Financial Planning", "Event Planning", "Veterinary Services",
+                "Insurance Services", "Home Repair", "Photography", "Window Cleaning",
+                "Floral Arrangements", "Travel Planning", "Catering", "Childcare Services",
+                "Dry Cleaning", "Fitness Training", "Tutoring Services", "Real Estate Consulting",
+                "Music Lessons", "IT Consulting", "Auto Repair", "Spa Services",
+                "Plumbing Services", "Electrical Services", "Landscaping", "Accounting Services",
+                "Legal Advice", "Real Estate Services", "Personal Training", "Pet Grooming",
+                "HVAC Maintenance", "Bakery Services", "Pest Control", "Chiropractic Care",
+                "Tutoring", "Auto Services", "Floral Design", "Moving Assistance",
+                "Technical Support", "Lawn Maintenance", "Hair Styling", "Photography",
+                "Travel Agency Services", "Catering Services", "Fitness Classes", "Printing",
+                "Music Instruction", "Event Coordination", "Veterinary Care", "Web Development",
+                "Legal Counseling", "Lawn Care", "Massage", "Plumbing", "Vehicle Maintenance",
+                "Cafe Services", "Dental Services", "Financial Consulting", "Yoga Instruction",
+                "Lawn Services", "Electrical Work", "Grooming Services", "Property Management",
+                "Tree Services", "Painting Services", "Roof Services", "Marina Services",
+                "Residential Cleaning", "Salon Services", "IT Services", "Fitness Coaching",
+                "Pest Control Services", "Bakery Goods", "HVAC Installation", "Legal Services"
             };
 
 
@@ -245,13 +289,16 @@ namespace ServiceMarketplace.Data
             var services = new List<Service>();
             var timeSlots = new List<TimeSlot>();
 
+            //Load standard users
             users.Add(new User { Id = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", AccountType = AccountType.Standard, Email = "USER1@SERVICEMARKETPLACE.COM", NormalizedEmail = "USER1@SERVICEMARKETPLACE.COM", UserName = "user1@servicemarketplace.com", NormalizedUserName = "USER1@SERVICEMARKETPLACE.COM", FirstName = "John", LastName = "Doe", Address = "123 Oasis Ave", City = "Clearwater", State = "FL", ZipCode = "33755", PhoneNumber = "5555555555", LockoutEnabled = true, PasswordHash = "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==" });
             users.Add(new User { Id = "1633f073-0193-4bed-815e-db4cdeaf4713", AccountType = AccountType.Standard, Email = "USER2@SERVICEMARKETPLACE.COM", NormalizedEmail = "USER2@SERVICEMARKETPLACE.COM", UserName = "user2@servicemarketplace.com", NormalizedUserName = "USER2@SERVICEMARKETPLACE.COM", FirstName = "Jane", LastName = "Doe", Address = "124 Beach Side Rd", City = "Clearwater", State = "FL", ZipCode = "33755", PhoneNumber = "5555555555", LockoutEnabled = true, PasswordHash = "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==" });
 
-            int timeslotId = 1; //timeslot counter
+            int timeslotId = 1; // timeslot index
 
-            for (int i = 1; i <= 50; i++)
+            for (int i = 1; i <= 100; i++)
             {
+                bool is33755 = i % 2 == 1; // Alternate between 33755 and 33417
+
                 var userId = Guid.NewGuid().ToString();
                 users.Add(new User
                 {
@@ -263,10 +310,10 @@ namespace ServiceMarketplace.Data
                     NormalizedUserName = $"USER{i + 2}@SERVICEMARKETPLACE.COM",
                     FirstName = $"First{i}",
                     LastName = $"Last{i}",
-                    Address = realAddresses[i - 1],
-                    City = "Clearwater",
+                    Address = is33755 ? realAddresses33755[(i / 2) % realAddresses33755.Count] : realAddresses33417[(i / 2) % realAddresses33417.Count],
+                    City = is33755 ? "Clearwater" : "West Palm Beach",
                     State = "FL",
-                    ZipCode = "33755",
+                    ZipCode = is33755 ? "33755" : "33417",
                     PhoneNumber = $"727555{i:0000}",
                     LockoutEnabled = true,
                     PasswordHash = commonPasswordHash
@@ -284,10 +331,10 @@ namespace ServiceMarketplace.Data
                 businessAddresses.Add(new
                 {
                     BusinessId = businessId,
-                    Street = realAddresses[i - 1],
-                    City = "Clearwater",
+                    Street = is33755 ? realAddresses33755[(i / 2) % realAddresses33755.Count] : realAddresses33417[(i / 2) % realAddresses33417.Count],
+                    City = is33755 ? "Clearwater" : "West Palm Beach",
                     State = "FL",
-                    Zipcode = "33755",
+                    Zipcode = is33755 ? "33755" : "33417",
                     Coordinate = ""
                 });
 
@@ -311,7 +358,7 @@ namespace ServiceMarketplace.Data
                     Rating = (i % 5) + 1
                 });
 
-                for (int k = 1; k <= 10; k++) // Generate 10 timeslots per service
+                for (int k = 1; k <= 10; k++)
                 {
                     var startTime = DateTime.Now.AddDays(k).AddHours(i).AddMinutes(-DateTime.Now.Minute).AddSeconds(-DateTime.Now.Second).AddMilliseconds(-DateTime.Now.Millisecond);
                     var endTime = startTime.AddHours(1);
@@ -332,7 +379,7 @@ namespace ServiceMarketplace.Data
             modelBuilder.Entity<BusinessUser>().HasData(businessUsers);
             modelBuilder.Entity<Service>().HasData(services);
             modelBuilder.Entity<TimeSlot>().HasData(timeSlots);
-
+            
         }
     }
 }
