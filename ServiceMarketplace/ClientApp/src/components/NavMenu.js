@@ -89,9 +89,9 @@ export class NavMenu extends Component {
                         <ul className="navbar-nav flex-grow">
                             {accountType !== null && (
                                 <>
-                                    <NavItem>
+                                    {/*<NavItem>
                                         <NavLink tag={Link} to="/" className={activeLink === "/" ? "selectedLink" : ""}>Home</NavLink>
-                                    </NavItem>
+                                    </NavItem>*/}
                                     {accountType === 1 && (
                                         <>
                                             <NavItem>
