@@ -281,6 +281,22 @@ namespace ServiceMarketplace.Data
                 "Pest Control Services", "Bakery Goods", "HVAC Installation", "Legal Services"
             };
 
+            var reviewCommentsAndRatings = new List<(string Comment, int Rating)>
+            {
+                ("Excellent service, highly recommend!", 5),
+                ("Very satisfied with the service.", 5),
+                ("Would use again.", 4),
+                ("Good, but could be improved.", 4),
+                ("Not bad, but not the best.", 3),
+                ("Service was okay, nothing special.", 3),
+                ("Disappointed with the quality.", 2),
+                ("Could be better.", 2),
+                ("Not what I expected.", 2),
+                ("Terrible experience, would not recommend.", 1),
+                ("Had some issues, but they were resolved.", 3),
+                ("Service was poor, not happy.", 1)
+            };
+
 
             var users = new List<User>();
             var businesses = new List<Business>();
@@ -288,12 +304,14 @@ namespace ServiceMarketplace.Data
             var businessUsers = new List<BusinessUser>();
             var services = new List<Service>();
             var timeSlots = new List<TimeSlot>();
+            var reviews = new List<Review>();
 
             //Load standard users
             users.Add(new User { Id = "9a54338d-49f5-420b-904e-a7d6b94ef8ed", AccountType = AccountType.Standard, Email = "USER1@SERVICEMARKETPLACE.COM", NormalizedEmail = "USER1@SERVICEMARKETPLACE.COM", UserName = "user1@servicemarketplace.com", NormalizedUserName = "USER1@SERVICEMARKETPLACE.COM", FirstName = "John", LastName = "Doe", Address = "123 Oasis Ave", City = "Clearwater", State = "FL", ZipCode = "33755", PhoneNumber = "5555555555", LockoutEnabled = true, PasswordHash = "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==" });
             users.Add(new User { Id = "1633f073-0193-4bed-815e-db4cdeaf4713", AccountType = AccountType.Standard, Email = "USER2@SERVICEMARKETPLACE.COM", NormalizedEmail = "USER2@SERVICEMARKETPLACE.COM", UserName = "user2@servicemarketplace.com", NormalizedUserName = "USER2@SERVICEMARKETPLACE.COM", FirstName = "Jane", LastName = "Doe", Address = "124 Beach Side Rd", City = "Clearwater", State = "FL", ZipCode = "33755", PhoneNumber = "5555555555", LockoutEnabled = true, PasswordHash = "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==" });
 
             int timeslotId = 1; // timeslot index
+            int reviewId = 1; //review index
 
             for (int i = 1; i <= 100; i++)
             {
@@ -371,6 +389,22 @@ namespace ServiceMarketplace.Data
                         EndTime = endTime
                     });
                 }
+
+                for (int j = 1; j <= 3; j++)
+                {
+                    var review = reviewCommentsAndRatings[(i + j) % reviewCommentsAndRatings.Count];
+
+                    reviews.Add(new Review
+                    {
+                        Id = reviewId++,
+                        ServiceId = serviceId,
+                        CustomerId = userId,
+                        ParentReviewId = 0,
+                        TimeStamp = DateTime.Now.AddDays(-j * 7), // Space reviews out
+                        Rating = review.Rating,
+                        Comment = review.Comment
+                    });
+                }
             }
 
             modelBuilder.Entity<User>().HasData(users);
@@ -379,7 +413,8 @@ namespace ServiceMarketplace.Data
             modelBuilder.Entity<BusinessUser>().HasData(businessUsers);
             modelBuilder.Entity<Service>().HasData(services);
             modelBuilder.Entity<TimeSlot>().HasData(timeSlots);
-            
+            modelBuilder.Entity<Review>().HasData(reviews);
+
         }
     }
 }
