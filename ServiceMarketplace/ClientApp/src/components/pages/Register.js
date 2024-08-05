@@ -2,11 +2,14 @@
 import { withNavigate } from '../utils/navigate';
 
 
+
 class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
             accountType: 0, // 0 for Standard and 1 for Business
+            businessName: "",
+            businessDescription: "",
             firstName: "",
             lastName: "",
             address: "",
@@ -30,10 +33,83 @@ class Register extends Component {
         this.setState({ [name]: parsedValue });
     }
 
+    registerBusiness(userId, businessName, businessDescription, address, city, state, zipCode, phoneNumber) {
+        var businessId = 0;
+
+        fetch("/api/business", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: businessName,
+                description: businessDescription,
+                address: {
+                    street: address,
+                    city: city,
+                    state: state,
+                    zipCode: zipCode
+                },
+                phoneNumber: phoneNumber
+            }),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Error registering.');
+                }
+                return response.json(); // Parse the response as JSON
+            })
+            .then((data) => {
+                console.log('ID:', data.id);
+                this.setState({ error: "Successful register." });
+                businessId = data.id;
+                //this.props.navigate("/");
+                this.registerBusinessUser(businessId, userId);
+            })
+            .catch((error) => {
+                console.error(error);
+                this.setState({ error: error.message || "Error registering." });
+            });
+    }
+
+    registerBusinessUser(businessId, userId) {
+        fetch("/api/businessuser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                businessId: businessId,
+                userId: userId,
+                isAdmin: true
+            }),
+        })
+            .then((data) => {
+                // handle success or error from the server
+                console.log(data + "asdf");
+                if (data.ok) {
+                    this.setState({ error: "Successful register." });
+                    //this.props.navigate("/");
+                }
+                else {
+                    this.setState({ error: "Error registering." });
+                }
+            })
+            .catch((error) => {
+                // handle network error
+                console.error(error);
+                this.setState({ error: "Error registering." });
+            });
+    }
+
     handleSubmit(e) {
         e.preventDefault();
+        var userId = "";
+        var businessId = 0;
         const {
             accountType,
+            businessName,
+            businessDescription,
             firstName,
             lastName,
             address,
@@ -76,21 +152,22 @@ class Register extends Component {
                     password: password,
                 }),
             })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Error registering.');
+                    }
+                    return response.json(); // Parse the response as JSON
+                })
                 .then((data) => {
-                    // handle success or error from the server
-                    console.log(data);
-                    if (data.ok) {
-                        this.setState({ error: "Successful register." });
-                        this.props.navigate("/");
-                    }
-                    else {
-                        this.setState({ error: "Error registering." });
-                    }
+                    console.log('ID:', data.id);
+                    this.setState({ error: "Successful register." });
+                    userId = data.id;
+                    //this.props.navigate("/");
+                    this.registerBusiness(userId, businessName, businessDescription, address, city, state, zipCode, phoneNumber);
                 })
                 .catch((error) => {
-                    // handle network error
                     console.error(error);
-                    this.setState({ error: "Error registering." });
+                    this.setState({ error: error.message || "Error registering." });
                 });
         }
     }
@@ -98,6 +175,8 @@ class Register extends Component {
     render() {
         const {
             accountType,
+            businessName,
+            businessDescription,
             firstName,
             lastName,
             address,
@@ -147,7 +226,33 @@ class Register extends Component {
                             </label>
                         </div>
                     </div>
+                    {accountType === 1 ?
+                        <><div>
+                            <label htmlFor="businessName" className="form-label">Business Name:</label>
+                        </div><div>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    id="businessName"
+                                    name="businessName"
+                                    value={businessName}
+                                    placeholder="Company Inc."
 
+                                    onChange={this.handleChange} />
+                            </div><div>
+                                <label htmlFor="businessDescription" className="form-label">Business Description:</label>
+                            </div><div>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    id="businessDescription"
+                                    name="businessDescription"
+                                    value={businessDescription}
+                                    placeholder="We're a business. We do stuff for money."
+                                    onChange={this.handleChange} />
+                            </div></>
+                        : <div></div>
+                    }
                     <div>
                         <label htmlFor="email" className="form-label">Email:</label>
                     </div>
