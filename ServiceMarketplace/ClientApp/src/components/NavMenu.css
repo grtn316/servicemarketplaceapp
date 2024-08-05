@@ -16,3 +16,39 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+a.nav-link:hover {
+    color: #a3a3a3 !important;
+}
+
+/*a.nav-link:focus {
+    color: #ffffff !important;
+    background-color: #a3a3a3 !important;
+    font-weight: normal;
+    border-radius: 5px;
+}*/
+/*.selectedLink {
+    color: #ffffff !important;
+    background-color: #a3a3a3 !important;
+    font-weight: normal;
+    border-radius: 5px;
+}
+*/
+/*.nav-link:current {
+    color: #ffffff !important;
+    background-color: #a3a3a3 !important;
+    font-weight: normal;
+    border-radius: 5px;
+}*/
+/*
+.inactive {
+    color: #a3a3a3 !important;
+    text-decoration: none;
+}
+
+.active {
+    color: #ffffff !important;
+    background-color: #a3a3a3 !important;
+    font-weight: normal;
+    border-radius: 5px;
+}*/

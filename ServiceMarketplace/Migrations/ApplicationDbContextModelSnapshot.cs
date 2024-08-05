@@ -166,6 +166,8 @@ namespace ServiceMarketplace.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TimeSlotId");
+
                     b.ToTable("Bookings");
 
                     b.HasData(
@@ -354,7 +356,7 @@ namespace ServiceMarketplace.Migrations
                             ParentReviewId = 0,
                             Rating = 5f,
                             ServiceId = 1,
-                            TimeStamp = new DateTime(2024, 8, 3, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3334)
+                            TimeStamp = new DateTime(2024, 8, 4, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1315)
                         },
                         new
                         {
@@ -364,7 +366,7 @@ namespace ServiceMarketplace.Migrations
                             ParentReviewId = 0,
                             Rating = 3f,
                             ServiceId = 2,
-                            TimeStamp = new DateTime(2024, 8, 1, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3338)
+                            TimeStamp = new DateTime(2024, 8, 2, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1319)
                         },
                         new
                         {
@@ -374,7 +376,7 @@ namespace ServiceMarketplace.Migrations
                             ParentReviewId = 0,
                             Rating = 1f,
                             ServiceId = 3,
-                            TimeStamp = new DateTime(2024, 7, 24, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3341)
+                            TimeStamp = new DateTime(2024, 7, 25, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1323)
                         });
                 });
 
@@ -499,44 +501,44 @@ namespace ServiceMarketplace.Migrations
                         new
                         {
                             Id = 1,
-                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3266),
+                            EndTime = new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1249),
                             ServiceId = 1,
-                            StartTime = new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3216)
+                            StartTime = new DateTime(2024, 8, 14, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1205)
                         },
                         new
                         {
                             Id = 2,
-                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3270),
+                            EndTime = new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1254),
                             ServiceId = 2,
-                            StartTime = new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3269)
+                            StartTime = new DateTime(2024, 8, 14, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1252)
                         },
                         new
                         {
                             Id = 3,
-                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3274),
+                            EndTime = new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1258),
                             ServiceId = 3,
-                            StartTime = new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3273)
+                            StartTime = new DateTime(2024, 8, 14, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1256)
                         },
                         new
                         {
                             Id = 4,
-                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3277),
+                            EndTime = new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1261),
                             ServiceId = 1,
-                            StartTime = new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3276)
+                            StartTime = new DateTime(2024, 8, 5, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1260)
                         },
                         new
                         {
                             Id = 5,
-                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3280),
+                            EndTime = new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1264),
                             ServiceId = 2,
-                            StartTime = new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3279)
+                            StartTime = new DateTime(2024, 8, 5, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1263)
                         },
                         new
                         {
                             Id = 6,
-                            EndTime = new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3283),
+                            EndTime = new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1267),
                             ServiceId = 3,
-                            StartTime = new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3282)
+                            StartTime = new DateTime(2024, 8, 5, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1266)
                         });
                 });
 
@@ -638,7 +640,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "612 Warf Avenue",
                             City = "Seattle",
-                            ConcurrencyStamp = "e1c40dcc-125e-44c7-aac8-cdd160bc357a",
+                            ConcurrencyStamp = "7e65148a-dde7-4d06-af7b-63167241d7b6",
                             Email = "USER1@SERVICEMARKETPLACE.COM",
                             EmailConfirmed = false,
                             FirstName = "John",
@@ -646,9 +648,10 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "USER1@SERVICEMARKETPLACE.COM",
                             NormalizedUserName = "USER1@SERVICEMARKETPLACE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==",
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c8f63e76-7226-482d-9253-d552c7b6abbb",
+                            SecurityStamp = "6c1e0784-d303-4bf0-ae7b-1d9611e1d52a",
                             State = "WA",
                             TwoFactorEnabled = false,
                             UserName = "user1@servicemarketplace.com",
@@ -661,7 +664,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 0,
                             Address = "612 Warf Avenue",
                             City = "Seattle",
-                            ConcurrencyStamp = "28d91fbf-2df6-411b-919a-6a8f0f8029fe",
+                            ConcurrencyStamp = "fc3f1e6d-1fa7-4c5b-9586-0a1bd3c79154",
                             Email = "USER2@SERVICEMARKETPLACE.COM",
                             EmailConfirmed = false,
                             FirstName = "Jane",
@@ -669,9 +672,10 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "USER2@SERVICEMARKETPLACE.COM",
                             NormalizedUserName = "USER2@SERVICEMARKETPLACE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==",
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f6f78e70-4c38-4a48-93f8-5178dabe9125",
+                            SecurityStamp = "95c9fd03-49ce-4cba-9666-cb170130088b",
                             State = "WA",
                             TwoFactorEnabled = false,
                             UserName = "user2@servicemarketplace.com",
@@ -684,7 +688,7 @@ namespace ServiceMarketplace.Migrations
                             AccountType = 1,
                             Address = "612 Warf Avenue",
                             City = "Seattle",
-                            ConcurrencyStamp = "19902036-46c2-4d38-8c3a-b8a46bb58282",
+                            ConcurrencyStamp = "5710e0d0-baa2-40c6-8f27-ae7d5fdc89d5",
                             Email = "USER3@SERVICEMARKETPLACE.COM",
                             EmailConfirmed = false,
                             FirstName = "Jack",
@@ -692,9 +696,10 @@ namespace ServiceMarketplace.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "USER3@SERVICEMARKETPLACE.COM",
                             NormalizedUserName = "USER3@SERVICEMARKETPLACE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==",
                             PhoneNumber = "5555555555",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "833dd20a-1db5-4bf8-adf5-e5efdbe2b40d",
+                            SecurityStamp = "8547f79a-a872-4665-9f93-b0bdd1953f6c",
                             State = "WA",
                             TwoFactorEnabled = false,
                             UserName = "user3@servicemarketplace.com",
@@ -771,6 +776,17 @@ namespace ServiceMarketplace.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ServiceMarketplace.Entities.Booking", b =>
+                {
+                    b.HasOne("ServiceMarketplace.Entities.TimeSlot", "TimeSlot")
+                        .WithMany()
+                        .HasForeignKey("TimeSlotId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TimeSlot");
                 });
 
             modelBuilder.Entity("ServiceMarketplace.Entities.Business", b =>

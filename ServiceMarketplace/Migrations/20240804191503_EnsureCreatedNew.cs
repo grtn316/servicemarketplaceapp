@@ -110,22 +110,6 @@ namespace ServiceMarketplace.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Bookings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
-                    CustomerId = table.Column<string>(type: "TEXT", nullable: false),
-                    TimeSlotId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Status = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bookings", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Businesses",
                 columns: table => new
                 {
@@ -364,24 +348,36 @@ namespace ServiceMarketplace.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CustomerId = table.Column<string>(type: "TEXT", nullable: false),
+                    TimeSlotId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bookings_TimeSlot_TimeSlotId",
+                        column: x => x.TimeSlotId,
+                        principalTable: "TimeSlot",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "AccountType", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "TwoFactorEnabled", "UserName", "ZipCode" },
                 values: new object[,]
                 {
-                    { "1633f073-0193-4bed-815e-db4cdeaf4713", 0, 0, "612 Warf Avenue", "Seattle", "28d91fbf-2df6-411b-919a-6a8f0f8029fe", "USER2@SERVICEMARKETPLACE.COM", false, "Jane", "Doe", true, null, "USER2@SERVICEMARKETPLACE.COM", "USER2@SERVICEMARKETPLACE.COM", null, "5555555555", false, "f6f78e70-4c38-4a48-93f8-5178dabe9125", "WA", false, "user2@servicemarketplace.com", "66666" },
-                    { "2a0ee853-cec6-421c-b705-fcb67eecc5cd", 0, 1, "612 Warf Avenue", "Seattle", "19902036-46c2-4d38-8c3a-b8a46bb58282", "USER3@SERVICEMARKETPLACE.COM", false, "Jack", "Doe", true, null, "USER3@SERVICEMARKETPLACE.COM", "USER3@SERVICEMARKETPLACE.COM", null, "5555555555", false, "833dd20a-1db5-4bf8-adf5-e5efdbe2b40d", "WA", false, "user3@servicemarketplace.com", "66666" },
-                    { "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 0, 0, "612 Warf Avenue", "Seattle", "e1c40dcc-125e-44c7-aac8-cdd160bc357a", "USER1@SERVICEMARKETPLACE.COM", false, "John", "Doe", true, null, "USER1@SERVICEMARKETPLACE.COM", "USER1@SERVICEMARKETPLACE.COM", null, "5555555555", false, "c8f63e76-7226-482d-9253-d552c7b6abbb", "WA", false, "user1@servicemarketplace.com", "66666" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Bookings",
-                columns: new[] { "Id", "CustomerId", "ServiceId", "Status", "TimeSlotId" },
-                values: new object[,]
-                {
-                    { 1, "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 1, 0, 1 },
-                    { 2, "1633f073-0193-4bed-815e-db4cdeaf4713", 2, 1, 2 },
-                    { 3, "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 3, 2, 3 }
+                    { "1633f073-0193-4bed-815e-db4cdeaf4713", 0, 0, "612 Warf Avenue", "Seattle", "fc3f1e6d-1fa7-4c5b-9586-0a1bd3c79154", "USER2@SERVICEMARKETPLACE.COM", false, "Jane", "Doe", true, null, "USER2@SERVICEMARKETPLACE.COM", "USER2@SERVICEMARKETPLACE.COM", "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==", "5555555555", false, "95c9fd03-49ce-4cba-9666-cb170130088b", "WA", false, "user2@servicemarketplace.com", "66666" },
+                    { "2a0ee853-cec6-421c-b705-fcb67eecc5cd", 0, 1, "612 Warf Avenue", "Seattle", "5710e0d0-baa2-40c6-8f27-ae7d5fdc89d5", "USER3@SERVICEMARKETPLACE.COM", false, "Jack", "Doe", true, null, "USER3@SERVICEMARKETPLACE.COM", "USER3@SERVICEMARKETPLACE.COM", "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==", "5555555555", false, "8547f79a-a872-4665-9f93-b0bdd1953f6c", "WA", false, "user3@servicemarketplace.com", "66666" },
+                    { "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 0, 0, "612 Warf Avenue", "Seattle", "7e65148a-dde7-4d06-af7b-63167241d7b6", "USER1@SERVICEMARKETPLACE.COM", false, "John", "Doe", true, null, "USER1@SERVICEMARKETPLACE.COM", "USER1@SERVICEMARKETPLACE.COM", "AQAAAAIAAYagAAAAEGFUa3HVeP4+S2/E32pkeZZMOUYO7iHDiB798julo60qLP4Z2DG7ihCHMSMijgCR7g==", "5555555555", false, "6c1e0784-d303-4bf0-ae7b-1d9611e1d52a", "WA", false, "user1@servicemarketplace.com", "66666" }
                 });
 
             migrationBuilder.InsertData(
@@ -419,9 +415,9 @@ namespace ServiceMarketplace.Migrations
                 columns: new[] { "Id", "Comment", "CustomerId", "ParentReviewId", "Rating", "ServiceId", "TimeStamp" },
                 values: new object[,]
                 {
-                    { 1, "I love this service. Repeat customer!", "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 0, 5f, 1, new DateTime(2024, 8, 3, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3334) },
-                    { 2, "Service was okay. Would use again.", "1633f073-0193-4bed-815e-db4cdeaf4713", 0, 3f, 2, new DateTime(2024, 8, 1, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3338) },
-                    { 3, "BEWARE!! SEO did not work!!", "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 0, 1f, 3, new DateTime(2024, 7, 24, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3341) }
+                    { 1, "I love this service. Repeat customer!", "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 0, 5f, 1, new DateTime(2024, 8, 4, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1315) },
+                    { 2, "Service was okay. Would use again.", "1633f073-0193-4bed-815e-db4cdeaf4713", 0, 3f, 2, new DateTime(2024, 8, 2, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1319) },
+                    { 3, "BEWARE!! SEO did not work!!", "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 0, 1f, 3, new DateTime(2024, 7, 25, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1323) }
                 });
 
             migrationBuilder.InsertData(
@@ -429,12 +425,22 @@ namespace ServiceMarketplace.Migrations
                 columns: new[] { "Id", "EndTime", "ServiceId", "StartTime" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3266), 1, new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3216) },
-                    { 2, new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3270), 2, new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3269) },
-                    { 3, new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3274), 3, new DateTime(2024, 8, 13, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3273) },
-                    { 4, new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3277), 1, new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3276) },
-                    { 5, new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3280), 2, new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3279) },
-                    { 6, new DateTime(2024, 8, 4, 14, 31, 3, 133, DateTimeKind.Local).AddTicks(3283), 3, new DateTime(2024, 8, 4, 13, 31, 3, 133, DateTimeKind.Local).AddTicks(3282) }
+                    { 1, new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1249), 1, new DateTime(2024, 8, 14, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1205) },
+                    { 2, new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1254), 2, new DateTime(2024, 8, 14, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1252) },
+                    { 3, new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1258), 3, new DateTime(2024, 8, 14, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1256) },
+                    { 4, new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1261), 1, new DateTime(2024, 8, 5, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1260) },
+                    { 5, new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1264), 2, new DateTime(2024, 8, 5, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1263) },
+                    { 6, new DateTime(2024, 8, 5, 15, 15, 3, 650, DateTimeKind.Local).AddTicks(1267), 3, new DateTime(2024, 8, 5, 14, 15, 3, 650, DateTimeKind.Local).AddTicks(1266) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Bookings",
+                columns: new[] { "Id", "CustomerId", "ServiceId", "Status", "TimeSlotId" },
+                values: new object[,]
+                {
+                    { 1, "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 1, 0, 1 },
+                    { 2, "1633f073-0193-4bed-815e-db4cdeaf4713", 2, 1, 2 },
+                    { 3, "9a54338d-49f5-420b-904e-a7d6b94ef8ed", 3, 2, 3 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -473,6 +479,11 @@ namespace ServiceMarketplace.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_TimeSlotId",
+                table: "Bookings",
+                column: "TimeSlotId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ServiceId",
@@ -522,13 +533,13 @@ namespace ServiceMarketplace.Migrations
                 name: "ServiceAvailability");
 
             migrationBuilder.DropTable(
-                name: "TimeSlot");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "TimeSlot");
 
             migrationBuilder.DropTable(
                 name: "Services");
