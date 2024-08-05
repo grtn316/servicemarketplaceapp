@@ -90,7 +90,6 @@ export class SearchListings extends Component {
                     serviceName: service.serviceName,
                     description: service.description,
                     price: service.price,
-                    duration: service.duration,
                     rating: service.rating,
                     reviews: service.reviews,
                     availability: service.timeSlots
@@ -217,7 +216,6 @@ export class SearchListings extends Component {
                             <h2>{listing.serviceName}</h2>
                             <p>{listing.description}</p>
                             <p><span>Price:</span> ${listing.price}</p>
-                            <p><span>Duration:</span> {listing.duration}</p>
                             <p><span>Rating:</span> {listing.rating} stars</p>
                             <h3>Business Information:</h3>
                             <ul className="business-info">

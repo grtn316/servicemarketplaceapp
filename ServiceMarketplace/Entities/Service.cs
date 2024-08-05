@@ -19,7 +19,7 @@ namespace ServiceMarketplace.Entities
         //public ServiceCalendar ServiceCalendar { get; set; }
         public List<TimeSlot> TimeSlots { get; set; }
 
-        public Service(int id, int businessId, string serviceName, string description, float price, TimeSpan duration)
+        public Service(int id, int businessId, string serviceName, string description, float price, List<TimeSlot> timeslots)
         {
             this.TimeSlots = new List<TimeSlot>();
 
@@ -28,15 +28,21 @@ namespace ServiceMarketplace.Entities
             this.ServiceName = serviceName;
             this.Description = description;
             this.Price = price;
-            this.Duration = duration;
+            this.Duration = new TimeSpan(); // not using this
             this.Rating = 0;
             this.Reviews = new List<Review>();
+            //this.ServiceCalendar = new ServiceCalendar();
+
+            //TimeSlot slot = new TimeSlot(new DateOnly(2024, 8, 1), new TimeOnly(00, 30, 00), new TimeOnly(00, 00, 00), new TimeSpan(00, 30, 00));
+            //TimeSlot slot = new TimeSlot(new DateTime(2024, 8, 1), new DateTime(2024, 8, 1));
+
+            TimeSlots = timeslots;
 
             DateTime startDateTime = new DateTime(2024, 8, 4, 9, 0, 0);
-            DateTime endDateTime = new DateTime(2024, 8, 4, 17, 0, 0);
-            TimeSlot slot = new TimeSlot(startDateTime, endDateTime);
+            //DateTime endDateTime = new DateTime(2024, 8, 4, 17, 0, 0);
+            //TimeSlot slot = new TimeSlot(startDateTime, endDateTime);
 
-            this.TimeSlots.Add(slot);
+            //this.TimeSlots.Add(slot);
         }
 
         public Service()
@@ -44,30 +50,7 @@ namespace ServiceMarketplace.Entities
             ServiceName = string.Empty;
             Description = string.Empty;
             Reviews = new List<Review>();
-        }
-
-        public void CreateWeekLongTimeSlot()
-        {
-            this.TimeSlots.Clear();
-
-            DateTime startDateTime = new DateTime(2024, 8, 4, 9, 0, 0);
-            DateTime endDateTime = new DateTime(2024, 8, 4, 17, 0, 0);
-            TimeSlot timeSlot = new TimeSlot(startDateTime, endDateTime);
-            this.TimeSlots.Add(timeSlot);
-
-            DateTime nextStart = startDateTime.AddDays(1);
-            DateTime nextEnd = endDateTime.AddDays(1);
-            TimeSlot nextTimeSlot = new TimeSlot(nextStart, nextEnd);
-            this.TimeSlots.Add(nextTimeSlot);
-
-            for (int i = 0; i < 6; i++)
-            {
-                nextStart = nextStart.AddDays(1);
-                nextEnd = nextEnd.AddDays(1);
-
-                nextTimeSlot = new TimeSlot(nextStart, nextEnd);
-                this.TimeSlots.Add(nextTimeSlot);
-            }
+            //ServiceCalendar = new ServiceCalendar();
         }
     }
 }

@@ -129,7 +129,7 @@ export class Listings extends Component {
     render() {
         return (
             <div className="listings-container">
-                <h1>My Listings</h1>
+                <h1>My Bookings</h1>
                 <ul>
                     {this.state.listings.map(listing => (
                         <li key={listing.id} className="listing-item">
