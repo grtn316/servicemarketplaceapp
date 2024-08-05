@@ -11,7 +11,7 @@ export class CreateBooking extends Component {
             serviceName: "",
             description: "",
             price: "0", // any number (double)
-            duration: "", // TimeSpanConvert in C# takes the following format:
+            duration: "2.00:00:01", // TimeSpanConvert in C# takes the following format:
                           // JSON format: https://learn.microsoft.com/en-us/dotnet/core/compatibility/serialization/6.0/timespan-serialization-format
             hours: "0",
             minutes: "0",
@@ -32,9 +32,20 @@ export class CreateBooking extends Component {
         
     }
 
-    calculateDay(today, dayWant) {
+    calculateDay(today, dayWant, hourWant, minuteWant) {
         var difference = today - dayWant;
-        if (difference <= 0) {
+        var date = new Date();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        if (difference === 0) {
+            if (hourWant >= hour) {
+                if (minuteWant > minute) { // can book today because time hasn't passed
+                    return difference;
+                }
+            }
+            difference = difference + 7; // otherwise must set it to next week
+        }
+        if (difference < 0) {
             difference = difference + 7;
         }
         return difference;
@@ -190,12 +201,14 @@ export class CreateBooking extends Component {
         startminute = parseInt(startminute);
         minutes = parseInt(minutes);
 
-        var finalminute = startminute + minutes;
-        var finalhour = starthour + hours;
-
         if (startperiod === "pm") {
             starthour = starthour + 12;
         }
+
+        var finalminute = startminute + minutes;
+        var finalhour = starthour + hours;
+
+        
         if (finalminute >= 60) {
             finalminute = finalminute - 60;
             finalhour = finalhour + 1;
@@ -216,7 +229,7 @@ export class CreateBooking extends Component {
         var endday;
 
         if (sunday === "1") {
-            displaceDay = this.calculateDay(dayOfWeek, 0);
+            displaceDay = this.calculateDay(dayOfWeek, 0, starthour, startminute);
             startday = new Date(new Date().getTime() + displaceDay * 24 * 60 * 60 * 1000);
             startday.setHours(starthour, startminute, 0);
             startday.toISOString();
@@ -229,22 +242,82 @@ export class CreateBooking extends Component {
             })
         }
         if (monday === "1") {
-
+            displaceDay = this.calculateDay(dayOfWeek, 1, starthour, startminute);
+            startday = new Date(new Date().getTime() + displaceDay * 24 * 60 * 60 * 1000);
+            startday.setHours(starthour, startminute, 0);
+            startday.toISOString();
+            endday = new Date(new Date().getTime() + (displaceDay + extraDay) * 24 * 60 * 60 * 1000);
+            endday.setHours(finalhour, finalminute, 0);
+            endday.toISOString();
+            timeSlots.push({
+                startTime: startday,
+                endTime: endday,
+            })
         }
         if (tuesday === "1") {
-
+            displaceDay = this.calculateDay(dayOfWeek, 2, starthour, startminute);
+            startday = new Date(new Date().getTime() + displaceDay * 24 * 60 * 60 * 1000);
+            startday.setHours(starthour, startminute, 0);
+            startday.toISOString();
+            endday = new Date(new Date().getTime() + (displaceDay + extraDay) * 24 * 60 * 60 * 1000);
+            endday.setHours(finalhour, finalminute, 0);
+            endday.toISOString();
+            timeSlots.push({
+                startTime: startday,
+                endTime: endday,
+            })
         }
         if (wednesday === "1") {
-
+            displaceDay = this.calculateDay(dayOfWeek, 3, starthour, startminute);
+            startday = new Date(new Date().getTime() + displaceDay * 24 * 60 * 60 * 1000);
+            startday.setHours(starthour, startminute, 0);
+            startday.toISOString();
+            endday = new Date(new Date().getTime() + (displaceDay + extraDay) * 24 * 60 * 60 * 1000);
+            endday.setHours(finalhour, finalminute, 0);
+            endday.toISOString();
+            timeSlots.push({
+                startTime: startday,
+                endTime: endday,
+            })
         }
         if (thursday === "1") {
-
+            displaceDay = this.calculateDay(dayOfWeek, 4, starthour, startminute);
+            startday = new Date(new Date().getTime() + displaceDay * 24 * 60 * 60 * 1000);
+            startday.setHours(starthour, startminute, 0);
+            startday.toISOString();
+            endday = new Date(new Date().getTime() + (displaceDay + extraDay) * 24 * 60 * 60 * 1000);
+            endday.setHours(finalhour, finalminute, 0);
+            endday.toISOString();
+            timeSlots.push({
+                startTime: startday,
+                endTime: endday,
+            })
         }
         if (friday === "1") {
-
+            displaceDay = this.calculateDay(dayOfWeek, 5, starthour, startminute);
+            startday = new Date(new Date().getTime() + displaceDay * 24 * 60 * 60 * 1000);
+            startday.setHours(starthour, startminute, 0);
+            startday.toISOString();
+            endday = new Date(new Date().getTime() + (displaceDay + extraDay) * 24 * 60 * 60 * 1000);
+            endday.setHours(finalhour, finalminute, 0);
+            endday.toISOString();
+            timeSlots.push({
+                startTime: startday,
+                endTime: endday,
+            })
         }
         if (saturday === "1") {
-
+            displaceDay = this.calculateDay(dayOfWeek, 6, starthour, startminute);
+            startday = new Date(new Date().getTime() + displaceDay * 24 * 60 * 60 * 1000);
+            startday.setHours(starthour, startminute, 0);
+            startday.toISOString();
+            endday = new Date(new Date().getTime() + (displaceDay + extraDay) * 24 * 60 * 60 * 1000);
+            endday.setHours(finalhour, finalminute, 0);
+            endday.toISOString();
+            timeSlots.push({
+                startTime: startday,
+                endTime: endday,
+            })
         }
 
         const serviceData = {
