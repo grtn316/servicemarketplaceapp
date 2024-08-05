@@ -2797,19 +2797,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Shayan\\.nuget\\packages\\": {}
+    "C:\\Users\\thatb\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj",
       "projectName": "ServiceMarketplaceUnitTests",
-      "projectPath": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj",
-      "packagesPath": "C:\\Users\\Shayan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\obj\\",
+      "projectPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\ServiceMarketplaceUnitTests.csproj",
+      "packagesPath": "C:\\Users\\thatb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplaceUnitTests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Shayan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\thatb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2824,8 +2828,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj": {
-              "projectPath": "C:\\Users\\Shayan\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj"
+            "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj": {
+              "projectPath": "C:\\Users\\thatb\\OneDrive\\Documents\\GitHub\\servicemarketplaceapp\\ServiceMarketplace\\ServiceMarketplace.csproj"
             }
           }
         }

@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ServiceMarketplaceUnitTests
-build_property.ProjectDir = C:\Users\David Baumgarten\source\repos\servicemarketplaceapp\ServiceMarketplaceUnitTests\
+build_property.ProjectDir = C:\Users\thatb\OneDrive\Documents\GitHub\servicemarketplaceapp\ServiceMarketplaceUnitTests\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
