@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { withNavigate } from '../utils/navigate';
 
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -31,6 +32,7 @@ class Login extends Component {
     //}
 
     handleSubmit(e) {
+        
         e.preventDefault();
         const { email, password, rememberme } = this.state;
 
@@ -51,7 +53,9 @@ class Login extends Component {
                 .then((data) => {
                     if (data.ok) {
                         this.setState({ error: "Successful Login." });
-                        this.props.navigate("/");
+                        this.props.navigate("/search-listings");
+                        window.location.reload();
+                        
                     } else {
                         this.setState({ error: "Error Logging In." });
                     }

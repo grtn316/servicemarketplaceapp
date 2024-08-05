@@ -16,11 +16,13 @@ function Logout() {
                 .then((data) => {
                     if (data.ok) {
                         navigate("/lin");
+                        window.location.reload();
                     }
                 })
                 .catch((error) => {
                     console.error(error);
                     navigate("/lin");
+                    window.location.reload();
                 });
         };
 
