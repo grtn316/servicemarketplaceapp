@@ -13,7 +13,7 @@ namespace ServiceMarketplace.Entities
         public string UserId { get; set; }
         [Required]
         public bool IsAdmin { get; set; } = false;
-        public Business businesses { get; set; }
+        public Business? businesses { get; set; }
 
         public BusinessUser()
         {
