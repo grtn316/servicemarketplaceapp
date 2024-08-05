@@ -95,7 +95,7 @@ export class NavMenu extends Component {
                                     {accountType === 1 && (
                                         <>
                                             <NavItem>
-                                                <NavLink tag={Link} to="/create-booking" className={activeLink === "/create-booking" ? "selectedLink" : ""}>Create Booking</NavLink>
+                                                <NavLink tag={Link} to="/create-booking" className={activeLink === "/create-booking" ? "selectedLink" : ""}>Create Listing</NavLink>
                                             </NavItem>
                                         </>
                                     )}
