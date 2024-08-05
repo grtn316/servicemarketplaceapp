@@ -16,7 +16,7 @@ export class CreateBooking extends Component {
             hours: "0",
             minutes: "0",
             starthour: "1",
-            startmin: "00",
+            startminute: "0",
             startperiod: "am",
             sunday: "0",
             monday: "0",
@@ -28,6 +28,16 @@ export class CreateBooking extends Component {
         };                
 
         this.handleSubmit = this.handleSubmit.bind(this); // "this" becomes undefined in other functions without this line
+
+        
+    }
+
+    calculateDay(today, dayWant) {
+        var difference = today - dayWant;
+        if (difference <= 0) {
+            difference = difference + 7;
+        }
+        return difference;
     }
 
     changeServiceName = (event) => {
@@ -163,21 +173,79 @@ export class CreateBooking extends Component {
         })
     }
 
+
     handleSubmit = async (event) => {
         event.preventDefault();
 
-        let { businessId, serviceName, description, price, duration, hours, minutes} = this.state;
+        let { businessId, serviceName, description, price, duration, hours, minutes, sunday, monday, tuesday, wednesday, thursday, friday, saturday, starthour, startminute, startperiod} = this.state;
 
         // Calculating duration.
         businessId = "1"; // TODO: RETRIEVE BUSINESS ID, USING DUMMY BUSINESS ID FOR NOW.
         var now = new Date();
         var dayOfWeek = now.getDay(); // 0 = sunday, 1 = monday,...
-        now.setHours(this.hours);
-        now.setMinutes(this.minutes);
-        now.setMilliseconds(0);
+        var displaceDay = 0;
+        var extraDay = 0;
+        starthour = parseInt(starthour);
+        hours = parseInt(hours);
+        startminute = parseInt(startminute);
+        minutes = parseInt(minutes);
+
+        var finalminute = startminute + minutes;
+        var finalhour = starthour + hours;
+
+        if (startperiod === "pm") {
+            starthour = starthour + 12;
+        }
+        if (finalminute >= 60) {
+            finalminute = finalminute - 60;
+            finalhour = finalhour + 1;
+        }
+        if (finalhour >= 24) {
+            finalhour = finalhour - 24;
+            extraDay = extraDay + 1;
+        }
+
+
+        var timeSlots = [];
+
 
         // get current date
-        // get wanted days + start time (hour,min,AM/PM)
+        // get wanted days + start time (hour,min,AM/PM) + duration (hour, min)
+
+        var startday;
+        var endday;
+
+        if (sunday === "1") {
+            displaceDay = this.calculateDay(dayOfWeek, 0);
+            startday = new Date(new Date().getTime() + displaceDay * 24 * 60 * 60 * 1000);
+            startday.setHours(starthour, startminute, 0);
+            startday.toISOString();
+            endday = new Date(new Date().getTime() + (displaceDay + extraDay) * 24 * 60 * 60 * 1000);
+            endday.setHours(finalhour, finalminute, 0);
+            endday.toISOString();
+            timeSlots.push({
+                startTime: startday,
+                endTime: endday,
+            })
+        }
+        if (monday === "1") {
+
+        }
+        if (tuesday === "1") {
+
+        }
+        if (wednesday === "1") {
+
+        }
+        if (thursday === "1") {
+
+        }
+        if (friday === "1") {
+
+        }
+        if (saturday === "1") {
+
+        }
 
         const serviceData = {
             businessId: businessId,
@@ -188,12 +256,7 @@ export class CreateBooking extends Component {
             rating: 0, // no reviews
             reviews: [ //no reviews
             ],
-            timeSlots: [
-                {
-                    startTime: new Date().toISOString(),
-                    endTime: new Date(new Date().getTime() + hours * minutes * 1000).toISOString()
-                }
-            ]
+            timeSlots: timeSlots
         };
 
         // POST request to the service controller.
@@ -304,7 +367,7 @@ export class CreateBooking extends Component {
                             </div>
                             <div className="form-group col-md-1">
                                 <select id="start-minutes" className="form-control" onChange={this.changeStartMinutes}>
-                                    <option>00</option><option>15</option><option>30</option><option>45</option>
+                                    <option value="0">00</option><option>15</option><option>30</option><option>45</option>
                                 </select>
                             </div>
                             <div className="form-group col-md-1">
