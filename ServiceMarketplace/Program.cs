@@ -81,7 +81,8 @@ public class Program
                     var state = appUser.State;
                     var zipCode = appUser.ZipCode;
                     var accountType = appUser.AccountType;
-                    return Results.Json(new { id = userId, firstName, lastName, email, address, city, state, zipCode, accountType });
+                    var phoneNumber = appUser.PhoneNumber;
+                    return Results.Json(new { id = userId, firstName, lastName, email, address, city, state, zipCode, accountType, phoneNumber });
                 }
             }
             return Results.Unauthorized();

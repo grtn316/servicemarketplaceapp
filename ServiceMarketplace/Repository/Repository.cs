@@ -4,6 +4,7 @@ using ServiceMarketplace.Data;
 using ServiceMarketplace.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static ServiceMarketplace.Entities.Booking;
 
 namespace ServiceMarketplace.Repository
 {
@@ -33,6 +34,7 @@ namespace ServiceMarketplace.Repository
         //BusinessUser
         Task<IEnumerable<BusinessUser>> GetAllBusinessUsersAsync();
         Task<BusinessUser> GetBusinessUsersByIdAsync(int id);
+        Task<object> GetUserBusinessesByUserIdAsync(string id);
         Task AddBusinessUsersAsync(BusinessUser entity);
         Task UpdateBusinessUsersAsync(BusinessUser entity);
         Task DeleteBusinessUsersAsync(int id);
@@ -175,6 +177,20 @@ namespace ServiceMarketplace.Repository
         public async Task<BusinessUser> GetBusinessUsersByIdAsync(int id)
         {
             return await _context.BusinessUsers.FindAsync(id);
+        }
+
+        public async Task<object> GetUserBusinessesByUserIdAsync(string id)
+        {
+            //return await _context.BusinessUsers
+            //    .Include(b => b.businesses)
+            //    .Where(b => b.Id == id)
+            //    .ToListAsync();
+
+            return await _context.BusinessUsers
+            .Where(bu => bu.UserId == id)
+            .Select(bu => bu.businesses)
+            .ToListAsync();
+
         }
 
         public async Task AddBusinessUsersAsync(BusinessUser entity)

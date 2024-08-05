@@ -10,7 +10,7 @@ export class CreateBooking extends Component {
             businessId: "", // can be retrieved from the loggedin user during submission
             serviceName: "",
             description: "",
-            price: "0", // any number (double)
+            price: "", // any number (double)
             duration: "", // TimeSpanConvert in C# takes the following format:
         };                // JSON format: https://learn.microsoft.com/en-us/dotnet/core/compatibility/serialization/6.0/timespan-serialization-format
 

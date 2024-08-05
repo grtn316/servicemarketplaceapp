@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceMarketplace.Entities;
 using ServiceMarketplace.Repository;
+using static ServiceMarketplace.Entities.Booking;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
