@@ -114,7 +114,7 @@ public class Program
             if (result.Succeeded)
             {
                 await signInManager.SignInAsync(user, isPersistent: false);
-                return Results.Ok("User registered successfully.");
+                return Results.Ok(new {id=user.Id});
             }
 
             var errors = string.Join("; ", result.Errors.Select(e => e.Description));
