@@ -19,7 +19,10 @@ export class Listings extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listings: []
+            listings: [],
+            customerName: '',
+            customerEmail: '',
+            customerPhone: ''
         };
     }
 
@@ -29,13 +32,16 @@ export class Listings extends Component {
 
     fetchUserBookings = async () => {
         try {
-            // Fetch user information to get the customer ID
+            // Fetch user information to get the customer ID, name, email, and phone number
             const userResponse = await fetch('/pingauth');
             if (!userResponse.ok) {
                 throw new Error('Failed to fetch user information');
             }
             const user = await userResponse.json();
             const customerId = user.id;
+            const customerName = `${user.firstName} ${user.lastName}`;
+            const customerEmail = user.email;
+            const customerPhone = user.phoneNumber;
 
             // Fetch bookings for the customer
             const bookingsResponse = await fetch(`/api/booking?customerId=${customerId}`);
@@ -68,10 +74,19 @@ export class Listings extends Component {
             const listings = await Promise.all(userBookings.map(async (booking, index) => {
                 const service = services[index];
                 const business = businesses.find(b => b.id === service.businessId);
+                if (!business) {
+                    console.error('Business not found for service:', service); // Debug statement
+                    return null;
+                }
                 const coordinates = await this.getCoordinates(business.address);
+                const status = booking.status === 0 ? 'Confirmed' : 'Pending';
 
                 return {
                     id: booking.id,
+                    customerName: customerName,
+                    customerEmail: customerEmail,
+                    customerPhone: customerPhone,
+                    status: status,
                     business: {
                         id: business.id.toString(),
                         name: business.name,
@@ -98,7 +113,9 @@ export class Listings extends Component {
                 };
             }));
 
-            this.setState({ listings });
+            // Filter out any null listings caused by the missing businesses
+            const filteredListings = listings.filter(listing => listing !== null);
+            this.setState({ listings: filteredListings });
         } catch (error) {
             console.error('Error fetching user bookings:', error);
         }
@@ -129,7 +146,7 @@ export class Listings extends Component {
     render() {
         return (
             <div className="listings-container">
-                <h1>My Listings</h1>
+                <h1>My Bookings</h1>
                 <ul>
                     {this.state.listings.map(listing => (
                         <li key={listing.id} className="listing-item">
@@ -138,7 +155,16 @@ export class Listings extends Component {
                             <p><span>Price:</span> ${listing.price}</p>
                             <p><span>Duration:</span> {listing.duration}</p>
                             <p><span>Rating:</span> {listing.rating} stars</p>
-                            <h3>Business Information:</h3>
+                            <h3>Booking Info</h3>
+                            <ul className="booking-info">
+                                <li>
+                                    <p><span>Customer Name:</span> {listing.customerName}</p>
+                                    <p><span>Customer Email:</span> {listing.customerEmail}</p>
+                                    <p><span>Customer Phone:</span> {listing.customerPhone}</p>
+                                    <p><span>Status:</span> {listing.status}</p>
+                                </li>
+                            </ul>
+                            <h3>Business Information</h3>
                             <ul className="business-info">
                                 <li>
                                     <p><span>Name:</span> {listing.business.name}</p>
@@ -147,7 +173,7 @@ export class Listings extends Component {
                                     <p><span>Phone:</span> {listing.business.phoneNumber.countryCode} {listing.business.phoneNumber.number}</p>
                                 </li>
                             </ul>
-                            <h3>Location:</h3>
+                            <h3>Location</h3>
                             <div className="map-container">
                                 <LoadScript googleMapsApiKey={googleMapsApiKey}>
                                     <GoogleMap
@@ -160,7 +186,7 @@ export class Listings extends Component {
                                     </GoogleMap>
                                 </LoadScript>
                             </div>
-                            <h3>Reviews:</h3>
+                            <h3>Reviews</h3>
                             <ul className="reviews-list">
                                 {listing.reviews.map(review => (
                                     <li key={review.id}>
@@ -175,17 +201,4 @@ export class Listings extends Component {
         );
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
