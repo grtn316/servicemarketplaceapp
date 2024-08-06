@@ -16,7 +16,7 @@ import Logout from "./components/pages/Logout";
 const AppRoutes = [
     {
         index: true,
-        element: <Home />
+        element: <SearchListings />
     },
     {
         path: '/create-booking',
