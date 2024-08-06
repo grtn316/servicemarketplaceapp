@@ -25,7 +25,9 @@ export class SearchListings extends Component {
             withinRadius: false,
             userLocation: null,
             selectedService: null,
-            listings: []
+            listings: [],
+            currentPage: 1,
+            listingsPerPage: 10
         };
     }
 
@@ -124,11 +126,11 @@ export class SearchListings extends Component {
     };
 
     handleSearchChange = (event) => {
-        this.setState({ searchTerm: event.target.value });
+        this.setState({ searchTerm: event.target.value, currentPage: 1 });
     };
 
     handleRadiusChange = (event) => {
-        this.setState({ withinRadius: event.target.checked });
+        this.setState({ withinRadius: event.target.checked, currentPage: 1 });
     };
 
     handleBookClick = (service) => {
@@ -137,6 +139,11 @@ export class SearchListings extends Component {
 
     handleCloseForm = () => {
         this.setState({ selectedService: null });
+    };
+
+    handleViewBusinessProfile = (businessId) => {
+        // Redirect to business profile page
+        this.props.history.push(`/business/${businessId}`);
     };
 
     updateServiceAvailability = (serviceId, updatedAvailability) => {
@@ -166,7 +173,7 @@ export class SearchListings extends Component {
     filterListings = () => {
         const { searchTerm, withinRadius, listings, userLocation } = this.state;
         const searchLower = searchTerm.toLowerCase();
-        return listings.filter(listing => {
+        const filteredListings = listings.filter(listing => {
             const matchesSearchTerm =
                 listing.serviceName.toLowerCase().includes(searchLower) ||
                 listing.business.name.toLowerCase().includes(searchLower) ||
@@ -184,11 +191,22 @@ export class SearchListings extends Component {
             );
             return matchesSearchTerm && distance <= 20;
         });
+        return filteredListings;
+    };
+
+    handlePageChange = (newPage) => {
+        this.setState({ currentPage: newPage });
     };
 
     render() {
-        const { searchTerm, withinRadius, selectedService } = this.state;
+        const { searchTerm, withinRadius, selectedService, currentPage, listingsPerPage } = this.state;
         const filteredListings = this.filterListings();
+
+        // Pagination logic
+        const indexOfLastListing = currentPage * listingsPerPage;
+        const indexOfFirstListing = indexOfLastListing - listingsPerPage;
+        const currentListings = filteredListings.slice(indexOfFirstListing, indexOfLastListing);
+        const totalPages = Math.ceil(filteredListings.length / listingsPerPage);
 
         return (
             <div className="listings-container">
@@ -211,7 +229,7 @@ export class SearchListings extends Component {
                     </label>
                 </div>
                 <ul>
-                    {filteredListings.map(listing => (
+                    {currentListings.map(listing => (
                         <li key={listing.id} className="listing-item">
                             <h2>{listing.serviceName}</h2>
                             <p>{listing.description}</p>
@@ -224,6 +242,7 @@ export class SearchListings extends Component {
                                     <p><span>Description:</span> {listing.business.description}</p>
                                     <p><span>Address:</span> {listing.business.address.street}, {listing.business.address.city}, {listing.business.address.state} {listing.business.address.zip}</p>
                                     <p><span>Phone:</span> {listing.business.phoneNumber.countryCode} {listing.business.phoneNumber.number}</p>
+                                    <button className="view-profile-button" onClick={() => this.handleViewBusinessProfile(listing.business.id)}>View Business Profile</button>
                                 </li>
                             </ul>
                             <h3>Location:</h3>
@@ -259,6 +278,17 @@ export class SearchListings extends Component {
                         </li>
                     ))}
                 </ul>
+                <div className="pagination">
+                    {Array.from({ length: totalPages }, (_, index) => (
+                        <button
+                            key={index + 1}
+                            onClick={() => this.handlePageChange(index + 1)}
+                            className={currentPage === index + 1 ? 'active' : ''}
+                        >
+                            {index + 1}
+                        </button>
+                    ))}
+                </div>
                 {selectedService && (
                     <div className="booking-form-overlay">
                         <div className="booking-form-container">
@@ -271,3 +301,5 @@ export class SearchListings extends Component {
         );
     }
 }
+
+
