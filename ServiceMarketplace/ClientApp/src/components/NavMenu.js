@@ -92,6 +92,14 @@ export class NavMenu extends Component {
                                     {/*<NavItem>
                                         <NavLink tag={Link} to="/" className={activeLink === "/" ? "selectedLink" : ""}>Home</NavLink>
                                     </NavItem>*/}
+
+                                    {accountType === 0 && (
+                                        <>
+                                            <NavItem>
+                                                <NavLink tag={Link} to="/listings" className={activeLink === "/listings" ? "selectedLink" : ""} activeClassName="selectedLink">My Bookings</NavLink>
+                                            </NavItem>
+                                        </>
+                                    )}
                                     {accountType === 1 && (
                                         <>
                                             <NavItem>
@@ -100,20 +108,13 @@ export class NavMenu extends Component {
                                         </>
                                     )}
                                     <NavItem>
-                                        <NavLink tag={Link} to="/listings" className={activeLink === "/listings" ? "selectedLink" : ""} activeClassName="selectedLink">My Bookings</NavLink>
+                                        
                                     </NavItem>
                                     <NavItem>
                                         <NavLink tag={Link} to="/search-listings" className={activeLink === "/search-listings" ? "selectedLink" : ""}>Search</NavLink>
                                     </NavItem>
                                     {accountType === 1 && (
                                         <>
-                                            <NavItem>
-                                                <NavLink tag={Link} to="/appointments" className={activeLink === "/appointments" ? "selectedLink" : ""}>Appointments</NavLink>
-                                            </NavItem>
-
-                                            <NavItem>
-                                                <NavLink tag={Link} to="/messages" >Messages</NavLink>
-                                            </NavItem>
                                         </>
                                     )}
                                     <NavItem>
@@ -122,7 +123,6 @@ export class NavMenu extends Component {
                                     {accountType === 1 && (
                                         <>
                                             <NavItem>
-                                                <NavLink tag={Link} to="/account" className={activeLink === "/account" ? "selectedLink" : ""}>Account</NavLink>
                                             </NavItem>
                                         </>
                                     )}
