@@ -9,7 +9,7 @@ This project is built using the ASP.NET Core with React template found here: [AS
 Before you begin, ensure you have the following installed:
 
 - Visual Studio 2022 Community Edition
-- .NET 7.0 SDK
+- .NET 8.0 SDK
 - Node.js (which includes npm, the Node package manager)
 
 ## Installation
@@ -23,7 +23,7 @@ Before you begin, ensure you have the following installed:
 
 ### Step 2: Install .NET 7.0 SDK
 
-1. Download and install the [.NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0).
+1. Download and install the [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 ### Step 3: Install Node.js
 
