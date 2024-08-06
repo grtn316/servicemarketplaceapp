@@ -107,9 +107,7 @@ export class Listings extends Component {
                     serviceName: service.serviceName,
                     description: service.description,
                     price: service.price,
-                    duration: service.duration,
                     rating: service.rating,
-                    reviews: service.reviews,
                 };
             }));
 
@@ -153,7 +151,6 @@ export class Listings extends Component {
                             <h2>{listing.serviceName}</h2>
                             <p>{listing.description}</p>
                             <p><span>Price:</span> ${listing.price}</p>
-                            <p><span>Duration:</span> {listing.duration}</p>
                             <p><span>Rating:</span> {listing.rating} stars</p>
                             <h3>Booking Info</h3>
                             <ul className="booking-info">
@@ -186,14 +183,6 @@ export class Listings extends Component {
                                     </GoogleMap>
                                 </LoadScript>
                             </div>
-                            <h3>Reviews</h3>
-                            <ul className="reviews-list">
-                                {listing.reviews.map(review => (
-                                    <li key={review.id}>
-                                        <p><span>Review:</span> {review.comment} - {review.rating} stars</p>
-                                    </li>
-                                ))}
-                            </ul>
                         </li>
                     ))}
                 </ul>
@@ -201,4 +190,5 @@ export class Listings extends Component {
         );
     }
 }
+
 
