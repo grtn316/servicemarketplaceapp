@@ -1,15 +1,16 @@
-﻿.listings-container {
+﻿/* Listings.css */
+.listings-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
 }
 
-    .listings-container h1 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 30px;
-    }
+.listings-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
 
 .listing-item {
     background: #fff;
@@ -21,47 +22,51 @@
     transition: transform 0.2s ease-in-out;
 }
 
-    .listing-item:hover {
-        transform: translateY(-5px);
-    }
+.listing-item:hover {
+    transform: translateY(-5px);
+}
 
-    .listing-item h2, .listing-item h3 {
-        margin: 0;
-        font-size: 24px;
-        color: #333;
-        border-bottom: 2px solid #f4f4f4;
-        padding-bottom: 10px;
-    }
+.listing-item h2, .listing-item h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 10px;
+}
 
-    .listing-item p {
-        margin: 10px 0;
-        color: #555;
-        font-size: 16px;
-    }
+.listing-item p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 16px;
+}
 
-    .listing-item span {
-        font-weight: bold;
-        color: #000;
-    }
+.listing-item span {
+    font-weight: bold;
+}
 
-.business-info, .reviews-list, .availability-list {
+.booking-info, .business-info, .reviews-list {
     list-style: none;
     padding: 0;
 }
 
-    .business-info li, .reviews-list li, .availability-list li {
-        background: #f9f9f9;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
+.booking-info li, .business-info li, .reviews-list li {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
-        .business-info li p, .reviews-list li p, .availability-list li p {
-            margin: 0;
-            color: #666;
-        }
+.booking-info li p, .business-info li p, .reviews-list li p {
+    margin: 0;
+    color: #666;
+}
 
-            .business-info li p span, .reviews-list li p span, .availability-list li p span {
-                font-weight: bold;
-                color: #333;
-            }
+.booking-info li p span, .business-info li p span, .reviews-list li p span {
+    font-weight: bold;
+    color: #333;
+}
+
+.map-container {
+    height: 200px;
+    margin-bottom: 20px;
+}
